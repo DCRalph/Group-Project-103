@@ -45,6 +45,9 @@
     <ClCompile Include="source\Admin_home.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Parent_home.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\cliTools.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\Admin_home.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Parent_home.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

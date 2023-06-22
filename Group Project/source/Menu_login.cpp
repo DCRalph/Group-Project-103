@@ -4,6 +4,7 @@ int MenuLogin::execute()
 {
    AdminMenu AdminMenu;
    TeacherMenu TeacherMenu;
+   ParentMenu ParentMenu;
   string username, password;
 
   utils.clear();
@@ -25,6 +26,12 @@ int MenuLogin::execute()
     if (username == "admin")
     {
         AdminMenu.execute();
+        return 0;
+    }
+    //Temp Parent Login
+    if (username == "parent")
+    {
+        ParentMenu.execute();
         return 0;
     }
 

@@ -145,9 +145,11 @@
     <ClInclude Include="header\cliTools.h" />
     <ClCompile Include="source\db.cpp" />
     <ClInclude Include="header\db.h" />
+    <ClInclude Include="header\Parent_home.h" />
     <ClInclude Include="header\Student_records.h" />
     <ClInclude Include="source\color.cpp" />
     <ClInclude Include="header\color.h" />
+    <ClCompile Include="source\Parent_home.cpp" />
     <ClCompile Include="source\Student_records.cpp" />
     <ClCompile Include="source\Teacher_home_screen.cpp" />
     <ClCompile Include="header\Teacher_home_screen.h" />
