@@ -15,7 +15,7 @@
 
 void displayMenu(bool logedIn = false)
 {
-    cout << "Welcome to Yoobee School Info System:" << endl;
+    cout << "\nWelcome to Yoobee School Info System:\n\n";
     if (logedIn)
     {
         cout << "1. Logout" << endl;
@@ -76,7 +76,7 @@ int main()
 
         displayMenu(logedIn);
 
-        cout << "Enter a number: ";
+        cout << "\nEnter a number: ";
         choice = getInput.getNumber();
 
         switch (choice)
