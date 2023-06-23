@@ -1,5 +1,7 @@
 #include "../header/Menu_Parent.h"
 
+using namespace std;
+
 int MenuParent::execute()
 {
 	utils.clear();

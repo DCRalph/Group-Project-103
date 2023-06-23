@@ -7,8 +7,6 @@
 
 #include "./Student_records.h"
 
-using namespace std;
-
 class MenuTeacher
 {
 

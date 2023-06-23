@@ -4,8 +4,7 @@
 
 #include "cliTools.h"
 #include "db.h"
-
-using namespace std;
+#include "color.h"
 
 class MenuLogin
 {

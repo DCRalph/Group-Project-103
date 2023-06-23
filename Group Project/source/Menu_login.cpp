@@ -1,5 +1,7 @@
 #include "../header/Menu_Login.h"
 
+using namespace std;
+
 int MenuLogin::execute()
 {
 
@@ -7,8 +9,8 @@ int MenuLogin::execute()
 
   utils.clear();
 
-  cout << "Login" << endl
-       << endl;
+  cout << "Login" << "\n"
+       << "\n";
 
   cout << "Enter username: ";
   username = getInput.getString();
@@ -38,10 +40,7 @@ int MenuLogin::execute()
   cout << "Enter password: ";
   password = getInput.getString();
 
-  cout << password << endl;
-
   // TODO - check if username and password match
-  cout << ("Logging in...") << endl;
 
   for (int i = 0; i < db.db.size(); i++)
   {
@@ -54,32 +53,36 @@ int MenuLogin::execute()
 
     // if (db.db[i].attempts >= 3)
     // {
-    //   cout << ("You have exceeded the number of attempts!") << endl;
+    //   cout << ("You have exceeded the number of attempts!") << "\n";
 
     //   return 0;
     // }
 
     if (db.db[i].login.password != password)
     {
-      cout << ("Invalid password!") << endl;
+      cout << C.red("Invalid password!") << "\n";
 
       // db.db[i].attempts++;
+
+      utils.waitForKeyPress();
 
       continue;
     }
 
-    cout << ("Logged in!") << endl;
+    cout << "\n";
+    cout << ("Logged in!") << "\n";
 
-    cout << "Welcome, " << db.db[i].getName() << "!" << endl;
+    cout << "Welcome, " << db.db[i].getName() << "!" << "\n";
+    cout << "\n";
 
     db.currentUser = db.db[i];
 
     utils.waitForKeyPress();
-    utils.clear();
+
     return db.db[i].type;
   }
 
-  cout << ("Invalid username or password!") << endl;
+  cout << ("Invalid username or password!") << "\n";
 
   return 0;
 }

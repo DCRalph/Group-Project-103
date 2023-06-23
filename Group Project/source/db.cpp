@@ -1,9 +1,6 @@
 #include "../header/db.h"
 
-// int getType()
-// {
-//   return this->;
-// }
+using namespace std;
 
 Student::Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress)
 {
@@ -20,12 +17,20 @@ Student::Student(string _name, string _id, string _dob, Gender _gender, float _m
   learningProgress = _learningProgress;
 }
 
-// Teacher::Teacher()
-// {
-//   name = "NullTeacher";
-//   id = "NullTeacher";
-//   classRoom = ClassRoom();
-// }
+Student::Student(string _name, string _dob, Gender _gender)
+{
+  name = _name;
+  id = _name + " " + _dob;
+  dob = _dob;
+  gender = _gender;
+  math = 0;
+  science = 0;
+  english = 0;
+  writing = 0;
+  reading = 0;
+  other = 0;
+  learningProgress = "";
+}
 
 Teacher::Teacher(string _name, string _id, ClassRoom _classRoom)
 {
@@ -224,7 +229,7 @@ void DataBase::save()
     }
   }
 
-  // cout << data.dump(2) << endl;
+  // std::cout << data.dump(2) << "\n";
 
   ofstream file;
   file.open(SAVEFILE, ios::out | ios::trunc);

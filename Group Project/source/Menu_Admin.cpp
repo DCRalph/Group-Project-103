@@ -1,11 +1,14 @@
 #include "../header/Menu_Admin.h"
 
+using namespace std;
+
 int MenuAdmin::execute()
 {
-	utils.clear();
 	int selection;
 	do
 	{
+		utils.clear();
+
 		cout << "\nWelcome " << db.currentUser.getName() << " to Admin Homescreen\n\n";
 		cout << "1) Parent Records\n";
 		cout << "2) Class Records\n";
@@ -15,22 +18,28 @@ int MenuAdmin::execute()
 
 		selection = getInput.getNumber();
 
-		if (selection == 1)
-			this->parentRecords();
-		else if (selection == 2)
-			this->classRecords();
-		else if (selection == 3)
-			this->studentReport();
-		else if (selection == 4)
+		switch (selection)
 		{
-			cout << "\nGoodbye!\n";
-			return (0);
-		}
-		else
-			cout << "\nInvalid choice!\n";
-	} while (selection != 2);
+		case 1:
+			this->parentRecords();
+			break;
+		case 2:
+			this->classRecords();
+			break;
+		case 3:
+			this->studentReport();
+			break;
+		case 4:
+			cout << "\nGoodbye!";
+			break;
+		default:
+			utils.clear();
+			cout << "\n";
+			cout << C.red("Invalid input, please try again.") << "\n\n";
 
-	cout << "\nGoodbye!";
+			utils.waitForKeyPress();
+		}
+	} while (selection != 4);
 
 	return 0;
 }
@@ -54,9 +63,10 @@ void MenuAdmin::parentRecords()
 	cout << "Child(s) Full Name: \n";
 	cout << "Child(s) Classroom Number: \n";
 	cout << "Parent/Caregiver Emergency Contact Number: \n";
+
 	utils.waitForKeyPress();
-	utils.clear();
 }
+
 void MenuAdmin::classRecords()
 {
 	utils.clear();
@@ -76,9 +86,10 @@ void MenuAdmin::classRecords()
 	cout << "3) Alex Humbin: \n";
 	cout << "	(Alex Humbin Student Details)\n";
 	cout << "...\n";
+
 	utils.waitForKeyPress();
-	utils.clear();
 }
+
 void MenuAdmin::studentReport()
 {
 	utils.clear();
@@ -109,5 +120,4 @@ void MenuAdmin::studentReport()
 		cout << "\nInvalid choice!\n";
 	}
 	utils.waitForKeyPress();
-	utils.clear();
 }

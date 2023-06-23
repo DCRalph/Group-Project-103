@@ -45,7 +45,7 @@ class Student
 {
 public:
   Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress);
-
+  Student(string _name, string _dob, Gender _gender);
   string name;
   string id;
   string dob;

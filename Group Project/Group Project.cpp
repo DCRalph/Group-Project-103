@@ -15,36 +15,49 @@
 
 #include "lib/json.hpp"
 
-// By Jacob Rosner, Arthur Werner and William Giles
+using namespace std;
 
 void displayMenu(bool logedIn = false)
 {
-  cout << "\nWelcome to Yoobee School Info System:\n\n";
+  cout << "\n";
+  cout << "Welcome to Yoobee School Info System:"
+       << "\n";
+  cout << "\n";
+
   if (logedIn)
   {
     switch (db.currentUser.type)
     {
     case UserType::Admin:
-      cout << "1. Admin" << endl;
+      cout << "1. Admin"
+           << "\n";
       break;
     case UserType::Teacher:
-      cout << "1. Teacher" << endl;
+      cout << "1. Teacher"
+           << "\n";
       break;
     case UserType::Parent:
-      cout << "1. Parent" << endl;
+      cout << "1. Parent"
+           << "\n";
       break;
     }
 
-    cout << "2. Logout" << endl;
+    cout << "2. Logout"
+         << "\n";
   }
   else
   {
-    cout << "1. Login" << endl;
-    cout << "2. Register" << endl;
+    cout << "1. Login"
+         << "\n";
+    cout << "2. Register"
+         << "\n";
   }
-  cout << "3. Upcoming Events" << endl;
-  cout << "4. Contact Details" << endl;
-  cout << "5. Exit" << endl;
+  cout << "3. Upcoming Events"
+       << "\n";
+  cout << "4. Contact Details"
+       << "\n";
+  cout << "5. Exit and save"
+       << "\n";
 }
 
 void makeTestUsers()
@@ -167,6 +180,17 @@ int main()
       break;
     case 4:
       menuExtra.displayEvent();
+      break;
+
+    case 5:
+      break;
+
+    default:
+      utils.clear();
+      cout << "\n";
+      cout << C.red("Invalid input, please try again.") << "\n";
+
+      utils.waitForKeyPress();
       break;
     }
 

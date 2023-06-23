@@ -3,8 +3,7 @@
 #include <iostream>
 
 #include "cliTools.h"
-
-using namespace std;
+#include "db.h"
 
 class MenuRegister
 {

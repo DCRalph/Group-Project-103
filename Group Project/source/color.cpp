@@ -1,5 +1,7 @@
 #include "../header/color.h"
 
+using namespace std;
+
 Color::Color()
 {
   Red = "\033[31m";

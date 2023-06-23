@@ -1,5 +1,7 @@
 #include "../header/Menu_Teacher.h"
 
+using namespace std;
+
 int MenuTeacher::execute()
 {
 	StudentRecord StudentRecord;
