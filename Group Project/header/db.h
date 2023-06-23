@@ -7,16 +7,29 @@ using namespace std;
 
 enum UserType
 {
-  NullUser = 0,
-  Admin = 1,
-  Teacher = 2,
-  Parent = 3,
+  NullUser,
+  Admin,
+  Teacher,
+  Parent,
 };
 
 enum Gender
 {
   Male,
   Female
+};
+
+class Login
+{
+public:
+  string username;
+  string password;
+};
+
+class Admin
+{
+  string name;
+  string id;
 };
 
 class Student
@@ -37,13 +50,36 @@ public:
   string learningProgress;
 };
 
-class Login
+class ClassRoom
 {
 public:
-  string username;
-  string password;
+  vector<Student> students;
+  int classRoomNumber;
+};
 
-  int type;
+class Teacher
+{
+public:
+  string name;
+  string id;
+  ClassRoom classRoom;
+};
+
+class Parent
+{
+public:
+  string name;
+  string id;
+  string email;
+  string dob;
+
+  vector<string> childrenIds;
+};
+
+class Admin
+{
+public:
+  string name;
   string id;
 };
 
@@ -51,10 +87,12 @@ class User
 {
 public:
   Login login;
-  int attempts;
-
+  int type;
   string id;
-  string name;
+
+  class ::Parent parent;
+  class ::Teacher teacher;
+  class ::Admin admin;
 };
 
 extern vector<User> db;

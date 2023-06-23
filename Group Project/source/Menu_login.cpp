@@ -2,9 +2,9 @@
 
 int MenuLogin::execute()
 {
-   AdminMenu AdminMenu;
-   TeacherMenu TeacherMenu;
-   ParentMenu ParentMenu;
+  AdminMenu AdminMenu;
+  TeacherMenu TeacherMenu;
+  ParentMenu ParentMenu;
   string username, password;
 
   utils.clear();
@@ -14,26 +14,26 @@ int MenuLogin::execute()
 
   cout << "Enter username: ";
   username = getInput.getString();
-    
-  //Temp Teacher Login
-    if (username == "teacher") 
-    {
-        TeacherMenu.execute();
-        return 0;
-    }
 
-    //Temp Admin Login
-    if (username == "admin")
-    {
-        AdminMenu.execute();
-        return 0;
-    }
-    //Temp Parent Login
-    if (username == "parent")
-    {
-        ParentMenu.execute();
-        return 0;
-    }
+  // Temp Teacher Login
+  if (username == "teacher")
+  {
+    TeacherMenu.execute();
+    return 0;
+  }
+
+  // Temp Admin Login
+  if (username == "admin")
+  {
+    AdminMenu.execute();
+    return 0;
+  }
+  // Temp Parent Login
+  if (username == "parent")
+  {
+    ParentMenu.execute();
+    return 0;
+  }
 
   // TODO - hide password
 
@@ -47,46 +47,43 @@ int MenuLogin::execute()
 
   for (int i = 0; i < db.size(); i++)
   {
-    
 
-    if (db[i].login.type == NullUser)
+    if (username == "teacher")
     {
-      continue;
+      TeacherMenu.execute();
     }
+
+    if (db[i].type == NullUser)
+      continue;
 
     if (db[i].login.username != username)
-    {
-      // cout << C.red(C.bold("Invalid username or password!")) << endl;
-
       continue;
-    }
 
-    if (db[i].attempts >= 3)
-    {
-      cout << ("You have exceeded the number of attempts!") << endl;
+    // if (db[i].attempts >= 3)
+    // {
+    //   cout << ("You have exceeded the number of attempts!") << endl;
 
-      return 0;
-    }
+    //   return 0;
+    // }
 
     if (db[i].login.password != password)
     {
       cout << ("Invalid password!") << endl;
 
-      db[i].attempts++;
+      // db[i].attempts++;
 
       continue;
-      ;
     }
 
     cout << ("Logged in!") << endl;
 
-    cout << "Welcome, " << db[i].login.id << "!" << endl;
+    cout << "Welcome, " << db[i].id << "!" << endl;
 
     currentlyLogedinUser = db[i];
 
     utils.waitForKeyPress();
     utils.clear();
-    return db[i].login.type;
+    return db[i].type;
   }
 
   cout << ("Invalid username or password!") << endl;
