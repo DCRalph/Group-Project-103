@@ -2,8 +2,16 @@
 
 #include <vector>
 #include <string>
+#include <optional>
+#include <fstream>
+
+#include "../lib/json.hpp"
+
+using json = nlohmann::json;
 
 using namespace std;
+
+const string SAVEFILE = "save.json";
 
 enum UserType
 {
@@ -28,6 +36,7 @@ public:
 
 class Admin
 {
+public:
   string name;
   string id;
 };
@@ -35,6 +44,8 @@ class Admin
 class Student
 {
 public:
+  Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress);
+
   string name;
   string id;
   string dob;
@@ -60,6 +71,8 @@ public:
 class Teacher
 {
 public:
+  Teacher(string _name, string _id, ClassRoom _classRoom);
+
   string name;
   string id;
   ClassRoom classRoom;
@@ -73,27 +86,37 @@ public:
   string email;
   string dob;
 
-  vector<string> childrenIds;
-};
-
-class Admin
-{
-public:
-  string name;
-  string id;
+  vector<string> childIds;
 };
 
 class User
 {
 public:
+  User();
+  User(Login _login, string _id, class ::Admin _admin);
+  User(Login _login, string _id, class ::Parent _parent);
+  User(Login _login, string _id, class ::Teacher _teacher);
+
   Login login;
   int type;
   string id;
 
-  class ::Parent parent;
-  class ::Teacher teacher;
-  class ::Admin admin;
+  optional<class ::Admin> admin;
+  optional<class ::Parent> parent;
+  optional<class ::Teacher> teacher;
 };
 
-extern vector<User> db;
-extern User currentlyLogedinUser;
+class DataBase
+{
+public:
+  void load();
+  void save();
+
+  vector<User> db;
+  User currentlyLogedinUser;
+};
+
+extern DataBase db;
+
+// extern vector<User> db;
+// extern User currentlyLogedinUser;

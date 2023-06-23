@@ -45,7 +45,7 @@ int MenuLogin::execute()
   // TODO - check if username and password match
   cout << ("Logging in...") << endl;
 
-  for (int i = 0; i < db.size(); i++)
+  for (int i = 0; i < db.db.size(); i++)
   {
 
     if (username == "teacher")
@@ -53,37 +53,37 @@ int MenuLogin::execute()
       TeacherMenu.execute();
     }
 
-    if (db[i].type == NullUser)
+    if (db.db[i].type == NullUser)
       continue;
 
-    if (db[i].login.username != username)
+    if (db.db[i].login.username != username)
       continue;
 
-    // if (db[i].attempts >= 3)
+    // if (db.db[i].attempts >= 3)
     // {
     //   cout << ("You have exceeded the number of attempts!") << endl;
 
     //   return 0;
     // }
 
-    if (db[i].login.password != password)
+    if (db.db[i].login.password != password)
     {
       cout << ("Invalid password!") << endl;
 
-      // db[i].attempts++;
+      // db.db[i].attempts++;
 
       continue;
     }
 
     cout << ("Logged in!") << endl;
 
-    cout << "Welcome, " << db[i].id << "!" << endl;
+    cout << "Welcome, " << db.db[i].id << "!" << endl;
 
-    currentlyLogedinUser = db[i];
+    db.currentlyLogedinUser = db.db[i];
 
     utils.waitForKeyPress();
     utils.clear();
-    return db[i].type;
+    return db.db[i].type;
   }
 
   cout << ("Invalid username or password!") << endl;

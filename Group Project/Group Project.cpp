@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
 #include "header/cliTools.h"
 #include "header/db.h"
@@ -13,227 +15,140 @@
 
 #include "lib/json.hpp"
 
-using json = nlohmann::json;
-
 // By Jacob Rosner, Arthur Werner and William Giles
 
 void displayMenu(bool logedIn = false)
 {
-    cout << "\nWelcome to Yoobee School Info System:\n\n";
-    if (logedIn)
-    {
-        cout << "1. Logout" << endl;
-        cout << "2. " << endl;
-    }
-    else
-    {
-        cout << "1. Login" << endl;
-        cout << "2. Register" << endl;
-    }
-    cout << "3. Upcoming Events" << endl;
-    cout << "4. Contact Details" << endl;
-    cout << "5. Exit" << endl;
+  cout << "\nWelcome to Yoobee School Info System:\n\n";
+  if (logedIn)
+  {
+    cout << "1. Logout" << endl;
+    cout << "2. " << endl;
+  }
+  else
+  {
+    cout << "1. Login" << endl;
+    cout << "2. Register" << endl;
+  }
+  cout << "3. Upcoming Events" << endl;
+  cout << "4. Contact Details" << endl;
+  cout << "5. Exit" << endl;
+}
+
+void makeTestUsers()
+{
+
+  Login adminLogin1 = {"admin", "admin"};
+  class ::Admin admin1 = {"bob", "adminid1"};
+  User user1(adminLogin1, "admin user1", admin1);
+
+  // db.db.push_back(user1);
+  db.db.push_back(user1);
+
+  ///////////////////////////////////////////////////////
+
+  // cerate a test class
+
+  Student student1 = {"bill", "bill1", "1/2/3", Gender::Male, 1, 2, 3, 4, 5, 6, "is a very bad boy"};
+  Student student2 = {"bob", "bobiscool", "2/3/4", Gender::Female, 1, 2, 3, 4, 5, 6, "is a very very bad boy"};
+
+  vector<Student> _students{student1, student2};
+
+  ClassRoom class1 = {_students, 69};
+
+  ///////////////////////////////////////////////////////
+
+  // cerate a test teacher user
+
+  Login teacherlogin1 = {"teacher", "teacher"};
+
+  class ::Teacher teacher2 = {"jill", "teacherid1", class1};
+
+  User user3(teacherlogin1, "teacher user1", teacher2);
+
+  db.db.push_back(user3);
+
+  ///////////////////////////////////////////////////////
+
+  // cerate a test parent user
+
+  Login parentlogin1 = {"parent", "parent"};
+
+  vector<string> _childIds{"bill1"};
+
+  class ::Parent parent1 = {"jill", "parentid1", "email", "dob", _childIds};
+
+  User user2(parentlogin1, "parent user1", parent1);
+
+  db.db.push_back(user2);
 }
 
 int main()
 {
-    Login NullLogin = {"", ""};
-    // Login login1 = {"admin", "admin", UserType::Admin, "admin user"};
-    // Login login2 = {"user", "user", UserType::Parent, "normal user"};
+  MenuLogin MenuLogin;
+  MenuRegister MenuRegister;
+  MenuExtra MenuExtra;
+  TeacherMenu TeacherMenu;
 
-    User NullUser = {NullLogin, UserType::NullUser, "null user"};
-    // User item1 = {login1};
-    // User item2 = {login2};
+  // Login login1 = {"admin", "admin", UserType::Admin, "admin user"};
+  // Login login2 = {"user", "user", UserType::Parent, "normal user"};
 
-    db.push_back(NullUser);
-    // db.push_back(item1);
-    // db.push_back(item2);
+  // User NullUser();
+  // User item1 = {login1};
+  // User item2 = {login2};
 
-    currentlyLogedinUser = NullUser;
+  // db.db.push_back(NullUser);
+  // db.db.push_back(item1);
+  // db.db.push_back(item2);
 
-    // cerate a test admin user
-    ///////////////////////////////////////////////////////
+  db.currentlyLogedinUser = User();
+  db.load();
+  // makeTestUsers();
 
-    Login adminLogin1 = {"admin", "admin"};
+  int choice;
 
-    class ::Admin admin1 = {"bob", "adminid1"};
+  do
+  {
+    // utils.clear();
+    bool logedIn = db.currentlyLogedinUser.type != UserType::NullUser;
 
-    User user1 = {adminLogin1, UserType::Admin, "admin user1"};
-    user1.admin = admin1;
+    displayMenu(logedIn);
 
-    db.push_back(user1);
+    cout << "\nEnter a number: ";
+    choice = getInput.getNumber();
 
-    ///////////////////////////////////////////////////////
-
-    // cerate a test class
-
-    Student student1 = {"bill", "bill1", "1/2/3", Male, 1, 2, 3, 4, 5, 6, "is a very bad boy"};
-
-    vector<Student> vec = {student1};
-
-    ClassRoom class1 = {vec, 69};
-
-    ///////////////////////////////////////////////////////
-
-    // cerate a test teacher user
-
-    Login teacher1 = {"teacher", "teacher"};
-
-    class ::Teacher teacher2 = {"jill", "wenier", class1};
-
-    User user3 = {teacher1, UserType::Teacher, "teacher user1"};
-
-    db.push_back(user3);
-
-    ///////////////////////////////////////////////////////
-
-    // cerate a test parent user
-
-    Login parent1 = {"parent", "parent"};
-
-    vector<string> vec2 = {"bill1"};
-
-    class ::Parent parent2 = {"jill", "parentid1", "email", "dob", vec2};
-
-    User user2 = {parent1, UserType::Parent, "parent user1"};
-    user2.parent = parent2;
-
-    db.push_back(user2);
-
-    ///////////////////////////////////////////////////////
-
-    MenuLogin MenuLogin;
-    MenuRegister MenuRegister;
-    MenuExtra MenuExtra;
-    TeacherMenu TeacherMenu;
-
-    int choice;
-
-    do
+    switch (choice)
     {
-        // utils.clear();
-        bool logedIn = currentlyLogedinUser.type != UserType::NullUser;
+    case 1:
+      if (logedIn)
+        // set the current user to null or undefined
+        db.currentlyLogedinUser = User();
 
-        displayMenu(logedIn);
+      else
+        MenuLogin.execute();
 
-        cout << "\nEnter a number: ";
-        choice = getInput.getNumber();
+      break;
+    case 2:
+      if (logedIn)
+      {
+        cout << "You are already logged in!" << endl;
+        utils.waitForKeyPress();
+      }
+      else
+        MenuRegister.execute();
 
-        switch (choice)
-        {
-        case 1:
-            if (logedIn)
-                currentlyLogedinUser = NullUser;
-            else
-                menuLogin.execute();
-
-            break;
-        case 2:
-            if (logedIn)
-            {
-                cout << "You are already logged in!" << endl;
-                utils.waitForKeyPress();
-            }
-            else
-                MenuRegister.execute();
-
-            break;
-        case 3:
-            MenuExtra.execute(choice);
-            break;
-        case 4:
-            MenuExtra.execute(choice);
-            break;
-        }
-
-    } while (choice != 5);
-
-    json data = {
-        {"admins", json::array()},
-        {"parents", json::array()},
-        {"teachers", json::array()},
-        {"students", json::array()},
-
-    };
-
-    json childIds = json::array();
-
-    for (int i = 0; i < db.size(); i++)
-    {
-        if (db[i].type == UserType::NullUser)
-        {
-            continue;
-        }
-        switch (db[i].type)
-        {
-        case UserType::Admin:
-            data["admins"].push_back({
-                {"username", db[i].login.username},
-                {"password", db[i].login.password},
-                {"type", db[i].type},
-                {"name", db[i].admin.name},
-                {"id", db[i].admin.id},
-
-            });
-            break;
-
-        case UserType::Parent:
-
-            // json childIds = json::array();
-            childIds = json::array();
-
-            for (int j = 0; i < db[i].parent.childIds.size(); i++)
-            {
-                childIds.push_back({
-                    {"id", db[i].parent.childIds[j]},
-                });
-            }
-
-            data["parents"].push_back({
-                {"username", db[i].login.username},
-                {"password", db[i].login.password},
-                {"type", db[i].type},
-                {"name", db[i].parent.name},
-                {"id", db[i].parent.id},
-                {"children", childIds},
-            });
-
-            break;
-        case UserType::Teacher:
-
-            data["teachers"].push_back({
-                {"username", db[i].login.username},
-                {"password", db[i].login.password},
-                {"type", db[i].type},
-                {"name", db[i].teacher.name},
-                {"id", db[i].teacher.id},
-                {"classRoomNumber", db[i].teacher.classRoom.classRoomNumber},
-            });
-
-            for (int j = 0; i < db[i].teacher.classRoom.students.size(); i++)
-            {
-                data["students"].push_back({
-                    {"name", db[i].teacher.classRoom.students[j].name},
-                    {"id", db[i].teacher.classRoom.students[j].id},
-                    {"dob", db[i].teacher.classRoom.students[j].dob},
-                    {"gender", db[i].teacher.classRoom.students[j].gender},
-
-                    {"math", db[i].teacher.classRoom.students[j].math},
-                    {"science", db[i].teacher.classRoom.students[j].science},
-                    {"english", db[i].teacher.classRoom.students[j].english},
-                    {"writing", db[i].teacher.classRoom.students[j].writing},
-                    {"reading", db[i].teacher.classRoom.students[j].reading},
-                    {"other", db[i].teacher.classRoom.students[j].other},
-
-                    {"learningProgress", db[i].teacher.classRoom.students[j].learningProgress},
-                });
-            }
-
-            break;
-        }
+      break;
+    case 3:
+      MenuExtra.execute(choice);
+      break;
+    case 4:
+      MenuExtra.execute(choice);
+      break;
     }
 
-    cout << data.dump(4) << endl;
+  } while (choice != 5);
 
-    cout << ("Exiting...") << "\n";
+  db.save();
+
+  cout << ("Exiting...") << "\n";
 }

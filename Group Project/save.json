@@ -1,0 +1,65 @@
+{
+  "admins": [
+    {
+      "id": "adminid1",
+      "name": "bob",
+      "password": "1234",
+      "type": 1,
+      "username": "will"
+    }
+  ],
+  "parents": [
+    {
+      "children": [
+        {
+          "id": "bill1"
+        }
+      ],
+      "dob": "dob",
+      "email": "email",
+      "id": "parentid1",
+      "name": "jill",
+      "password": "parent",
+      "type": 3,
+      "username": "parent"
+    }
+  ],
+  "teachers": [
+    {
+      "classRoomNumber": 69,
+      "id": "teacherid1",
+      "name": "jill",
+      "password": "teacher",
+      "students": [
+        {
+          "dob": "1/2/3",
+          "english": 3.0,
+          "gender": 0,
+          "id": "joe1",
+          "learningProgress": "is a very bad boy",
+          "math": 1.0,
+          "name": "joe",
+          "other": 6.0,
+          "reading": 5.0,
+          "science": 2.0,
+          "writing": 4.0
+        },
+        {
+          "dob": "2/3/4",
+          "english": 3.0,
+          "gender": 1,
+          "id": "bobiscool",
+          "learningProgress": "is a very very bad boy",
+          "math": 1.0,
+          "name": "bob",
+          "other": 6.0,
+          "reading": 5.0,
+          "science": 2.0,
+          "writing": 4.0
+        }
+      ],
+      "type": 2,
+      "username": "teacher"
+    }
+  ]
+}
