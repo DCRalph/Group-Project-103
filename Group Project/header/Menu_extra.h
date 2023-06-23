@@ -10,7 +10,7 @@ class MenuExtra
 {
 
 public:
-	int execute(int choice);
+	void execute();
 	void displayContact();
 	void displayEvent();
 };

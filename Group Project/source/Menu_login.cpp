@@ -1,10 +1,8 @@
-#include "../header/Menu_login.h"
+#include "../header/Menu_Login.h"
 
 int MenuLogin::execute()
 {
-  AdminMenu AdminMenu;
-  TeacherMenu TeacherMenu;
-  ParentMenu ParentMenu;
+
   string username, password;
 
   utils.clear();
@@ -16,24 +14,24 @@ int MenuLogin::execute()
   username = getInput.getString();
 
   // Temp Teacher Login
-  if (username == "teacher")
-  {
-    TeacherMenu.execute();
-    return 0;
-  }
+  // if (username == "teacher")
+  // {
+  //   TeacherMenu.execute();
+  //   return 0;
+  // }
 
-  // Temp Admin Login
-  if (username == "admin")
-  {
-    AdminMenu.execute();
-    return 0;
-  }
-  // Temp Parent Login
-  if (username == "parent")
-  {
-    ParentMenu.execute();
-    return 0;
-  }
+  // // Temp Admin Login
+  // if (username == "admin")
+  // {
+  //   AdminMenu.execute();
+  //   return 0;
+  // }
+  // // Temp Parent Login
+  // if (username == "parent")
+  // {
+  //   ParentMenu.execute();
+  //   return 0;
+  // }
 
   // TODO - hide password
 
@@ -47,11 +45,6 @@ int MenuLogin::execute()
 
   for (int i = 0; i < db.db.size(); i++)
   {
-
-    if (username == "teacher")
-    {
-      TeacherMenu.execute();
-    }
 
     if (db.db[i].type == NullUser)
       continue;
@@ -77,9 +70,9 @@ int MenuLogin::execute()
 
     cout << ("Logged in!") << endl;
 
-    cout << "Welcome, " << db.db[i].id << "!" << endl;
+    cout << "Welcome, " << db.db[i].getName() << "!" << endl;
 
-    db.currentlyLogedinUser = db.db[i];
+    db.currentUser = db.db[i];
 
     utils.waitForKeyPress();
     utils.clear();

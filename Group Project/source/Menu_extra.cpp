@@ -1,22 +1,10 @@
-#include "../header/Menu_extra.h"
+#include "../header/Menu_Extra.h"
 
-int MenuExtra::execute(int choice)
+void MenuExtra::execute()
 {
-	cout << choice;
-	if (choice == 3)
-	{
-		this->displayContact();
-	}
-	else if (choice == 4)
-	{
-		this->displayEvent();
-	}
-	else
-	{
-		cout << "Invalid choice" << endl;
-	}
+	utils.clear();
 	utils.waitForKeyPress();
-	return 0;
+	return;
 }
 
 void MenuExtra::displayContact()

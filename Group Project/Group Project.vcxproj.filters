@@ -21,31 +21,31 @@
     <ClCompile Include="source\cliTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Menu_login.cpp">
+    <ClCompile Include="source\Menu_Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Menu_register.cpp">
+    <ClCompile Include="source\Menu_Register.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\db.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Menu_extra.cpp">
+    <ClCompile Include="source\Menu_Extra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Teacher_home_screen.cpp">
+    <ClCompile Include="source\Menu_Teacher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="header\Teacher_home_screen.h">
+    <ClCompile Include="header\Menu_Teacher.h">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Student_records.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Admin_home.cpp">
+    <ClCompile Include="source\Menu_Admin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Parent_home.cpp">
+    <ClCompile Include="source\Menu_Parent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,16 +53,16 @@
     <ClInclude Include="header\cliTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Menu_login.h">
+    <ClInclude Include="header\Menu_Login.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Menu_register.h">
+    <ClInclude Include="header\Menu_Register.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\db.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Menu_extra.h">
+    <ClInclude Include="header\Menu_Extra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\color.cpp">
@@ -74,10 +74,10 @@
     <ClInclude Include="header\Student_records.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Admin_home.h">
+    <ClInclude Include="header\Menu_Admin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Parent_home.h">
+    <ClInclude Include="header\Menu_Parent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -101,6 +101,8 @@ public:
   int type;
   string id;
 
+  string getName();
+
   optional<class ::Admin> admin;
   optional<class ::Parent> parent;
   optional<class ::Teacher> teacher;
@@ -113,10 +115,10 @@ public:
   void save();
 
   vector<User> db;
-  User currentlyLogedinUser;
+  User currentUser;
 };
 
 extern DataBase db;
 
 // extern vector<User> db;
-// extern User currentlyLogedinUser;
+// extern User currentUser;

@@ -1,8 +1,8 @@
 {
   "admins": [
     {
-      "id": "adminid1",
-      "name": "bob",
+      "id": "will the admin",
+      "name": "William",
       "password": "1234",
       "type": 1,
       "username": "will"
@@ -17,28 +17,28 @@
       ],
       "dob": "dob",
       "email": "email",
-      "id": "parentid1",
-      "name": "jill",
-      "password": "parent",
+      "id": "parent uno",
+      "name": "Jill",
+      "password": "1234",
       "type": 3,
-      "username": "parent"
+      "username": "jill"
     }
   ],
   "teachers": [
     {
       "classRoomNumber": 69,
-      "id": "teacherid1",
-      "name": "jill",
-      "password": "teacher",
+      "id": "teacher uno",
+      "name": "Rob",
+      "password": "1234",
       "students": [
         {
           "dob": "1/2/3",
           "english": 3.0,
           "gender": 0,
-          "id": "joe1",
-          "learningProgress": "is a very bad boy",
+          "id": "joe like men",
+          "learningProgress": "joe falls off his bike a lot",
           "math": 1.0,
-          "name": "joe",
+          "name": "Joe",
           "other": 6.0,
           "reading": 5.0,
           "science": 2.0,
@@ -48,10 +48,10 @@
           "dob": "2/3/4",
           "english": 3.0,
           "gender": 1,
-          "id": "bobiscool",
-          "learningProgress": "is a very very bad boy",
+          "id": "bob is cool",
+          "learningProgress": "bob cant build",
           "math": 1.0,
-          "name": "bob",
+          "name": "Bob",
           "other": 6.0,
           "reading": 5.0,
           "science": 2.0,
@@ -59,7 +59,7 @@
         }
       ],
       "type": 2,
-      "username": "teacher"
+      "username": "rob"
     }
   ]
 }

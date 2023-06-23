@@ -16,13 +16,13 @@ int StudentRecord::execute()
 	opt = getInput.getNumber();
 	if (opt == 1)
 	{
-		//addStudent();
-		//this->addStudent();
+		// addStudent();
+		// this->addStudent();
 	}
 	else if (opt == 2)
 	{
-		//editRecords();
-		//this->editStudent();
+		// editRecords();
+		// this->editStudent();
 	}
 	else if (opt == 3)
 	{
@@ -44,13 +44,12 @@ int StudentRecord::execute()
 	return 0;
 }
 
-
-//void StudentRecord::addStudent() 
+// void StudentRecord::addStudent()
 //{
 
 //}
 
-void StudentRecord::editStudent() 
+void StudentRecord::editStudent()
 {
 	utils.clear();
 	string name;
@@ -80,11 +79,13 @@ void StudentRecord::editStudent()
 	}
 	else if (learningProgress == "Needs Help")
 	{
-		cout << "\n" << name << " seems to be struggling. Maybe you should explain the material more clearly\n";
+		cout << "\n"
+				 << name << " seems to be struggling. Maybe you should explain the material more clearly\n";
 	}
 	else if (learningProgress == "Progressing")
 	{
-		cout << "\n" << name << " is trying hard. Keep supporting them\n";
+		cout << "\n"
+				 << name << " is trying hard. Keep supporting them\n";
 	}
 	else
 	{
@@ -93,64 +94,66 @@ void StudentRecord::editStudent()
 	}
 }
 
-void StudentRecord::deleteStudent() 
+void StudentRecord::deleteStudent()
 {
 	utils.clear();
 	string deleteStudent;
 	cout << "Delete Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
-	//TODO Take user's input to check with current data
+	// TODO Take user's input to check with current data
 	cout << "Student's Name: ";
 
 	cout << "\nStudent's Class: ";
 
-	//TODO Add if statement to check if that student exists
+	// TODO Add if statement to check if that student exists
 
-	//TODO Else if student does exsist
+	// TODO Else if student does exsist
 	cout << "\nType 'Delete' to confirm! ";
 	deleteStudent = getInput.getString();
-	deleteStudent[0] = toupper(deleteStudent[0]);
-	if (deleteStudent == "Delete") 
+	if (deleteStudent == "delete")
 	{
-		//TODO Removes student from the files/database
+		// TODO Removes student from the files/database
 		cout << "Student's Record Removed!\n";
+	}
+	else
+	{
+		cout << "Student's Record Not Removed!\n";
 	}
 	utils.waitForKeyPress();
 	utils.clear();
 }
 
-
-void StudentRecord::updateStudent() 
+void StudentRecord::updateStudent()
 {
 	utils.clear();
 	cout << "Update Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
-	//TODO Take user's input to check with current data
+	// TODO Take user's input to check with current data
 	cout << "Student's Name: ";
 
 	cout << "\nStudent's Class: ";
-	//TODO Add if statement to check if that student exists
-	
-	//TODO Else if student does exsist
+	// TODO Add if statement to check if that student exists
+
+	// TODO Else if student does exsist
 	cout << "\nWhat would you like to update the students current progress to?\n";
 	cout << "1) Achieved\n2) Progressing\n3) Needs Help\n";
 	utils.waitForKeyPress();
 	utils.clear();
 }
 
-void StudentRecord::viewStudent() 
+void StudentRecord::viewStudent()
 {
 	utils.clear();
 	cout << "View Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
-	//TODO Take user's input to check with current data
+	// TODO Take user's input to check with current data
 	cout << "Student's Name: ";
-	
+
 	cout << "\nStudent's Class: ";
 
-	//TODO Add if statement to check if that student exists
-	
-	//TODO Else if student does exsist
+	// TODO Add if statement to check if that student exists
+
+	// TODO Else if student does exsist
 	cout << "\n\nThis is the Record for 'students name'";
 	cout << "\nFull Name: ";
 	cout << "\nGender: ";

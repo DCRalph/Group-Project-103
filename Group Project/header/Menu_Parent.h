@@ -3,15 +3,15 @@
 #include <iostream>
 
 #include "cliTools.h"
+#include "db.h"
 
 using namespace std;
 
-class AdminMenu
+class MenuParent
 {
 
 public:
 	int execute();
-	void parentRecords();
-	void classRecords();
-	void studentReport();
+	void childRecord();
+	void schoolNotice();
 };

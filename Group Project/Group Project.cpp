@@ -6,12 +6,12 @@
 #include "header/db.h"
 #include "header/color.h"
 
-#include "header/Menu_login.h"
-#include "header/Menu_register.h"
-#include "header/Menu_extra.h"
-#include "header/Teacher_home_screen.h"
-
-// #include "header/Teacher_home_screen.h"
+#include "header/Menu_Admin.h"
+#include "header/Menu_Extra.h"
+#include "header/Menu_Login.h"
+#include "header/Menu_Parent.h"
+#include "header/Menu_Register.h"
+#include "header/Menu_Teacher.h"
 
 #include "lib/json.hpp"
 
@@ -22,8 +22,20 @@ void displayMenu(bool logedIn = false)
   cout << "\nWelcome to Yoobee School Info System:\n\n";
   if (logedIn)
   {
-    cout << "1. Logout" << endl;
-    cout << "2. " << endl;
+    switch (db.currentUser.type)
+    {
+    case UserType::Admin:
+      cout << "1. Admin" << endl;
+      break;
+    case UserType::Teacher:
+      cout << "1. Teacher" << endl;
+      break;
+    case UserType::Parent:
+      cout << "1. Parent" << endl;
+      break;
+    }
+
+    cout << "2. Logout" << endl;
   }
   else
   {
@@ -85,10 +97,12 @@ void makeTestUsers()
 
 int main()
 {
-  MenuLogin MenuLogin;
-  MenuRegister MenuRegister;
-  MenuExtra MenuExtra;
-  TeacherMenu TeacherMenu;
+  MenuExtra menuExtra;
+  MenuLogin menuLogin;
+  MenuRegister menuRegister;
+  MenuTeacher menuTeacher;
+  MenuParent menuParent;
+  MenuAdmin menuAdmin;
 
   // Login login1 = {"admin", "admin", UserType::Admin, "admin user"};
   // Login login2 = {"user", "user", UserType::Parent, "normal user"};
@@ -101,7 +115,7 @@ int main()
   // db.db.push_back(item1);
   // db.db.push_back(item2);
 
-  db.currentlyLogedinUser = User();
+  db.currentUser = User();
   db.load();
   // makeTestUsers();
 
@@ -109,8 +123,8 @@ int main()
 
   do
   {
-    // utils.clear();
-    bool logedIn = db.currentlyLogedinUser.type != UserType::NullUser;
+    utils.clear();
+    bool logedIn = db.currentUser.type != UserType::NullUser;
 
     displayMenu(logedIn);
 
@@ -121,28 +135,38 @@ int main()
     {
     case 1:
       if (logedIn)
-        // set the current user to null or undefined
-        db.currentlyLogedinUser = User();
+      {
+        switch (db.currentUser.type)
+        {
+        case UserType::Admin:
+          menuAdmin.execute();
+          break;
+        case UserType::Teacher:
+          menuTeacher.execute();
+          break;
+        case UserType::Parent:
+          menuParent.execute();
+          break;
+        }
+      }
 
       else
-        MenuLogin.execute();
+        menuLogin.execute();
 
       break;
     case 2:
       if (logedIn)
-      {
-        cout << "You are already logged in!" << endl;
-        utils.waitForKeyPress();
-      }
+        db.currentUser = User();
+
       else
-        MenuRegister.execute();
+        menuRegister.execute();
 
       break;
     case 3:
-      MenuExtra.execute(choice);
+      menuExtra.displayContact();
       break;
     case 4:
-      MenuExtra.execute(choice);
+      menuExtra.displayEvent();
       break;
     }
 

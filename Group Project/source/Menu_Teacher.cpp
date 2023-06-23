@@ -1,16 +1,15 @@
-#include "../header/Teacher_home_screen.h"
+#include "../header/Menu_Teacher.h"
 
-int TeacherMenu::execute()
+int MenuTeacher::execute()
 {
 	StudentRecord StudentRecord;
-	string name;
-	cout << "What's your name?\n\n";
-	name = getInput.getString();
-	name[0] = toupper(name[0]);
+
+	utils.clear();
+
 	int selection;
 	do
 	{
-		cout << "Welcome " << name << " to Teacher Homescreen\n\n";
+		cout << "Welcome " << db.currentUser.getName() << " to Teacher Homescreen\n\n";
 		cout << "1) Student Records\n";
 		cout << "2) Exit\n";
 		cout << "Enter selection: ";

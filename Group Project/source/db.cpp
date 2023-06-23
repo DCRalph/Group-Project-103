@@ -64,6 +64,25 @@ User::User(Login _login, string _id, class ::Teacher _teacher)
   teacher = _teacher;
 }
 
+string User::getName()
+{
+  switch (type)
+  {
+  case UserType::Admin:
+    return admin->name;
+    break;
+  case UserType::Parent:
+    return parent->name;
+    break;
+  case UserType::Teacher:
+    return teacher->name;
+    break;
+
+  default:
+    return "[NullUser]";
+    break;
+  }
+}
 void DataBase::load()
 {
   ifstream dataFile(SAVEFILE);
