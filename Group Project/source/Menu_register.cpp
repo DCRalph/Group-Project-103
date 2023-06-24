@@ -8,241 +8,321 @@ int MenuRegister::execute()
 
 	cout << "Occupation:"
 			 << "\n"
-			 << "1) Teacher"
+			 << "1) Parent"
 			 << "\n"
-			 << "2) Parent"
+			 << "2) Teacher"
 			 << "\n";
 
 	cout << "\n"
 			 << "Enter your occupation: ";
 	userOccupation = getInput.getNumber();
 
-	// genral user info
+	if (userOccupation == 1)
+		this->registerParent();
+
+	else if (userOccupation == 2)
+		this->registerTeacher();
+
+	else
+		cout << "Invalid input";
+
+	return 0;
+}
+
+void MenuRegister::registerParent()
+{
 	string name;
 	string dob;
 	string gender;
 	string email;
 	string username;
 	string password;
-
-	// teacher info
-	int classroomNumber;
-	string teachingYear;
-
 	string contactNumber;
 
-	switch (userOccupation)
+	Gender genderEnum;
+
+	cout << "Parent Registration"
+			 << "\n"
+			 << "\n";
+	cout << "\n"
+			 << "Full Name: ";
+	name = getInput.getString();
+
+	bool validGender = true;
+	do
 	{
-	case 1:
-		cout << "Teacher Registration"
-				 << "\n"
-				 << "\n";
-		cout << "\n"
-				 << "Full Name: ";
-
 		cout << "\n"
 				 << "Gender: ";
+		gender = getInput.getString();
 
-		cout << "\n"
-				 << "Date of Birth: ";
-
-		cout << "\n"
-				 << "Email: ";
-
-		cout << "\n"
-				 << "Contact Number: ";
-
-		cout << "\n"
-				 << "Classroom Number: ";
-
-		cout << "\n"
-				 << "Teaching Year(eg: year 1): ";
-
-		cout << "\n"
-				 << "Username: ";
-
-		cout << "\n"
-				 << "Password: ";
-
-		cout << "\n";
-		utils.waitForKeyPress();
-		utils.clear();
-		break;
-	case 2:
-		cout << "Parent Registration"
-				 << "\n"
-				 << "\n";
-		cout << "\n"
-				 << "Full Name: ";
-
-		cout << "\n"
-				 << "Gender: ";
-
-		cout << "\n"
-				 << "Date of Birth: ";
-
-		cout << "\n"
-				 << "Email: ";
-
-		cout << "\n"
-				 << "Contact Number: ";
-
-		cout << "\n"
-				 << "Username: ";
-
-		cout << "\n"
-				 << "Password: ";
-
-		cout << "\n"
-				 << "Add child/children:"
-				 << "\n";
-
-		bool addAnotherChild = false;
-		int childCount = 1;
-
-		vector<string> childIds;
-		do
+		for (int i = 0; i < gender.size(); i++)
 		{
-		startOfLoop:
+			gender[i] = tolower(gender[i]);
+		}
 
-			string childName;
-			int childClassroomNumber;
+		validGender = true;
 
+		if (gender == "male")
+			genderEnum = Gender::Male;
+		else if (gender == "female")
+			genderEnum = Gender::Female;
+		else
+			validGender = false;
+
+	} while (!validGender);
+
+	cout << "\n"
+			 << "Date of Birth: ";
+	dob = getInput.getString();
+
+	cout << "\n"
+			 << "Email: ";
+	email = getInput.getString();
+
+	cout << "\n"
+			 << "Contact Number: ";
+	contactNumber = getInput.getString();
+
+	cout << "\n"
+			 << "Username: ";
+	username = getInput.getString();
+
+	cout << "\n"
+			 << "Password: ";
+	password = getInput.getString();
+
+	cout << "\n"
+			 << "Add child/children:"
+			 << "\n";
+
+	bool addAnotherChild = false;
+	int childCount = 1;
+
+	vector<string> childIds;
+	do
+	{
+	startOfLoop:
+
+		string childName;
+		int childClassroomNumber;
+
+		cout << "\n"
+				 << "Child " << childCount << ": "
+				 << "\n";
+
+		cout
+				<< "Child Full Name: ";
+
+		childName = getInput.getString();
+
+		cout << "\n"
+				 << "Child Classroom Number: ";
+
+		childClassroomNumber = getInput.getNumber();
+
+		// ! ////////////////////////////////////////////////////////////
+		bool classroomNumberExists = false;
+		bool childExists = false;
+		bool childAlreadyAsigned = false;
+		string childId;
+
+		// check if classroom number exists
+
+		for (int i = 0; i < db.db.size(); i++)
+		{
+
+			if (db.db[i].type != UserType::Teacher)
+				continue;
+
+			if (db.db[i].teacher->classRoom.classRoomNumber == childClassroomNumber)
+			{
+				classroomNumberExists = true;
+				break;
+			}
+		}
+
+		if (!classroomNumberExists)
+		{
 			cout << "\n"
-					 << "Child " << childCount << ": "
+					 << "Classroom number does not exist!"
 					 << "\n";
 
-			cout
-					<< "Child Full Name: ";
+			utils.waitForKeyPress();
+			goto startOfLoop;
+			// continue;
+		}
 
-			childName = getInput.getString();
+		// ! ////////////////////////////////////////////////////////////
 
-			cout << "\n"
-					 << "Child Classroom Number: ";
+		// check if child exists
 
-			childClassroomNumber = getInput.getNumber();
+		for (int i = 0; i < db.db.size(); i++)
+		{
 
-			// ! ////////////////////////////////////////////////////////////
-			bool classroomNumberExists = false;
-			bool childExists = false;
-			bool childAlreadyAsigned = false;
-			string childId;
+			if (db.db[i].type != UserType::Teacher)
+				continue;
 
-			// check if classroom number exists
+			if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+				continue;
 
-			for (int i = 0; i < db.db.size(); i++)
+			for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
 			{
-
-				if (db.db[i].type != UserType::Teacher)
-					continue;
-
-				if (db.db[i].teacher->classRoom.classRoomNumber == childClassroomNumber)
+				if (db.db[i].teacher->classRoom.students[j].name == childName)
 				{
-					classroomNumberExists = true;
+					childExists = true;
+					childId = db.db[i].teacher->classRoom.students[j].id;
 					break;
 				}
 			}
+		}
 
-			if (!classroomNumberExists)
-			{
-				cout << "\n"
-						 << "Classroom number does not exist!"
-						 << "\n";
-
-				utils.waitForKeyPress();
-				goto startOfLoop;
-				// continue;
-			}
-
-			// ! ////////////////////////////////////////////////////////////
-
-			// check if child exists
-
-			for (int i = 0; i < db.db.size(); i++)
-			{
-
-				if (db.db[i].type != UserType::Teacher)
-					continue;
-
-				if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
-					continue;
-
-				for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
-				{
-					if (db.db[i].teacher->classRoom.students[j].name == childName)
-					{
-						childExists = true;
-						childId = db.db[i].teacher->classRoom.students[j].id;
-						break;
-					}
-				}
-			}
-
-			if (!childExists)
-			{
-				cout << "\n"
-						 << "Child does not exist!"
-						 << "\n";
-
-				utils.waitForKeyPress();
-				goto startOfLoop;
-				// continue;
-			}
-
-			// ! ////////////////////////////////////////////////////////
-
-			for (int i = 0; i < db.db.size(); i++)
-			{
-
-				if (db.db[i].type != UserType::Parent)
-					continue;
-
-				for (int j = 0; j < db.db[i].parent->childIds.size(); j++)
-				{
-					if (db.db[i].parent->childIds[j] == childId)
-					{
-						childAlreadyAsigned = true;
-						break;
-					}
-				}
-			}
-
-			if (childAlreadyAsigned)
-			{
-				cout << "\n"
-						 << "Child already asigned to another parent!"
-						 << "\n";
-
-				utils.waitForKeyPress();
-				goto startOfLoop;
-				// continue;
-			}
-
-			// ! ////////////////////////////////////////////////////////
-
-			childCount++;
-			childIds.push_back(childId);
-
+		if (!childExists)
+		{
 			cout << "\n"
-					 << "Add another child?  ";
-			addAnotherChild = getInput.getYesNo();
+					 << "Child does not exist!"
+					 << "\n";
 
-		} while (addAnotherChild);
+			utils.waitForKeyPress();
+			goto startOfLoop;
+			// continue;
+		}
 
-		// cout << "\n"
-		// 		 << "Parent/Caregiver Emergency Contact Number: ";
+		// ! ////////////////////////////////////////////////////////
 
-		Login login = {username, password};
-		class ::Parent parent = {name, name + " " + dob, email, dob, childIds};
-		User user(login, parent.id + " user", parent);
+		for (int i = 0; i < db.db.size(); i++)
+		{
+
+			if (db.db[i].type != UserType::Parent)
+				continue;
+
+			for (int j = 0; j < db.db[i].parent->childIds.size(); j++)
+			{
+				if (db.db[i].parent->childIds[j] == childId)
+				{
+					childAlreadyAsigned = true;
+					break;
+				}
+			}
+		}
+
+		if (childAlreadyAsigned)
+		{
+			cout << "\n"
+					 << "Child already asigned to another parent!"
+					 << "\n";
+
+			utils.waitForKeyPress();
+			goto startOfLoop;
+			// continue;
+		}
+
+		// ! ////////////////////////////////////////////////////////
+
+		childCount++;
+		childIds.push_back(childId);
 
 		cout << "\n"
-				 << "Parent registration complete.";
+				 << "Add another child?  ";
+		addAnotherChild = getInput.getYesNo();
 
-		utils.waitForKeyPress();
-		utils.clear();
-		break;
-	}
+	} while (addAnotherChild);
 
-	return 0;
+	// cout << "\n"
+	// 		 << "Parent/Caregiver Emergency Contact Number: ";
+
+	Login login = {username, password};
+	class ::Parent parent(name, name + " " + dob, email, dob, contactNumber, genderEnum, childIds);
+	User user(login, parent.id + " user", parent);
+
+	db.db.push_back(user);
+
+	cout << "\n"
+			 << "Parent registration complete.";
+
+	utils.waitForKeyPress();
+	utils.clear();
+}
+
+void MenuRegister::registerTeacher()
+{
+	string name;
+	string dob;
+	string gender;
+	string email;
+	string username;
+	string password;
+	string contactNumber;
+	int classroomNumber;
+	string teachingYear;
+
+	Gender genderEnum;
+
+	cout << "Teacher Registration"
+			 << "\n"
+			 << "\n";
+	cout << "\n"
+			 << "Full Name: ";
+	name = getInput.getString();
+
+	bool validGender = true;
+	do
+	{
+		cout << "\n"
+				 << "Gender: ";
+		gender = getInput.getString();
+
+		for (int i = 0; i < gender.size(); i++)
+		{
+			gender[i] = tolower(gender[i]);
+		}
+
+		validGender = true;
+
+		if (gender == "male")
+			genderEnum = Gender::Male;
+		else if (gender == "female")
+			genderEnum = Gender::Female;
+		else
+			validGender = false;
+
+	} while (!validGender);
+
+	cout << "\n"
+			 << "Date of Birth: ";
+	dob = getInput.getString();
+
+	cout << "\n"
+			 << "Email: ";
+	email = getInput.getString();
+
+	cout << "\n"
+			 << "Contact Number: ";
+	contactNumber = getInput.getString();
+
+	cout << "\n"
+			 << "Classroom Number: ";
+	classroomNumber = getInput.getNumber();
+
+	cout << "\n"
+			 << "Teaching Year(eg: year 1): ";
+	teachingYear = getInput.getString();
+
+	cout << "\n"
+			 << "Username: ";
+	username = getInput.getString();
+
+	cout << "\n"
+			 << "Password: ";
+	password = getInput.getString();
+
+	Login login(username, password);
+	ClassRoom class1(classroomNumber, teachingYear);
+	class ::Teacher teacher(name, name + " " + dob, email, dob, contactNumber, genderEnum, class1);
+	User user(login, teacher.id + " user", teacher);
+
+	db.db.push_back(user);
+
+	cout << "\n";
+	utils.waitForKeyPress();
+	utils.clear();
 }

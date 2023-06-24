@@ -4,7 +4,6 @@
       "id": "will the admin",
       "name": "William",
       "password": "1234",
-      "type": 1,
       "username": "will"
     }
   ],
@@ -15,18 +14,38 @@
           "id": "bill1"
         }
       ],
+      "contactNumber": "1234567890",
       "dob": "dob",
       "email": "email",
+      "gender": 0,
       "id": "parent uno",
       "name": "Jill",
       "password": "1234",
-      "type": 3,
       "username": "jill"
+    },
+    {
+      "children": [
+        {
+          "id": "bob is cool"
+        }
+      ],
+      "contactNumber": "1234",
+      "dob": "now",
+      "email": "fuck u",
+      "gender": 0,
+      "id": "henry the 4th now",
+      "name": "henry the 4th",
+      "password": "1234",
+      "username": "deez nuts"
     }
   ],
   "teachers": [
     {
       "classRoomNumber": 69,
+      "contactNumber": "1234567890",
+      "dob": "today",
+      "email": "email",
+      "gender": 0,
       "id": "teacher uno",
       "name": "Rob",
       "password": "1234",
@@ -58,8 +77,21 @@
           "writing": 4.0
         }
       ],
-      "type": 2,
-      "username": "rob"
+      "username": "rob",
+      "yearLevel": "year 1"
+    },
+    {
+      "classRoomNumber": 12,
+      "contactNumber": "123456",
+      "dob": "3/4/5",
+      "email": "idoteaching@hotmail.com",
+      "gender": 1,
+      "id": "ivan the teacher 3/4/5",
+      "name": "ivan the teacher",
+      "password": "1234",
+      "students": [],
+      "username": "deez",
+      "yearLevel": "year 8"
     }
   ]
 }

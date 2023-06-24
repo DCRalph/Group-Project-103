@@ -63,8 +63,8 @@ void displayMenu(bool logedIn = false)
 void makeTestUsers()
 {
 
-  Login adminLogin1 = {"admin", "admin"};
-  class ::Admin admin1 = {"bob", "adminid1"};
+  Login adminLogin1("admin", "admin");
+  class ::Admin admin1("bob", "adminid1");
   User user1(adminLogin1, "admin user1", admin1);
 
   // db.db.push_back(user1);
@@ -79,15 +79,16 @@ void makeTestUsers()
 
   vector<Student> _students{student1, student2};
 
-  ClassRoom class1 = {_students, 69};
+  ClassRoom class1(69, "year 4");
+  class1.students = _students;
 
   ///////////////////////////////////////////////////////
 
   // cerate a test teacher user
 
-  Login teacherlogin1 = {"teacher", "teacher"};
+  Login teacherlogin1("teacher", "teacher");
 
-  class ::Teacher teacher2 = {"jill", "teacherid1", class1};
+  class ::Teacher teacher2("jill", "teacherid1", "email", "dob", "number", Gender::Male, class1);
 
   User user3(teacherlogin1, "teacher user1", teacher2);
 
@@ -97,11 +98,12 @@ void makeTestUsers()
 
   // cerate a test parent user
 
-  Login parentlogin1 = {"parent", "parent"};
+  Login parentlogin1("parent", "parent");
 
   vector<string> _childIds{"bill1"};
 
-  class ::Parent parent1 = {"jill", "parentid1", "email", "dob", _childIds};
+  // class ::Parent parent1 = {"jill", "parentid1", "email", "dob", _childIds};
+  class ::Parent parent1("jill", "parentid1", "email", "10/20/30", "number", Gender::Male, _childIds);
 
   User user2(parentlogin1, "parent user1", parent1);
 

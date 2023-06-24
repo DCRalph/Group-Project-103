@@ -2,6 +2,24 @@
 
 using namespace std;
 
+Login::Login()
+{
+  username = "";
+  password = "";
+}
+
+Login::Login(string _username, string _password)
+{
+  username = _username;
+  password = _password;
+}
+
+Admin::Admin(string _name, string _id)
+{
+  name = _name;
+  id = _id;
+}
+
 Student::Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress)
 {
   name = _name;
@@ -32,10 +50,26 @@ Student::Student(string _name, string _dob, Gender _gender)
   learningProgress = "";
 }
 
-Teacher::Teacher(string _name, string _id, ClassRoom _classRoom)
+ClassRoom::ClassRoom()
+{
+}
+
+ClassRoom::ClassRoom(int _classRoomNumber, string _yearLevel)
+{
+  classRoomNumber = _classRoomNumber;
+  yearLevel = _yearLevel;
+}
+
+Teacher::Teacher(string _name, string _id, string _email, string _dob, string _contactNumber, Gender _gender, ClassRoom _classRoom)
 {
   name = _name;
   id = _id;
+  dob = _dob;
+  email = _email;
+  contactNumber = _contactNumber;
+  gender = _gender;
+  // teachingYear = _teachingYear;
+
   classRoom = _classRoom;
 }
 
@@ -88,6 +122,18 @@ string User::getName()
     break;
   }
 }
+
+Parent::Parent(string _name, string _id, string _email, string _dob, string _contactNumber, Gender _gender, vector<string> _childIds)
+{
+  name = _name;
+  id = _id;
+  email = _email;
+  dob = _dob;
+  gender = _gender;
+  contactNumber = _contactNumber;
+  childIds = _childIds;
+}
+
 void DataBase::load()
 {
   ifstream dataFile(SAVEFILE);
@@ -115,7 +161,7 @@ void DataBase::load()
       }
 
       Login login = {item["username"], item["password"]};
-      class ::Parent parent = {item["name"], item["id"], item["email"], item["dob"], _childIds};
+      class ::Parent parent(item["name"], item["id"], item["email"], item["dob"], item["contactNumber"], Gender(item["gender"]), _childIds);
       User user(login, item["id"], parent);
       db.push_back(user);
     }
@@ -130,10 +176,11 @@ void DataBase::load()
         _students.push_back(_newStudent);
       }
 
-      ClassRoom class1 = {_students, item["classRoomNumber"]};
+      ClassRoom class1(item["classRoomNumber"], item["yearLevel"]);
+      class1.students = _students;
 
-      Login login = {item["username"], item["password"]};
-      class ::Teacher teacher(item["name"], item["id"], class1);
+      Login login(item["username"], item["password"]);
+      class ::Teacher teacher(item["name"], item["id"], item["email"], item["dob"], item["contactNumber"], Gender(item["gender"]), class1);
       User user(login, item["id"], teacher);
       db.push_back(user);
     }
@@ -164,7 +211,6 @@ void DataBase::save()
       data["admins"].push_back({
           {"username", db[i].login.username},
           {"password", db[i].login.password},
-          {"type", db[i].type},
           {"name", db[i].admin->name},
           {"id", db[i].admin->id},
 
@@ -182,16 +228,15 @@ void DataBase::save()
         });
       }
 
-      data["parents"].push_back({
-          {"username", db[i].login.username},
-          {"password", db[i].login.password},
-          {"type", db[i].type},
-          {"name", db[i].parent->name},
-          {"id", db[i].parent->id},
-          {"email", db[i].parent->email},
-          {"dob", db[i].parent->dob},
-          {"children", childIds},
-      });
+      data["parents"].push_back({{"username", db[i].login.username},
+                                 {"password", db[i].login.password},
+                                 {"name", db[i].parent->name},
+                                 {"id", db[i].parent->id},
+                                 {"email", db[i].parent->email},
+                                 {"dob", db[i].parent->dob},
+                                 {"children", childIds},
+                                 {"contactNumber", db[i].parent->contactNumber},
+                                 {"gender", db[i].parent->gender}});
 
       break;
     case UserType::Teacher:
@@ -217,13 +262,21 @@ void DataBase::save()
         });
       }
 
-      data["teachers"].push_back({{"username", db[i].login.username},
-                                  {"password", db[i].login.password},
-                                  {"type", db[i].type},
-                                  {"name", db[i].teacher->name},
-                                  {"id", db[i].teacher->id},
-                                  {"classRoomNumber", db[i].teacher->classRoom.classRoomNumber},
-                                  {"students", students}});
+      data["teachers"].push_back({
+          {"username", db[i].login.username},
+          {"password", db[i].login.password},
+          {"name", db[i].teacher->name},
+          {"id", db[i].teacher->id},
+          {"classRoomNumber", db[i].teacher->classRoom.classRoomNumber},
+          {"students", students},
+          {"yearLevel", db[i].teacher->classRoom.yearLevel},
+          {"email", db[i].teacher->email},
+          {"dob", db[i].teacher->dob},
+          {"contactNumber", db[i].teacher->contactNumber},
+          {"gender", db[i].teacher->gender} //
+                                            // {"teachingYear", db[i].teacher->teachingYear}
+
+      });
 
       break;
     }

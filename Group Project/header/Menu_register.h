@@ -10,4 +10,6 @@ class MenuRegister
 
 public:
   int execute();
+  void registerTeacher();
+  void registerParent();
 };
