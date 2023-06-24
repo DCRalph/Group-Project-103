@@ -69,6 +69,11 @@ void MenuRegister::registerParent()
 		else
 			validGender = false;
 
+		if (!validGender)
+		{
+			cout << C.red("Invalid gender. Please try again.") << "\n";
+		}
+
 	} while (!validGender);
 
 	cout << "\n"
@@ -284,6 +289,11 @@ void MenuRegister::registerTeacher()
 			genderEnum = Gender::Female;
 		else
 			validGender = false;
+
+		if (!validGender)
+		{
+			cout << C.red("Invalid gender. Please try again.") << "\n";
+		}
 
 	} while (!validGender);
 
