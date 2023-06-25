@@ -20,7 +20,7 @@ using namespace std;
 void displayMenu(bool logedIn = false)
 {
   cout << "\n";
-  cout << Col.magenta("Welcome to Yoobee School Info System:")
+  cout << "Welcome to Yoobee School Info System"
        << "\n";
   cout << "\n";
 
@@ -178,10 +178,10 @@ int main()
 
       break;
     case 3:
-      menuExtra.displayContact();
+      menuExtra.displayEvent();
       break;
     case 4:
-      menuExtra.displayEvent();
+      menuExtra.displayContact();
       break;
 
     case 5:
