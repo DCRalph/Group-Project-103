@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <optional>
 
 #include "cliTools.h"
 #include "db.h"

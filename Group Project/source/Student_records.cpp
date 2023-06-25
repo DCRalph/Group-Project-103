@@ -190,7 +190,25 @@ void StudentRecord::viewStudent()
 	cout << "\nStudent's Class: ";
 
 	// TODO Add if statement to check if that student exists
+	for (int i = 0; i < db.db.size(); i++)
+	{
 
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].teacher->classRoom.students[j].name == childName)
+			{
+				childExists = true;
+				student = db.db[i].teacher->classRoom.students[j];
+				break;
+			}
+		}
+	}
 	// TODO Else if student does exsist
 	cout << "\n\nThis is the Record for 'students name'";
 	cout << "\nFull Name: ";

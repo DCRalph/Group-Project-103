@@ -36,26 +36,53 @@ int MenuParent::execute()
 void MenuParent::childRecord()
 {
 	utils.clear();
+	string childName;
+	optional<Student> student;
+	int childClassroomNumber;
 	cout << "View Child's Record\n\n";
 	cout << "Enter your kid's Name and Class:\n\n";
 	// TODO Take user's input to check with current data
 	cout << "Student's Name: ";
-
+	childName = getInput.getString();
 	cout << "\nStudent's Class: ";
-
+	childClassroomNumber = getInput.getNumber();
 	// TODO Add if statement to check if that student exists
+	//if(studentName )
 
+	bool classroomNumberExists = false;
+	bool childExists = false;
+
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].teacher->classRoom.students[j].name == childName)
+			{
+				childExists = true;
+				student = db.db[i].teacher->classRoom.students[j];
+				break;
+			}
+		}
+	}
 	// TODO Else if student does exsist
-	cout << "\n\nThis is the Record for 'students name'";
-	cout << "\nFull Name: ";
-	cout << "\nGender: ";
-	cout << "\nMaths: ";
-	cout << "\nScience: ";
-	cout << "\nWriting: ";
-	cout << "\nReading: ";
-	cout << "\nOthers: ";
-	cout << "\nLearning Progress: ";
+	cout << "\n\nThis is the Record for 'students name'"<< "\n";
+	cout << "Full Name: " << student->name << "\n";
+	cout << "\nGender: " << (student->gender ? "Male":"Female") << "\n";
+	cout << "\nMaths: " << student->math << "\n";
+	cout << "\nScience: " << student->science << "\n";
+	cout << "\nWriting: " << student->writing << "\n";
+	cout << "\nReading: " << student->writing << "\n";
+	cout << "\nOthers: " << student->other << "\n";
+	cout << "\nLearning Progress: " << student->learningProgress << "\n";
 	cout << "\n";
+
 	utils.waitForKeyPress();
 	utils.clear();
 }
