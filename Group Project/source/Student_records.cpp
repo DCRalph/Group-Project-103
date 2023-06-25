@@ -16,13 +16,11 @@ int StudentRecord::execute()
 	opt = getInput.getNumber();
 	if (opt == 1)
 	{
-		// addStudent();
-		// this->addStudent();
+		this->addStudent();
 	}
 	else if (opt == 2)
 	{
-		// editRecords();
-		// this->editStudent();
+		this->editStudent();
 	}
 	else if (opt == 3)
 	{
@@ -44,10 +42,10 @@ int StudentRecord::execute()
 	return 0;
 }
 
-// void StudentRecord::addStudent()
-//{
+void StudentRecord::addStudent()
+{
 
-//}
+}
 
 void StudentRecord::editStudent()
 {
