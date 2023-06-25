@@ -10,10 +10,10 @@ int MenuAdmin::execute()
 		utils.clear();
 
 		cout << "\nWelcome " << db.currentUser.getName() << " to Admin Homescreen\n\n";
-		cout << "1) Parent Records\n";
-		cout << "2) Class Records\n";
-		cout << "3) Student Report\n";
-		cout << "4) Exit\n";
+		cout << "1. Parent Records\n";
+		cout << "2. Class Records\n";
+		cout << "3. Student Report\n";
+		cout << "4. Exit\n";
 		cout << "Enter selection: ";
 
 		selection = getInput.getNumber();

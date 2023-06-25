@@ -12,8 +12,8 @@ int MenuTeacher::execute()
 	do
 	{
 		cout << "Welcome " << db.currentUser.getName() << " to Teacher Homescreen\n\n";
-		cout << "1) Student Records\n";
-		cout << "2) Exit\n";
+		cout << "1. Student Records\n";
+		cout << "2. Exit\n";
 		cout << "Enter selection: ";
 		selection = getInput.getNumber();
 

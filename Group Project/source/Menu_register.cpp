@@ -8,9 +8,9 @@ int MenuRegister::execute()
 
 	cout << "Occupation:"
 			 << "\n"
-			 << "1) Parent"
+			 << "1. Parent"
 			 << "\n"
-			 << "2) Teacher"
+			 << "2. Teacher"
 			 << "\n";
 
 	cout << "\n"
