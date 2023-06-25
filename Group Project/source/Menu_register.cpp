@@ -31,6 +31,32 @@ int MenuRegister::execute()
 
 void MenuRegister::registerParent()
 {
+	int children = 0;
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type == UserType::Teacher)
+		{
+			children += db.db[i].teacher->classRoom.students.size();
+		}
+
+		if (db.db[i].type == UserType::Parent)
+		{
+			children -= db.db[i].parent->childIds.size();
+		}
+	}
+
+	if (children == 0)
+	{
+		cout << "There are no children to register. Please contact the school administration for more information."
+				 << "\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
+	cout << "There are " << children << " children available to register."
+			 << "\n";
+
 	string name;
 	string dob;
 	string gender;
@@ -72,7 +98,7 @@ void MenuRegister::registerParent()
 		if (!validGender)
 		{
 			cout << ("Invalid gender. Please try again.") << "\n";
-			//cout << C.red("Invalid gender. Please try again.") << "\n";
+			// cout << C.red("Invalid gender. Please try again.") << "\n";
 		}
 
 	} while (!validGender);
@@ -107,7 +133,6 @@ void MenuRegister::registerParent()
 	vector<string> childIds;
 	do
 	{
-	startOfLoop:
 
 		string childName;
 		int childClassroomNumber;
@@ -154,7 +179,7 @@ void MenuRegister::registerParent()
 					 << "\n";
 
 			utils.waitForKeyPress();
-			goto startOfLoop;
+			goto skipToEnd;
 			// continue;
 		}
 
@@ -189,7 +214,7 @@ void MenuRegister::registerParent()
 					 << "\n";
 
 			utils.waitForKeyPress();
-			goto startOfLoop;
+			goto skipToEnd;
 			// continue;
 		}
 
@@ -218,7 +243,7 @@ void MenuRegister::registerParent()
 					 << "\n";
 
 			utils.waitForKeyPress();
-			goto startOfLoop;
+			goto skipToEnd;
 			// continue;
 		}
 
@@ -226,6 +251,8 @@ void MenuRegister::registerParent()
 
 		childCount++;
 		childIds.push_back(childId);
+
+	skipToEnd:
 
 		cout << "\n"
 				 << "Add another child?  ";
@@ -236,6 +263,17 @@ void MenuRegister::registerParent()
 	// cout << "\n"
 	// 		 << "Parent/Caregiver Emergency Contact Number: ";
 
+	if (childIds.size() == 0)
+	{
+		cout << "\n"
+				 << "No children added. Registration cancelled."
+				 << "\n";
+
+		utils.waitForKeyPress();
+		utils.clear();
+		return;
+	}
+
 	Login login = {username, password};
 	class ::Parent parent(name, name + " " + dob, email, dob, contactNumber, genderEnum, childIds);
 	User user(login, parent.id + " user", parent);
@@ -243,7 +281,8 @@ void MenuRegister::registerParent()
 	db.db.push_back(user);
 
 	cout << "\n"
-			 << "Parent registration complete.";
+			 << "Parent registration complete."
+			 << "\n";
 
 	utils.waitForKeyPress();
 	utils.clear();
@@ -294,7 +333,7 @@ void MenuRegister::registerTeacher()
 		if (!validGender)
 		{
 			cout << ("Invalid gender. Please try again.") << "\n";
-			//cout << C.red("Invalid gender. Please try again.") << "\n";
+			// cout << C.red("Invalid gender. Please try again.") << "\n";
 		}
 
 	} while (!validGender);

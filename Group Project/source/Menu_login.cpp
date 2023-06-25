@@ -9,7 +9,8 @@ int MenuLogin::execute()
 
   utils.clear();
 
-  cout << "Login" << "\n"
+  cout << "Login"
+       << "\n"
        << "\n";
 
   cout << "Enter username: ";
@@ -73,7 +74,8 @@ int MenuLogin::execute()
     cout << "\n";
     cout << ("Logged in!") << "\n";
 
-    cout << "Welcome, " << db.db[i].getName() << "!" << "\n";
+    cout << "Welcome, " << db.db[i].getName() << "!"
+         << "\n";
     cout << "\n";
 
     db.currentUser = db.db[i];
@@ -84,6 +86,7 @@ int MenuLogin::execute()
   }
 
   cout << ("Invalid username or password!") << "\n";
+  utils.waitForKeyPress();
 
   return 0;
 }

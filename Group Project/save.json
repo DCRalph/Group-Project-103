@@ -9,7 +9,11 @@
   ],
   "parents": [
     {
-      "children": [],
+      "children": [
+        {
+          "id": "bob is cool"
+        }
+      ],
       "contactNumber": "1234567890",
       "dob": "dob",
       "email": "email",
