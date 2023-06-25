@@ -13,7 +13,7 @@ string GetInput::getString(string _color, string _pre)
 
   if (input.length() == 0)
   {
-    cout << C.red("Invalid input. Please enter a string: ");
+    cout << Col.red("Invalid input. Please enter a string: ");
     // cout << ("Invalid input. Please enter a string: ");
 
     input = getString(_color, _pre);
@@ -39,7 +39,7 @@ double GetInput::getNumber(string _color, string _pre)
   catch (const exception &e)
   {
     // cout << ("Invalid input. Please enter a number: ");
-    cout << C.red("Invalid input. Please enter a number: ");
+    cout << Col.red("Invalid input. Please enter a number: ");
 
     number = getNumber(_color, _pre);
   }
@@ -112,7 +112,7 @@ void Utils::clear() // clear the console
 void Utils::waitForKeyPress()
 {
   // cout << ("Press any key to continue...");
-  cout << C.yellow("Press any key to continue...");
+  cout << Col.yellow("Press any key to continue...");
   cin.get();
 }
 

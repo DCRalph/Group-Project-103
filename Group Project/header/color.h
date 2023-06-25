@@ -54,4 +54,4 @@ public:
   string bold(string x);
 };
 
-extern Color C;
+extern Color Col;

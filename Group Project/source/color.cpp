@@ -77,4 +77,4 @@ string Color::bold(string x)
   return Bold + x + Reset;
 }
 
-Color C;
+Color Col;
