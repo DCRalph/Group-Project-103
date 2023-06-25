@@ -190,7 +190,7 @@ int main()
     default:
       utils.clear();
       cout << "\n";
-      cout << C.red("Invalid input, please try again.") << "\n";
+      cout << ("Invalid input, please try again.") << "\n";
 
       utils.waitForKeyPress();
       break;

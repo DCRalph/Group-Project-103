@@ -54,4 +54,4 @@ struct Color
   string bold(string x);
 };
 
-extern Color C;
+//extern Color C;

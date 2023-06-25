@@ -71,7 +71,8 @@ void MenuRegister::registerParent()
 
 		if (!validGender)
 		{
-			cout << C.red("Invalid gender. Please try again.") << "\n";
+			cout << ("Invalid gender. Please try again.") << "\n";
+			//cout << C.red("Invalid gender. Please try again.") << "\n";
 		}
 
 	} while (!validGender);
@@ -292,7 +293,8 @@ void MenuRegister::registerTeacher()
 
 		if (!validGender)
 		{
-			cout << C.red("Invalid gender. Please try again.") << "\n";
+			cout << ("Invalid gender. Please try again.") << "\n";
+			//cout << C.red("Invalid gender. Please try again.") << "\n";
 		}
 
 	} while (!validGender);

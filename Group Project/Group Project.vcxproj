@@ -147,6 +147,7 @@
     <ClInclude Include="header\db.h" />
     <ClInclude Include="header\Menu_Parent.h" />
     <ClInclude Include="header\Student_records.h" />
+    <ClInclude Include="lib\json.hpp" />
     <ClInclude Include="source\color.cpp" />
     <ClInclude Include="header\color.h" />
     <ClCompile Include="source\Menu_Parent.cpp" />

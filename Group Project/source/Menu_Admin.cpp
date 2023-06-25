@@ -35,7 +35,7 @@ int MenuAdmin::execute()
 		default:
 			utils.clear();
 			cout << "\n";
-			cout << C.red("Invalid input, please try again.") << "\n\n";
+			cout << ("Invalid input, please try again.") << "\n\n";
 
 			utils.waitForKeyPress();
 		}
