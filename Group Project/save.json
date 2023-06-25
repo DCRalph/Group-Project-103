@@ -9,11 +9,7 @@
   ],
   "parents": [
     {
-      "children": [
-        {
-          "id": "bill1"
-        }
-      ],
+      "children": [],
       "contactNumber": "1234567890",
       "dob": "dob",
       "email": "email",
@@ -26,17 +22,17 @@
     {
       "children": [
         {
-          "id": "bob is cool"
+          "id": "joe like men"
         }
       ],
-      "contactNumber": "1234",
-      "dob": "now",
-      "email": "fuck u",
+      "contactNumber": "y",
+      "dob": "y",
+      "email": "y",
       "gender": 0,
-      "id": "henry the 4th now",
-      "name": "henry the 4th",
+      "id": "harry the 32nd y",
+      "name": "harry the 32nd",
       "password": "1234",
-      "username": "deez nuts"
+      "username": "harry"
     }
   ],
   "teachers": [
