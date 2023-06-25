@@ -2,6 +2,8 @@
 
 using namespace std;
 
+class Color;
+
 Color::Color()
 {
   Red = "\033[31m";
