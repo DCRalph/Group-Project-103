@@ -5,9 +5,9 @@
 
 using namespace std;
 
-struct Color
+class Color
 {
-
+public:
   Color();
 
   string Red;
@@ -54,4 +54,4 @@ struct Color
   string bold(string x);
 };
 
-//extern Color C;
+extern Color Col;

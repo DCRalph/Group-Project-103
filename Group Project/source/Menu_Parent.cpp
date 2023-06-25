@@ -10,9 +10,9 @@ int MenuParent::execute()
 	{
 		cout << "\nWelcome " << db.currentUser.getName() << " to Parent Homescreen\n\n";
 
-		cout << "1) View Child's Record\n";
-		cout << "2) School Notices\n";
-		cout << "3) Exit\n";
+		cout << "1. View Child's Record\n";
+		cout << "2. School Notices\n";
+		cout << "3. Exit\n";
 
 		cout << "Enter selection: ";
 
