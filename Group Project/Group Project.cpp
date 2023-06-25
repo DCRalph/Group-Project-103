@@ -20,7 +20,7 @@ using namespace std;
 void displayMenu(bool logedIn = false)
 {
   cout << "\n";
-  cout << "Welcome to Yoobee School Info System";
+  cout << "Welcome to Yoobee School Info System"
        << "\n";
   cout << "\n";
 
