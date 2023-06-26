@@ -184,7 +184,6 @@ void StudentRecord::viewStudent()
 	utils.clear();
 	cout << "View Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
-	// TODO Take user's input to check with current data
 	cout << "Student's Name: ";
 
 	cout << "\nStudent's Class: ";
