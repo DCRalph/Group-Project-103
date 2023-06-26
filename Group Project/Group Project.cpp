@@ -4,7 +4,7 @@
 
 #include "header/cliTools.h"
 #include "header/db.h"
-#include "header/color.h"
+//#include "header/color.h"
 
 #include "header/Menu_Admin.h"
 #include "header/Menu_Extra.h"
@@ -15,14 +15,22 @@
 
 #include "lib/json.hpp"
 
+#include "header/color.h"
+
 using namespace std;
 
 void displayMenu(bool logedIn = false)
 {
+
+    // C.testing("input");
+
+   // cout << C.red("hmmm") << "\n";
+
   cout << "\n";
   cout << "Welcome to Yoobee School Info System"
        << "\n";
   cout << "\n";
+
 
   if (logedIn)
   {
