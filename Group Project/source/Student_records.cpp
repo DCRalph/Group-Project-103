@@ -208,7 +208,6 @@ void StudentRecord::viewStudent()
 			}
 		}
 	}
-	// TODO Else if student does exsist
 	cout << "\n\nThis is the Record for 'students name'";
 	cout << "\n\nThis is the Record for 'students name'" << "\n";
 	cout << "Full Name: " << student->name << "\n";
