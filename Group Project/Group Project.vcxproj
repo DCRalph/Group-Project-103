@@ -141,15 +141,15 @@
     <ClCompile Include="Group Project.cpp" />
     <ClCompile Include="source\Menu_Admin.cpp" />
     <ClCompile Include="source\cliTools.cpp" />
+    <ClCompile Include="source\color.cpp" />
     <ClInclude Include="header\Menu_Admin.h" />
     <ClInclude Include="header\cliTools.h" />
     <ClCompile Include="source\db.cpp" />
     <ClInclude Include="header\db.h" />
     <ClInclude Include="header\Menu_Parent.h" />
     <ClInclude Include="header\Student_records.h" />
-    <ClInclude Include="lib\json.hpp" />
-    <ClInclude Include="source\color.cpp" />
     <ClInclude Include="header\color.h" />
+    <ClInclude Include="lib\json.hpp" />
     <ClCompile Include="source\Menu_Parent.cpp" />
     <ClCompile Include="source\Student_records.cpp" />
     <ClCompile Include="source\Menu_Teacher.cpp" />

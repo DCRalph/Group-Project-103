@@ -51,6 +51,9 @@
     <ClCompile Include="source\Menu_Parent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\cliTools.h">
@@ -68,12 +71,6 @@
     <ClInclude Include="header\Menu_Extra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\color.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header\color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="header\Student_records.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -85,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="lib\json.hpp">
       <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="header\color.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
