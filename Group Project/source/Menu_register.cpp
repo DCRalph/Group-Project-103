@@ -4,6 +4,7 @@ using namespace std;
 
 int MenuRegister::execute()
 {
+	utils.clear();
 	int userOccupation;
 
 	cout << "Occupation:"
@@ -11,6 +12,8 @@ int MenuRegister::execute()
 			 << "1. Parent"
 			 << "\n"
 			 << "2. Teacher"
+			 << "\n"
+			 << "3. Exit"
 			 << "\n";
 
 	cout << "\n"
@@ -22,6 +25,8 @@ int MenuRegister::execute()
 
 	else if (userOccupation == 2)
 		this->registerTeacher();
+	else if (userOccupation == 3)
+		return 0;
 
 	else
 		cout << "Invalid input";

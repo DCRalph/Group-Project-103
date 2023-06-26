@@ -9,39 +9,23 @@ int MenuLogin::execute()
 
   utils.clear();
 
-  cout << "Login"
+  cout << "\n"
+       << "Login"
+       << "\n"
+       << "Type \"exit\" to go back to the main menu."
        << "\n"
        << "\n";
 
   cout << "Enter username: ";
   username = getInput.getString();
 
-  // Temp Teacher Login
-  // if (username == "teacher")
-  // {
-  //   TeacherMenu.execute();
-  //   return 0;
-  // }
-
-  // // Temp Admin Login
-  // if (username == "admin")
-  // {
-  //   AdminMenu.execute();
-  //   return 0;
-  // }
-  // // Temp Parent Login
-  // if (username == "parent")
-  // {
-  //   ParentMenu.execute();
-  //   return 0;
-  // }
+  if (username == "exit")
+    return 0;
 
   // TODO - hide password
 
   cout << "Enter password: ";
   password = getInput.getString();
-
-  // TODO - check if username and password match
 
   for (int i = 0; i < db.db.size(); i++)
   {
@@ -62,7 +46,7 @@ int MenuLogin::execute()
     if (db.db[i].login.password != password)
     {
       cout << ("Invalid password!") << "\n";
-      //cout << C.red("Invalid password!") << "\n";
+      // cout << C.red("Invalid password!") << "\n";
 
       // db.db[i].attempts++;
 
