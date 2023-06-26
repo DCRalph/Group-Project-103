@@ -52,29 +52,29 @@
       "students": [
         {
           "dob": "1/2/3",
-          "english": 3.0,
+          "english": 33,
           "gender": 0,
           "id": "joe like men",
           "learningProgress": "Progressing",
-          "math": 1.0,
+          "math": 17,
           "name": "Joe",
-          "other": 6.0,
-          "reading": 5.0,
-          "science": 2.0,
-          "writing": 4.0
+          "other": 62,
+          "reading": 55,
+          "science": 21,
+          "writing": 49
         },
         {
           "dob": "2/3/4",
-          "english": 3.0,
+          "english": 36,
           "gender": 1,
           "id": "bob is cool",
           "learningProgress": "Need Help",
-          "math": 1.0,
+          "math": 18,
           "name": "Bob",
-          "other": 6.0,
-          "reading": 5.0,
-          "science": 2.0,
-          "writing": 4.0
+          "other": 60,
+          "reading": 53,
+          "science": 24,
+          "writing": 47
         }
       ],
       "username": "rob",
