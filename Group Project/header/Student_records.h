@@ -1,9 +1,10 @@
 #pragma once
 
 #include <iostream>
-#include "cliTools.h"
+#include <optional>
 
 #include "cliTools.h"
+#include "db.h"
 
 class StudentRecord
 {

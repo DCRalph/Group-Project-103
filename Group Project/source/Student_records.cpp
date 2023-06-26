@@ -182,11 +182,19 @@ void StudentRecord::updateStudent()
 void StudentRecord::viewStudent()
 {
 	utils.clear();
+
+	string childName;
+	optional<Student> student;
+	int childClassroomNumber;
+
 	cout << "View Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
 	cout << "Student's Name: ";
-
+	childName = getInput.getString();
 	cout << "\nStudent's Class: ";
+	childClassroomNumber = getInput.getNumber();
+	bool classroomNumberExists = false;
+	bool childExists = false;
 
 	for (int i = 0; i < db.db.size(); i++)
 	{
@@ -211,11 +219,11 @@ void StudentRecord::viewStudent()
 	cout << "\n\nThis is the Record for 'students name'" << "\n";
 	cout << "Full Name: " << student->name << "\n";
 	cout << "\nGender: " << (student->gender ? "Male" : "Female") << "\n";
-	cout << "\nMaths: " << student->math << "\n";
-	cout << "\nScience: " << student->science << "\n";
-	cout << "\nWriting: " << student->writing << "\n";
-	cout << "\nReading: " << student->writing << "\n";
-	cout << "\nOthers: " << student->other << "\n";
+	cout << "\nMaths: " << student->math << "% / 100%\n";
+	cout << "\nScience: " << student->science << "% / 100%\n";
+	cout << "\nWriting: " << student->writing << "% / 100%\n";
+	cout << "\nReading: " << student->writing << "% / 100%\n";
+	cout << "\nOthers: " << student->other << "% / 100%\n";
 	cout << "\nLearning Progress: " << student->learningProgress << "\n";
 	cout << "\n";
 	utils.waitForKeyPress();

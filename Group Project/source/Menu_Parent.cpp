@@ -10,9 +10,9 @@ int MenuParent::execute()
 	{
 		cout << "\nWelcome " << db.currentUser.getName() << " to Parent Homescreen\n\n";
 
-		cout << "1. View Child's Record\n";
-		cout << "2. School Notices\n";
-		cout << "3. Exit\n";
+		cout << "1) View Child's Record\n";
+		cout << "2) School Notices\n";
+		cout << "3) Exit\n";
 
 		cout << "Enter selection: ";
 
@@ -75,11 +75,11 @@ void MenuParent::childRecord()
 	cout << "\n\nThis is the Record for 'students name'"<< "\n";
 	cout << "Full Name: " << student->name << "\n";
 	cout << "\nGender: " << (student->gender ? "Male":"Female") << "\n";
-	cout << "\nMaths: " << student->math << "\n";
-	cout << "\nScience: " << student->science << "\n";
-	cout << "\nWriting: " << student->writing << "\n";
-	cout << "\nReading: " << student->writing << "\n";
-	cout << "\nOthers: " << student->other << "\n";
+	cout << "\nMaths: " << student->math << "% / 100%\n";
+	cout << "\nScience: " << student->science << "% / 100%\n";
+	cout << "\nWriting: " << student->writing << "% / 100%\n";
+	cout << "\nReading: " << student->writing << "% / 100%\n";
+	cout << "\nOthers: " << student->other << "% / 100%\n";
 	cout << "\nLearning Progress: " << student->learningProgress << "\n";
 	cout << "\n";
 
