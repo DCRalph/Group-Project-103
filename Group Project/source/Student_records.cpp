@@ -7,11 +7,11 @@ int StudentRecord::execute()
 	utils.clear();
 	int opt;
 	cout << "Student Records\n\n";
-	cout << "1. Add Student\n";
-	cout << "2. Edit student Record\n";
-	cout << "3. Delete Student Record\n";
-	cout << "4. Update Record\n";
-	cout << "5. View the Records\n";
+	cout << "1) Add Student\n";
+	cout << "2) Edit student Record\n";
+	cout << "3) Delete Student Record\n";
+	cout << "4) Update Record\n";
+	cout << "5) View the Records\n";
 	cout << "Enter a number: ";
 	opt = getInput.getNumber();
 	if (opt == 1)
@@ -83,7 +83,7 @@ void StudentRecord::addStudent()
 	else
 	{
 		cout << "\nInvalid Choice!\n";
-		addStudent();
+		editStudent();
 	}
 }
 
@@ -189,7 +189,6 @@ void StudentRecord::viewStudent()
 
 	cout << "\nStudent's Class: ";
 
-	// TODO Add if statement to check if that student exists
 	for (int i = 0; i < db.db.size(); i++)
 	{
 
@@ -211,14 +210,16 @@ void StudentRecord::viewStudent()
 	}
 	// TODO Else if student does exsist
 	cout << "\n\nThis is the Record for 'students name'";
-	cout << "\nFull Name: ";
-	cout << "\nGender: ";
-	cout << "\nMaths: ";
-	cout << "\nScience: ";
-	cout << "\nWriting: ";
-	cout << "\nReading: ";
-	cout << "\nOthers: ";
-	cout << "\nLearning Progress: ";
+	cout << "\n\nThis is the Record for 'students name'" << "\n";
+	cout << "Full Name: " << student->name << "\n";
+	cout << "\nGender: " << (student->gender ? "Male" : "Female") << "\n";
+	cout << "\nMaths: " << student->math << "\n";
+	cout << "\nScience: " << student->science << "\n";
+	cout << "\nWriting: " << student->writing << "\n";
+	cout << "\nReading: " << student->writing << "\n";
+	cout << "\nOthers: " << student->other << "\n";
+	cout << "\nLearning Progress: " << student->learningProgress << "\n";
+	cout << "\n";
 	utils.waitForKeyPress();
 	utils.clear();
 }
