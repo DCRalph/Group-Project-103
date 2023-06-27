@@ -133,7 +133,7 @@ void MenuAdmin::studentReport()
 {
 	utils.clear();
 
-	/*optional<Student> student;
+	optional<Student> student;
 
 	cout << "Student Report\n\n";
 	cout << "What Group do you want to view?\n";
@@ -150,13 +150,13 @@ void MenuAdmin::studentReport()
 		
 			if (selection == 1)
 			{
-				for (int j = 0; db.db[i].teacher->classRoom();)
+				/*for (int j = 0; db.db[i].teacher->classRoom();)
 				{
 					if (db.db[i].teacher->classRoom.students->learningProgress[j] == "Need Help") {
 						// TODO Add the real details of the students
-
+						cout << j << ") " << student->name << "\n";
 					}
-				}
+				}*/
 			}
 			else if (selection == 2)
 			{
@@ -167,6 +167,6 @@ void MenuAdmin::studentReport()
 				cout << "3) Lizzy Stemp: \n";
 			}	cout << "...\n";
 		}
-	}*/
+	}
 	utils.waitForKeyPress();
 }
