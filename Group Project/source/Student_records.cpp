@@ -83,7 +83,7 @@ void StudentRecord::addStudent()
 	else
 	{
 		cout << "\nInvalid Choice!\n";
-		editStudent();
+		addStudent();
 	}
 }
 
