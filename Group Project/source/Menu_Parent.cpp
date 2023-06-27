@@ -47,7 +47,6 @@ void MenuParent::childRecord()
 	cout << "\nStudent's Class: ";
 	childClassroomNumber = getInput.getNumber();
 	// TODO Add if statement to check if that student exists
-	//if(studentName )
 
 	bool classroomNumberExists = false;
 	bool childExists = false;
