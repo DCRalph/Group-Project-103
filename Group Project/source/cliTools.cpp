@@ -13,8 +13,8 @@ string GetInput::getString(string _color, string _pre)
 
   if (input.length() == 0)
   {
-    // cout << Col.red("Invalid input. Please enter a string: ");
-    cout << ("Invalid input. Please enter a string: ");
+    cout << C.red("Invalid input. Please enter a string: ");
+    // cout << ("Invalid input. Please enter a string: ");
 
     input = getString(_color, _pre);
   }
@@ -38,8 +38,8 @@ double GetInput::getNumber(string _color, string _pre)
   }
   catch (const exception &e)
   {
-    cout << ("Invalid input. Please enter a number: ");
-    // cout << Col.red("Invalid input. Please enter a number: ");
+    // cout << ("Invalid input. Please enter a number: ");
+    cout << C.red("Invalid input. Please enter a number: ");
 
     number = getNumber(_color, _pre);
   }
@@ -49,17 +49,17 @@ double GetInput::getNumber(string _color, string _pre)
 
 bool GetInput::getYesNo(bool _default)
 {
-  // cout << (_default) ? C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ") : C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");
+  cout << (_default) ? C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ") : C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");
+
+  // if (_default)
+  //   cout << "(Y/n): ";
+  // else
+  //   cout << "(y/N): ";
 
   if (_default)
-    cout << "(Y/n): ";
+    cout << C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ");
   else
-    cout << "(y/N): ";
-
-  /*if (_default)
-      cout << C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ");
-  else
-      cout << C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");*/
+    cout << C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");
 
   cin.clear();
   string input;
@@ -78,24 +78,23 @@ bool GetInput::getYesNo(bool _default)
   {
     return false;
   }
+
+  // cout << ("Invalid input. Please enter ");
+
+  // if (_default)
+  //   cout << "(Y/n): ";
+  // else
+  //   cout << "(y/N): ";
+
   else
   {
-    cout << ("Invalid input. Please enter ");
+    cout << C.red("Invalid input. Please enter ");
 
     if (_default)
-      cout << "(Y/n): ";
+      cout << C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ");
     else
-      cout << "(y/N): ";
+      cout << C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");
 
-    /*else
-    {
-        cout << C.red("Invalid input. Please enter ");
-
-        if (_default)
-            cout << C.yellow("(") + C.green("Y") + C.yellow("/") + C.red("n") + C.yellow("): ");
-        else
-            cout << C.yellow("(") + C.green("y") + C.yellow("/") + C.red("N") + C.yellow("): ");
-            */
     return getYesNo(_default);
   }
 }
@@ -111,8 +110,8 @@ void Utils::clear() // clear the console
 
 void Utils::waitForKeyPress()
 {
-  cout << ("Press any key to continue...");
-  // cout << Col.yellow("Press any key to continue...");
+  // cout << ("Press any key to continue...");
+  cout << C.yellow("Press any key to continue...");
   cin.get();
 }
 
