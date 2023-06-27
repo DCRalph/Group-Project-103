@@ -5,6 +5,7 @@
 
 #include "cliTools.h"
 #include "db.h"
+#include "lib/json.hpp"
 
 class StudentRecord
 {
