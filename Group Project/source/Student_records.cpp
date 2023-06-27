@@ -140,12 +140,16 @@ void StudentRecord::deleteStudent()
 {
 	utils.clear();
 	string deleteStudent;
+	string name;
+	int classroom;
 	cout << "Delete Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
+	name = getInput.getString();
+	classroom = getInput.getNumber();
 	// TODO Take user's input to check with current data
-	cout << "Student's Name: ";
+	cout << "Student's Name: " << name;
 
-	cout << "\nStudent's Class: ";
+	cout << "\nStudent's Class: " << classroom;;
 
 	// TODO Add if statement to check if that student exists
 
@@ -168,12 +172,16 @@ void StudentRecord::deleteStudent()
 void StudentRecord::updateStudent()
 {
 	utils.clear();
+	string name;
+	int classroom;
 	cout << "Update Student Record\n\n";
 	cout << "Enter Students Name and Class:\n\n";
+	name = getInput.getString();
+	classroom = getInput.getNumber();
 	// TODO Take user's input to check with current data
-	cout << "Student's Name: ";
+	cout << "Student's Name: " << name;
 
-	cout << "\nStudent's Class: ";
+	cout << "\nStudent's Class: " << classroom;
 	// TODO Add if statement to check if that student exists
 
 	// TODO Else if student does exsist
