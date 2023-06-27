@@ -100,20 +100,20 @@ void MenuAdmin::classRecords()
 	// TODO Add if statement to check if class exists
 	bool classroomNumberExists = false;
 
-	/*for (int i = 0; i < db.db.size(); i++)
+	for (int i = 0; i < db.db.size(); i++)
 	{
 		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
 			continue;
 
 		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
 		{
-			if (db.db[i].classRoomNumber == childClassroomNumber)
+			/*if (db.db[i].classRoomNumber == childClassroomNumber)
 			{
 				student = db.db[i].teacher->classRoom.students[j];
 				break;
-			}
+			}*/
 		}
-	}*/
+	}
 
 	// TODO Else if class does exsist
 	// TODO While loop to display all students in that class
@@ -132,28 +132,39 @@ void MenuAdmin::classRecords()
 void MenuAdmin::studentReport()
 {
 	utils.clear();
+
+	optional<Student> student;
+
 	cout << "Student Report\n\n";
 	cout << "What Group do you want to view?\n";
 	cout << "1) Needs Help\n2) Progressing State\n\n";
 	int selection = getInput.getNumber();
-	if (selection == 1)
-	{
-		// TODO Add the real details of the students
-		cout << "\nStudents who need help:\n\n";
-		cout << "1) William Brown: \n";
-		cout << "2) Steve Gine: \n";
-		cout << "3) Alex Humbin: \n";
-		cout << "...\n";
+	cout << "\nStudents who need help:\n\n";
+	for (int i = 0; db.db.size();) {
+		for (int i = 0; i < db.db.size(); i++)
+		{
+
+			if (db.db[i].type != UserType::Teacher)
+				continue;
+
+		if (selection == 1)
+		{
+			if (student->learningProgress[i] == "Need Help") {
+				// TODO Add the real details of the students
+
+			}
+		}
+		else if (selection == 2)
+		{
+			// TODO Add the real details of the students
+			cout << "\nStudents who are progressing:\n\n";
+			cout << "1) Bill Hans: \n";
+			cout << "2) Chris Ball: \n";
+			cout << "3) Lizzy Stemp: \n";
+			cout << "...\n";
+		}
 	}
-	else if (selection == 2)
-	{
-		// TODO Add the real details of the students
-		cout << "\nStudents who are progressing:\n\n";
-		cout << "1) Bill Hans: \n";
-		cout << "2) Chris Ball: \n";
-		cout << "3) Lizzy Stemp: \n";
-		cout << "...\n";
-	}
+	
 	else
 	{
 		cout << "\nInvalid choice!\n";

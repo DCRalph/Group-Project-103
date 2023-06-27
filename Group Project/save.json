@@ -1,24 +1,30 @@
 {
   "admins": [
     {
-      "id": "will the admin",
+      "id": "1326",
       "name": "William",
       "password": "1234",
       "username": "will"
+    }
+    {
+      "id": "1034",
+      "name": "Arthur",
+      "password": "1234",
+      "username": "art"
     }
   ],
   "parents": [
     {
       "children": [
         {
-          "id": "bob is cool"
+          "id": "5206"
         }
       ],
-      "contactNumber": "1234567890",
-      "dob": "dob",
-      "email": "email",
+      "contactNumber": "023 531 5431",
+      "dob": "8/04/2001",
+      "email": "jill.taylor@gmail.com",
       "gender": 0,
-      "id": "parent uno",
+      "id": "3041",
       "name": "Jill",
       "password": "1234",
       "username": "jill"
@@ -26,72 +32,139 @@
     {
       "children": [
         {
-          "id": "joe like men"
+          "id": "5203"
         }
       ],
-      "contactNumber": "y",
-      "dob": "y",
-      "email": "y",
+      "contactNumber": "021 125 3573",
+      "dob": "24/11/1999",
+      "email": "henry.gordan@gmail.com",
       "gender": 0,
-      "id": "harry the 32nd y",
-      "name": "harry the 32nd",
+      "id": "5123",
+      "name": "Henry",
       "password": "1234",
-      "username": "harry"
+      "username": "henry"
     }
   ],
   "teachers": [
     {
-      "classRoomNumber": 69,
-      "contactNumber": "1234567890",
-      "dob": "today",
-      "email": "email",
+      "classRoomNumber": 1,
+      "contactNumber": "023 891 8293",
+      "dob": "05/01/1997",
+      "email": "rob.griffen@gmail.com",
       "gender": 0,
-      "id": "teacher uno",
+      "id": "2041",
       "name": "Rob",
       "password": "1234",
       "students": [
         {
-          "dob": "1/2/3",
-          "english": 33.0,
+          "dob": "27/10/2018",
+          "english": 91.0,
           "gender": 0,
-          "id": "joe like men",
+          "id": "5203",
           "learningProgress": "Progressing",
-          "math": 17.0,
+          "math": 82.0,
           "name": "Joe",
-          "other": 62.0,
-          "reading": 55.0,
-          "science": 21.0,
-          "writing": 49.0
+          "other": 12.0,
+          "reading": 66.0,
+          "science": 49.0,
+          "writing": 32.0
         },
         {
-          "dob": "2/3/4",
-          "english": 36.0,
+          "dob": "19/06/2019",
+          "english": 76.0,
           "gender": 1,
-          "id": "bob is cool",
+          "id": "5502",
           "learningProgress": "Need Help",
-          "math": 18.0,
-          "name": "Bob",
-          "other": 60.0,
-          "reading": 53.0,
-          "science": 24.0,
-          "writing": 47.0
+          "math": 10.0,
+          "name": "Beth",
+          "other": 67.0,
+          "reading": 23.0,
+          "science": 56.0,
+          "writing": 34.0
         }
       ],
       "username": "rob",
       "yearLevel": "year 1"
     },
     {
-      "classRoomNumber": 12,
-      "contactNumber": "123456",
-      "dob": "3/4/5",
-      "email": "idoteaching@hotmail.com",
+      "classRoomNumber": 2,
+      "contactNumber": "025 013 5395",
+      "dob": "22/04/2001",
+      "email": "idoteaching@gmail.com",
       "gender": 1,
-      "id": "ivan the teacher 3/4/5",
-      "name": "ivan the teacher",
+      "id": "3051",
+      "name": "Ivan",
       "password": "1234",
-      "students": [],
-      "username": "deez",
-      "yearLevel": "year 8"
+      "students": [
+        {
+          "dob": "20/06/2017",
+          "english": 76.0,
+          "gender": 0,
+          "id": "4013",
+          "learningProgress": "Achieved",
+          "math": 91.0,
+          "name": "Harry",
+          "other": 68.0,
+          "reading": 85.0,
+          "science": 57.0,
+          "writing": 61.0
+        }
+      ],
+      "username": "ivan",
+      "yearLevel": "year 2"
+    },
+    {
+      "classRoomNumber": 3,
+      "contactNumber": "021 697 8723",
+      "dob": "28/06/1993",
+      "email": "sponge.man@gmail.com",
+      "gender": 0,
+      "id": "teacher uno",
+      "name": "Jeryy",
+      "password": "1234",
+      "students": [
+        {
+          "dob": "15/02/2016",
+          "english": 55.0,
+          "gender": 0,
+          "id": "5206",
+          "learningProgress": "Progressing",
+          "math": 67.0,
+          "name": "Phill",
+          "other": 83.0,
+          "reading": 91.0,
+          "science": 23.0,
+          "writing": 75.0
+        },
+        {
+          "dob": "05/07/2017",
+          "english": 36.0,
+          "gender": 1,
+          "id": "bob is cool",
+          "learningProgress": "Need Help",
+          "math": 18.0,
+          "name": "Lizzy",
+          "other": 60.0,
+          "reading": 53.0,
+          "science": 24.0,
+          "writing": 47.0
+        }
+        {
+          "dob": "12/03/2017",
+          "english": 63.0,
+          "gender": 1,
+          "id": "bob is cool",
+          "learningProgress": "Need Help",
+          "math": 72.0,
+          "name": "Lizzy",
+          "other": 16.0,
+          "reading": 63.0,
+          "science": 27.0,
+          "writing": 27.0
+        }
+      ],
+      "username": "jerry",
+      "yearLevel": "year 3"
     }
   ]
 }
