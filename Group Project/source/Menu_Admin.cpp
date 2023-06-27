@@ -100,7 +100,7 @@ void MenuAdmin::classRecords()
 	// TODO Add if statement to check if class exists
 	bool classroomNumberExists = false;
 
-	/*for (int i = 0; i < db.db.size(); i++)
+	for (int i = 0; i < db.db.size(); i++)
 	{
 		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
 			continue;
@@ -113,7 +113,7 @@ void MenuAdmin::classRecords()
 				break;
 			}
 		}
-	}*/
+	}
 
 	// TODO Else if class does exsist
 	// TODO While loop to display all students in that class
