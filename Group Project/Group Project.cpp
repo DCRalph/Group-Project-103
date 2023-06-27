@@ -22,10 +22,6 @@ using namespace std;
 void displayMenu(bool logedIn = false)
 {
 
-  // C.testing("input");
-
-  // cout << C.red("hmmm") << "\n";
-
   cout << "\n";
   cout << C.brightMagenta("Welcome to Yoobee School Info System")
        << "\n";
