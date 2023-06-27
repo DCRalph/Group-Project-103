@@ -75,7 +75,7 @@ void MenuAdmin::parentRecords()
 	// TODO Else if parent does exsist
 	cout << "\nThis is 'Parents Name' Record:\n\n";
 	cout << "Full Name: " << parent->name << "\n";
-	cout << "Gender: " << parent->gender << "\n";
+	cout << "Gender: " << (parent->gender ? "Male" : "Female") << "\n";
 	cout << "Date of Birth: " << parent->dob << "\n";
 	cout << "Email: " << parent->email << "\n";
 	cout << "Contact Number: " << parent->contactNumber << "\n";
@@ -152,34 +152,33 @@ void MenuAdmin::studentReport()
 	cout << "1) Needs Help\n2) Progressing State\n\n";
 	int selection = getInput.getNumber();
 	cout << "\nStudents who need help:\n\n";
-	for (int i = 0; db.db.size();) {
+	for (int i = 0; db.db.size();) 
+	{
 		for (int i = 0; i < db.db.size(); i++)
 		{
 
 			if (db.db[i].type != UserType::Teacher)
 				continue;
-
-		if (selection == 1)
-		{
-			if (student->learningProgress[i] == "Need Help") {
-				// TODO Add the real details of the students
-
+		
+			if (selection == 1)
+			{
+				/*for (int j = 0; db.db[i].teacher->classRoom();)
+				{
+					if (db.db[i].teacher->classRoom.students->learningProgress[j] == "Need Help") {
+						// TODO Add the real details of the students
+						cout << j << ") " << student->name << "\n";
+					}
+				}*/
 			}
+			else if (selection == 2)
+			{
+				// TODO Add the real details of the students
+				cout << "\nStudents who are progressing:\n\n";
+				cout << "1) Bill Hans: \n";
+				cout << "2) Chris Ball: \n";
+				cout << "3) Lizzy Stemp: \n";
+			}	cout << "...\n";
 		}
-		else if (selection == 2)
-		{
-			// TODO Add the real details of the students
-			cout << "\nStudents who are progressing:\n\n";
-			cout << "1) Bill Hans: \n";
-			cout << "2) Chris Ball: \n";
-			cout << "3) Lizzy Stemp: \n";
-			cout << "...\n";
-		}
-	}
-	
-	else
-	{
-		cout << "\nInvalid choice!\n";
 	}
 	utils.waitForKeyPress();
 }

@@ -5,7 +5,7 @@
       "name": "William",
       "password": "1234",
       "username": "will"
-    }
+    },
     {
       "id": "1034",
       "name": "Arthur",
@@ -148,7 +148,7 @@
           "reading": 53.0,
           "science": 24.0,
           "writing": 47.0
-        }
+        },
         {
           "dob": "12/03/2017",
           "english": 63.0,
