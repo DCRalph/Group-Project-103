@@ -5,7 +5,7 @@
 #include "cliTools.h"
 #include "db.h"
 
-#include "./Student_records.h"
+#include "./Student_Records.h"
 
 class MenuTeacher
 {

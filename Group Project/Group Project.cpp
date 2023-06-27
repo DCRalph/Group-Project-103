@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
+#include <cmath>
 
 #include "header/cliTools.h"
 #include "header/db.h"
-// #include "header/color.h"
+#include "header/color.h"
 
 #include "header/Menu_Admin.h"
 #include "header/Menu_Extra.h"
@@ -15,9 +17,10 @@
 
 #include "lib/json.hpp"
 
-#include "header/color.h"
-
 using namespace std;
+
+int incorrectLoginAttempts = 0;
+chrono::system_clock::time_point lockedOutTime;
 
 void displayMenu(bool logedIn = false)
 {
@@ -32,34 +35,43 @@ void displayMenu(bool logedIn = false)
     switch (db.currentUser.type)
     {
     case UserType::Admin:
-      cout << "1. Admin"
+      // cout << "1. Admin"
+      cout << C.cyan("1.") << " Admin"
            << "\n";
       break;
     case UserType::Teacher:
-      cout << "1. Teacher"
+      // cout << "1. Teacher"
+      cout << C.cyan("1.") << " Teacher"
            << "\n";
       break;
     case UserType::Parent:
-      cout << "1. Parent"
+      // cout << "1. Parent"
+      cout << C.cyan("1.") << " Parent"
            << "\n";
       break;
     }
 
-    cout << "2. Logout"
+    // cout << "2. Logout"
+    cout << C.cyan("2.") << " Logout"
          << "\n";
   }
   else
   {
-    cout << "1. Login"
+    // cout << "1. Login"
+    cout << C.cyan("1.") << " Login"
          << "\n";
-    cout << "2. Register"
+    // cout << "2. Register"
+    cout << C.cyan("2.") << " Register"
          << "\n";
   }
-  cout << "3. Upcoming Events"
+  // cout << "3. Upcoming Events"
+  cout << C.cyan("3.") << " Upcoming Events"
        << "\n";
-  cout << "4. Contact Details"
+  // cout << "4. Contact Details"
+  cout << C.cyan("4.") << " Contact Details"
        << "\n";
-  cout << "5. Exit and save"
+  // cout << "5. Exit and save"
+  cout << C.cyan("5.") << " Exit and save"
        << "\n";
 }
 
@@ -169,8 +181,49 @@ int main()
       }
 
       else
-        menuLogin.execute();
+      {
 
+        if (incorrectLoginAttempts >= 3)
+        {
+          long long msNow = chrono::system_clock::now().time_since_epoch().count();
+          long long msLockedOut = lockedOutTime.time_since_epoch().count();
+          long long msDiff = msNow - msLockedOut;
+          msDiff = msDiff / 1000000;
+          msDiff = 30 - msDiff; // 30 second timer
+          // msDiff = 300 - msDiff; // 5 minute timer
+
+          int seconds = msDiff % 60;
+          int minutes = floor(msDiff / 60);
+
+          if (msDiff > 0)
+          {
+            cout << "\n";
+            cout << ("You have been locked out for 5 minutes.") << "\n";
+
+            cout << "Please try again in "
+                 << minutes << " minutes and "
+                 << seconds << " seconds."
+                 << "\n";
+
+            utils.waitForKeyPress();
+            break;
+          }
+          incorrectLoginAttempts = 0;
+          msNow = 0;
+          msLockedOut = 0;
+          msDiff = 0;
+        }
+
+        if (menuLogin.execute())
+        {
+          incorrectLoginAttempts = 0;
+        }
+        else
+        {
+          incorrectLoginAttempts++;
+          lockedOutTime = chrono::system_clock::now();
+        }
+      }
       break;
     case 2:
       if (logedIn)
@@ -198,7 +251,6 @@ int main()
       utils.waitForKeyPress();
       break;
     }
-
   } while (choice != 5);
 
   db.save();

@@ -42,7 +42,7 @@
     <ClCompile Include="header\Menu_Teacher.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Student_records.cpp">
+    <ClCompile Include="source\Student_Records.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Menu_Admin.cpp">
@@ -71,7 +71,7 @@
     <ClInclude Include="header\Menu_Extra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\Student_records.h">
+    <ClInclude Include="header\Student_Records.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\Menu_Admin.h">
