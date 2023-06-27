@@ -24,7 +24,7 @@ void displayMenu(bool logedIn = false)
 
     // C.testing("input");
 
-   // cout << C.red("hmmm") << "\n";
+  //  cout << C.red("hmmm") << "\n";
 
   cout << "\n";
   cout << "Welcome to Yoobee School Info System"
