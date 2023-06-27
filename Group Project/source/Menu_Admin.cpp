@@ -47,22 +47,41 @@ int MenuAdmin::execute()
 void MenuAdmin::parentRecords()
 {
 	utils.clear();
+	string parentName;
+	optional<class::Parent> parent;
+
 	cout << "Parent Records\n\n";
 	// TODO Take user's input to check with current data
 	cout << "Enter the Parent's Name:\n";
+	parentName = getInput.getString();
 
-	// TODO Add if statement to check if that parent exists
+	// TODO Add statement to check if that parent exists
+	bool parentExists = false;
+
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type != UserType::Parent)
+			continue;
+		if (db.db[i].parent->name == parentName)
+		{
+
+			parentExists = true;
+			parent = db.db[i].parent;
+			break;
+		}
+	}
 
 	// TODO Else if parent does exsist
 	cout << "\nThis is 'Parents Name' Record:\n\n";
-	cout << "Full Name: \n";
-	cout << "Gender: \n";
-	cout << "Date of Birth: \n";
-	cout << "Email: \n";
-	cout << "Contact Number: \n";
-	cout << "Child(s) Full Name: \n";
-	cout << "Child(s) Classroom Number: \n";
-	cout << "Parent/Caregiver Emergency Contact Number: \n";
+	cout << "Full Name: " << parent->name << "\n";
+	cout << "Gender: " << parent->gender << "\n";
+	cout << "Date of Birth: " << parent->dob << "\n";
+	cout << "Email: " << parent->email << "\n";
+	cout << "Contact Number: " << parent->contactNumber << "\n";
+	cout << "Child(s) Full Name: " <<0 << "\n"; //
+	cout << "Child(s) Classroom Number: " << 0 << "\n"; //
+	cout << "Parent/Caregiver Emergency Contact Number: " << 0 << "\n"; // 
 
 	utils.waitForKeyPress();
 }
@@ -70,11 +89,31 @@ void MenuAdmin::parentRecords()
 void MenuAdmin::classRecords()
 {
 	utils.clear();
+
+	optional<Student> student;
+	int childClassroomNumber;
+
 	cout << "Class Records\n\n";
 	// TODO Take user's input to check with current data
 	cout << "What Class do you want to view?:\n\n";
-
+	childClassroomNumber = getInput.getNumber();
 	// TODO Add if statement to check if class exists
+	bool classroomNumberExists = false;
+
+	/*for (int i = 0; i < db.db.size(); i++)
+	{
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].classRoomNumber == childClassroomNumber)
+			{
+				student = db.db[i].teacher->classRoom.students[j];
+				break;
+			}
+		}
+	}*/
 
 	// TODO Else if class does exsist
 	// TODO While loop to display all students in that class
