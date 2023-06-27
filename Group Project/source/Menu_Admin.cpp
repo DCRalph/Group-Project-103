@@ -88,45 +88,57 @@ void MenuAdmin::parentRecords()
 
 void MenuAdmin::classRecords()
 {
-	utils.clear();
-
-	optional<Student> student;
-	int childClassroomNumber;
-
-	cout << "Class Records\n\n";
-	// TODO Take user's input to check with current data
-	cout << "What Class do you want to view?:\n\n";
-	childClassroomNumber = getInput.getNumber();
-	// TODO Add if statement to check if class exists
-	bool classroomNumberExists = false;
-
-	for (int i = 0; i < db.db.size(); i++)
+	for (Student s : db.currentUser.teacher->classRoom.students)
 	{
-		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
-			continue;
-
-		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
-		{
-			/*if (db.db[i].classRoomNumber == childClassroomNumber)
-			{
-				student = db.db[i].teacher->classRoom.students[j];
-				break;
-			}*/
-		}
+		cout << s.name << "\n";
+		cout << s.gender << "\n";
+		cout << s.dob << "\n";
+		cout << s.math << "\n";
+		cout << s.science << "\n";
+		cout << s.writing << "\n";
+		cout << s.reading << "\n";
+		cout << s.other << "\n";
+		cout << s.learningProgress << "\n";
 	}
+	//utils.clear();
 
-	// TODO Else if class does exsist
-	// TODO While loop to display all students in that class
-	cout << "\nRoom 12's Records:\n\n";
-	cout << "1) William Brown: \n";
-	cout << "	(William's Student Details)\n";
-	cout << "2) Steve Gine: \n";
-	cout << "	(Steve Gine Student Details)\n";
-	cout << "3) Alex Humbin: \n";
-	cout << "	(Alex Humbin Student Details)\n";
-	cout << "...\n";
+	//optional<Student> student;
+	//int childClassroomNumber;
 
-	utils.waitForKeyPress();
+	//cout << "Class Records\n\n";
+	//// TODO Take user's input to check with current data
+	//cout << "What Class do you want to view?:\n\n";
+	//childClassroomNumber = getInput.getNumber();
+	//// TODO Add if statement to check if class exists
+	//bool classroomNumberExists = false;
+
+	//for (int i = 0; i < db.db.size(); i++)
+	//{
+	//	if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+	//		continue;
+
+	//	for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+	//	{
+	//		/*if (db.db[i].classRoomNumber == childClassroomNumber)
+	//		{
+	//			student = db.db[i].teacher->classRoom.students[j];
+	//			break;
+	//		}*/
+	//	}
+	//}
+
+	//// TODO Else if class does exsist
+	//// TODO While loop to display all students in that class
+	//cout << "\nRoom 12's Records:\n\n";
+	//cout << "1) William Brown: \n";
+	//cout << "	(William's Student Details)\n";
+	//cout << "2) Steve Gine: \n";
+	//cout << "	(Steve Gine Student Details)\n";
+	//cout << "3) Alex Humbin: \n";
+	//cout << "	(Alex Humbin Student Details)\n";
+	//cout << "...\n";
+
+	//utils.waitForKeyPress();
 }
 
 void MenuAdmin::studentReport()
