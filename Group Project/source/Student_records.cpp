@@ -7,11 +7,11 @@ int StudentRecord::execute()
 	utils.clear();
 	int opt;
 	cout << "Student Records\n\n";
-	cout << "1) Add Student\n";
-	cout << "2) Edit student Record\n";
-	cout << "3) Delete Student Record\n";
-	cout << "4) Update Record\n";
-	cout << "5) View the Records\n";
+	cout << "1. Add Student\n";
+	cout << "2. Edit student Record\n";
+	cout << "3. Delete Student Record\n";
+	cout << "4. Update Record\n";
+	cout << "5. View the Records\n";
 	cout << "Enter a number: ";
 	opt = getInput.getNumber();
 	if (opt == 1)
