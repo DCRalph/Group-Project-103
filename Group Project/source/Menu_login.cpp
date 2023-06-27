@@ -10,7 +10,8 @@ int MenuLogin::execute()
   utils.clear();
 
   cout << "\n"
-       << "Login"
+       //  << "Login"
+       << C.brightMagenta("Login")
        << "\n"
        << "Type \"exit\" to go back to the main menu."
        << "\n"
@@ -20,7 +21,7 @@ int MenuLogin::execute()
   username = getInput.getString();
 
   if (username == "exit")
-    return 0;
+    return 2;
 
   // TODO - hide password
 
@@ -66,7 +67,7 @@ int MenuLogin::execute()
 
     utils.waitForKeyPress();
 
-    return db.db[i].type;
+    return 1;
   }
 
   cout << ("Invalid username or password!") << "\n";

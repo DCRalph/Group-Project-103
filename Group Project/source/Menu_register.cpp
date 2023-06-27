@@ -7,6 +7,12 @@ int MenuRegister::execute()
 	utils.clear();
 	int userOccupation;
 
+	cout << "\n"
+			 //  << "Register"
+			 << C.brightMagenta("Register")
+			 << "\n"
+			 << "\n";
+
 	cout << "Occupation:"
 			 << "\n"
 			 << "1. Parent"
