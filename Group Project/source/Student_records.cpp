@@ -1,4 +1,4 @@
-#include "../header/Student_records.h"
+#include "../header/Student_Records.h"
 
 using namespace std;
 

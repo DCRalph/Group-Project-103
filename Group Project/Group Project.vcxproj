@@ -147,11 +147,11 @@
     <ClCompile Include="source\db.cpp" />
     <ClInclude Include="header\db.h" />
     <ClInclude Include="header\Menu_Parent.h" />
-    <ClInclude Include="header\Student_records.h" />
+    <ClInclude Include="header\Student_Records.h" />
     <ClInclude Include="header\color.h" />
     <ClInclude Include="lib\json.hpp" />
     <ClCompile Include="source\Menu_Parent.cpp" />
-    <ClCompile Include="source\Student_records.cpp" />
+    <ClCompile Include="source\Student_Records.cpp" />
     <ClCompile Include="source\Menu_Teacher.cpp" />
     <ClCompile Include="header\Menu_Teacher.h" />
     <ClCompile Include="source\Menu_Extra.cpp" />
