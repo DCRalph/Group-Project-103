@@ -97,6 +97,7 @@ void StudentRecord::editStudent()
 	int reading;
 	int others;
 	string learningProgress;
+	string comment;
 	cout << "Enter the student's name: ";
 	name = getInput.getString();
 	cout << "\nWhat is " << name << "'s score in maths out of 100? ";
@@ -130,6 +131,9 @@ void StudentRecord::editStudent()
 		cout << "\nInvalid Choice!\n";
 		editStudent();
 	}
+	cout << "Enter a comment for " << name << "\n";
+	comment = getInput.getString();
+	cout << "\n" << comment;
 }
 
 void StudentRecord::deleteStudent()
