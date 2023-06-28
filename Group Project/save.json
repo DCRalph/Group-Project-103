@@ -11,6 +11,12 @@
       "name": "Arthur",
       "password": "1234",
       "username": "art"
+    },
+    {
+      "id": "1035",
+      "name": "Jacob",
+      "password": "69420",
+      "username": "jacob"
     }
   ],
   "parents": [
