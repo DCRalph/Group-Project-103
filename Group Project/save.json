@@ -102,6 +102,19 @@
           "reading": 5.0,
           "science": 2.0,
           "writing": 4.0
+        },
+        {
+          "dob": "20/5/13",
+          "english": 77.0,
+          "gender": 0,
+          "id": "Ben 20/5/13",
+          "learningProgress": 1,
+          "math": 69.0,
+          "name": "Ben",
+          "other": 83.0,
+          "reading": 35.0,
+          "science": 51.0,
+          "writing": 63.0
         }
       ],
       "username": "rob",
