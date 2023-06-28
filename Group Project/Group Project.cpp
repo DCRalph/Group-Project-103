@@ -146,8 +146,8 @@ int main()
   // db.db.push_back(item2);
 
   db.currentUser = User();
-  db.load();
-  // makeTestUsers();
+  //db.load();
+  makeTestUsers();
 
   int choice;
 
@@ -253,7 +253,7 @@ int main()
     }
   } while (choice != 5);
 
-  db.save();
+  //db.save();
 
   cout << ("Exiting...") << "\n";
 }
