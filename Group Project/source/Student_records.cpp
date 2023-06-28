@@ -258,6 +258,8 @@ void StudentRecord::editStudent()
 
 	cout << C.brightMagenta("What would you like to edit on ") << student->name << "\n\n";
 
+	utils.waitForKeyPress();
+
 	return;
 }
 
