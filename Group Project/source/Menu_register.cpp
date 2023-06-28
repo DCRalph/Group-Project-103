@@ -398,5 +398,5 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 
 	cout << "\n";
 	utils.waitForKeyPress();
-	utils.clear();
+	// utils.clear();
 }

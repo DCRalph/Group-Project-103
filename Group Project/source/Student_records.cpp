@@ -192,6 +192,9 @@ void StudentRecord::addStudent()
 
 	cout << C.green("Student added.") << "\n";
 
+	utils.waitForKeyPress();
+	utils.clear();
+
 	return;
 }
 
