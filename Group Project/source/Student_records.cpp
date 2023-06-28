@@ -152,16 +152,10 @@ void StudentRecord::addStudent()
 
 	id = name + " " + dob;
 
-	cout << "here1\n";
-
 	Student newStudent(name, id, dob, genderEnum, math, science, english, writing, reading, other, learningProgressEnum);
-
-	cout << "here2\n";
 
 	for (int i = 0; i < db.db.size(); i++)
 	{
-		cout << "here2.1\n";
-
 		if (db.db[i].type != UserType::Teacher)
 			continue;
 
@@ -170,10 +164,7 @@ void StudentRecord::addStudent()
 			db.db[i].teacher->classRoom.students.push_back(newStudent);
 			return;
 		}
-		cout << "here2.2\n";
 	}
-
-	cout << "here3\n";
 
 	cout << C.red("Classroom not found. Would you like to create one?") << "\n";
 	bool createClassroom = getInput.getYesNo();
