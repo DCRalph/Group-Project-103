@@ -70,8 +70,19 @@ void StudentRecord::addStudent()
 	cout << "Enter the student's details: "
 			 << "\n";
 
-	cout << "Classroom Number: ";
-	classRoomNumber = getInput.getNumber();
+	cout << "Enter \"myclass\" to add a student to your class."
+			 << "\n";
+
+	cout << "Add student to your class";
+	bool myClass = getInput.getYesNo(true);
+
+	if (myClass)
+		classRoomNumber = db.currentUser.teacher->classRoom.classRoomNumber;
+	else
+	{
+		cout << "Classroom Number: ";
+		classRoomNumber = getInput.getNumber();
+	}
 
 	cout << "Name: ";
 	name = getInput.getString();
@@ -345,8 +356,10 @@ void StudentRecord::viewStudent()
 	cout << "Enter Students Name and Class:\n\n";
 	cout << "Student's Name: ";
 	childName = getInput.getString();
+
 	cout << "\nStudent's Class: ";
 	childClassroomNumber = getInput.getNumber();
+
 	bool classroomNumberExists = false;
 	bool childExists = false;
 
@@ -369,17 +382,42 @@ void StudentRecord::viewStudent()
 			}
 		}
 	}
-	cout << "\n\nThis is the Record for 'students name'";
-	cout << "\n\nThis is the Record for 'students name'"
-			 << "\n";
+
+	string gender;
+	string learningProgress;
+
+	if (student->gender == Gender::Male)
+		gender = "Male";
+	else if (student->gender == Gender::Female)
+		gender = "Female";
+
+	switch (student->learningProgress)
+	{
+	case LearningProgress::Achieved:
+		learningProgress = "Achieved";
+		break;
+	case LearningProgress::Need_Help:
+		learningProgress = "Needs Help";
+		break;
+	case LearningProgress::Progressing:
+		learningProgress = "Progressing";
+		break;
+	case LearningProgress::Not_Applicable:
+		learningProgress = "Not Applicable";
+		break;
+	}
+
+	// cout << "\n\nThis is the Record for 'students name'";
+	// cout << "\n\nThis is the Record for 'students name'"
+	// 		 << "\n";
 	cout << "Full Name: " << student->name << "\n";
-	cout << "\nGender: " << (student->gender ? "Male" : "Female") << "\n";
+	cout << "\nGender: " << gender << "\n";
 	cout << "\nMaths: " << student->math << "% / 100%\n";
 	cout << "\nScience: " << student->science << "% / 100%\n";
 	cout << "\nWriting: " << student->writing << "% / 100%\n";
 	cout << "\nReading: " << student->writing << "% / 100%\n";
 	cout << "\nOthers: " << student->other << "% / 100%\n";
-	cout << "\nLearning Progress: " << student->learningProgress << "\n";
+	cout << "\nLearning Progress: " << learningProgress << "\n";
 	cout << "\n";
 	utils.waitForKeyPress();
 	utils.clear();
