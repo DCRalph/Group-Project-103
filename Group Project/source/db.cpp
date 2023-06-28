@@ -144,6 +144,12 @@ void DataBase::load()
     json data;
     dataFile >> data;
 
+    cout << C.magenta("Loading data from ") << C.red(SAVEFILE) << C.magenta("...")
+         << "\n";
+
+    cout << C.yellow("Importing admins...")
+         << "\n";
+
     for (auto &item : data["admins"])
     {
       Login login = {item["username"], item["password"]};
@@ -152,14 +158,26 @@ void DataBase::load()
       db.push_back(user);
     }
 
+    cout << C.green("Successfully imported admins!")
+         << "\n";
+    cout << C.yellow("Importing parents...")
+         << "\n ";
+
     for (auto &item : data["parents"])
     {
       vector<string> _childIds;
+
+      cout << C.yellow("  Sub-importing children...")
+           << "\n ";
+
       for (auto &_childId : item["children"])
       {
         string _id = _childId["id"];
         _childIds.push_back(_id);
       }
+
+      cout << C.green("  Successfully imported children!")
+           << "\n";
 
       Login login = {item["username"], item["password"]};
       class ::Parent parent(item["name"], item["id"], item["email"], item["dob"], item["contactNumber"], item["emergencyContactNumber"], Gender(item["gender"]), _childIds);
@@ -167,15 +185,26 @@ void DataBase::load()
       db.push_back(user);
     }
 
+    cout << C.green("Successfully imported parents!")
+         << "\n";
+    cout << C.yellow("Importing teachers...")
+         << "\n";
+
     for (auto &item : data["teachers"])
     {
       vector<Student> _students;
+
+      cout << C.yellow("  Sub-importing students...")
+           << "\n";
 
       for (auto &_student : item["students"])
       {
         Student _newStudent(_student["name"], _student["id"], _student["dob"], Gender(_student["gender"]), _student["math"], _student["science"], _student["english"], _student["writing"], _student["reading"], _student["other"], LearningProgress(_student["learningProgress"]));
         _students.push_back(_newStudent);
       }
+
+      cout << C.green("  Successfully imported students!")
+           << "\n";
 
       ClassRoom class1(item["classRoomNumber"], item["yearLevel"]);
       class1.students = _students;
@@ -185,6 +214,12 @@ void DataBase::load()
       User user(login, item["id"], teacher);
       db.push_back(user);
     }
+
+    cout << C.green("Successfully imported teachers!")
+         << "\n";
+
+    cout << C.magenta("Successfully imported data from ") << C.red(SAVEFILE) << C.magenta("!")
+         << "\n";
   }
 }
 

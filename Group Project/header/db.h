@@ -1,9 +1,12 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include <optional>
 #include <fstream>
+
+#include "../header/color.h"
 
 #include "../lib/json.hpp"
 
