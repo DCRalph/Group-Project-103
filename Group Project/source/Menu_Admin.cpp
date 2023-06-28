@@ -88,10 +88,13 @@ void MenuAdmin::parentRecords()
 
 void MenuAdmin::classRecords()
 {
+	int classroom;
 	for (User u : db.db)
 	{
 		if (u.teacher.has_value())
 		{
+			cout << "Enter the class number: ";
+			classroom = getInput.getNumber();
 			for (Student s : u.teacher->classRoom.students)
 			{
 				cout << "Name: " << s.name << "\n";
