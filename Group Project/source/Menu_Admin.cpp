@@ -90,15 +90,15 @@ void MenuAdmin::classRecords()
 {
 	for (Student s : db.currentUser.teacher->classRoom.students)
 	{
-		cout << s.name << "\n";
-		cout << s.gender << "\n";
-		cout << s.dob << "\n";
-		cout << s.math << "\n";
-		cout << s.science << "\n";
-		cout << s.writing << "\n";
-		cout << s.reading << "\n";
-		cout << s.other << "\n";
-		cout << s.learningProgress << "\n";
+		cout << "Name: " << s.name << "\n";
+		cout << "Gender: " << s.gender << "\n";
+		cout << "Date of Birth: "<< s.dob << "\n";
+		cout << "Maths: " << s.math << "\n";
+		cout << "Science: " << s.science << "\n";
+		cout << "Writing: " << s.writing << "\n";
+		cout << "Reading: " << s.reading << "\n";
+		cout << "Others: " << s.other << "\n";
+		cout << "Learning Progress: " << s.learningProgress << "\n";
 	}
 	//utils.clear();
 
