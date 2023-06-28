@@ -88,17 +88,23 @@ void MenuAdmin::parentRecords()
 
 void MenuAdmin::classRecords()
 {
-	for (Student s : db.currentUser.teacher->classRoom.students)
+	for (User u : db.db)
 	{
-		cout << "Name: " << s.name << "\n";
-		cout << "Gender: " << s.gender << "\n";
-		cout << "Date of Birth: "<< s.dob << "\n";
-		cout << "Maths: " << s.math << "\n";
-		cout << "Science: " << s.science << "\n";
-		cout << "Writing: " << s.writing << "\n";
-		cout << "Reading: " << s.reading << "\n";
-		cout << "Others: " << s.other << "\n";
-		cout << "Learning Progress: " << s.learningProgress << "\n";
+		if (u.teacher.has_value())
+		{
+			for (Student s : u.teacher->classRoom.students)
+			{
+				cout << "Name: " << s.name << "\n";
+				cout << "Gender: " << s.gender << "\n";
+				cout << "Date of Birth: " << s.dob << "\n";
+				cout << "Maths: " << s.math << "\n";
+				cout << "Science: " << s.science << "\n";
+				cout << "Writing: " << s.writing << "\n";
+				cout << "Reading: " << s.reading << "\n";
+				cout << "Others: " << s.other << "\n";
+				cout << "Learning Progress: " << s.learningProgress << "\n";
+			}
+		}
 	}
 	//utils.clear();
 
