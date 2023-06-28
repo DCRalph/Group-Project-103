@@ -106,6 +106,7 @@ void MenuAdmin::classRecords()
 			}
 		}
 	}
+	utils.waitForKeyPress();
 	//utils.clear();
 
 	//optional<Student> student;
