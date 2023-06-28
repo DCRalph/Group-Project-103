@@ -27,50 +27,79 @@ void displayMenu(bool logedIn = false)
 
   cout << "\n";
   cout << C.brightMagenta("Welcome to Yoobee School Info System")
+       << "\n"
        << "\n";
+
+  if (logedIn)
+  {
+    cout << ("You are logged in as: ")
+         << C.brightCyan(db.currentUser.getName());
+  }
+  else
+  {
+    cout << ("You are not logged in.");
+  }
+
   cout << "\n";
+
+  switch (db.currentUser.type)
+  {
+  case UserType::Admin:
+    cout << ("You are an Admin")
+         << "\n";
+    break;
+  case UserType::Teacher:
+    cout << ("You are a Teacher. Your ")
+         << C.brightCyan(db.currentUser.teacher->classRoom.yearLevel)
+         << (" class in room ")
+         << C.brightCyan(to_string(db.currentUser.teacher->classRoom.classRoomNumber))
+         << (" has ")
+         << C.brightCyan(to_string(db.currentUser.teacher->classRoom.students.size()))
+         << (" students.")
+         << "\n";
+    break;
+  case UserType::Parent:
+    cout << ("You are a Parent. You have ") << C.brightCyan(to_string(db.currentUser.parent->childIds.size())) << (" children. ")
+         << "\n";
+    break;
+  }
+
+  cout
+      << "\n";
 
   if (logedIn)
   {
     switch (db.currentUser.type)
     {
     case UserType::Admin:
-      // cout << "1. Admin"
       cout << C.cyan("1.") << " Admin"
            << "\n";
       break;
     case UserType::Teacher:
-      // cout << "1. Teacher"
       cout << C.cyan("1.") << " Teacher"
            << "\n";
       break;
     case UserType::Parent:
-      // cout << "1. Parent"
       cout << C.cyan("1.") << " Parent"
            << "\n";
       break;
     }
 
-    // cout << "2. Logout"
     cout << C.cyan("2.") << " Logout"
          << "\n";
   }
   else
   {
-    // cout << "1. Login"
     cout << C.cyan("1.") << " Login"
          << "\n";
-    // cout << "2. Register"
     cout << C.cyan("2.") << " Register"
          << "\n";
   }
-  // cout << "3. Upcoming Events"
-  cout << C.cyan("3.") << " Upcoming Events"
-       << "\n";
-  // cout << "4. Contact Details"
+  cout
+      << C.cyan("3.") << " Upcoming Events"
+      << "\n";
   cout << C.cyan("4.") << " Contact Details"
        << "\n";
-  // cout << "5. Exit and save"
   cout << C.cyan("5.") << " Exit and save"
        << "\n";
 }
@@ -148,6 +177,8 @@ int main()
   db.currentUser = User();
   db.load();
   // makeTestUsers();
+
+  db.currentUser = db.db[5]; // auto login to admin
 
   int choice;
 

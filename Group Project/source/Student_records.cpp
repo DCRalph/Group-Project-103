@@ -201,9 +201,65 @@ void StudentRecord::addStudent()
 
 void StudentRecord::editStudent()
 {
+	utils.clear();
+
+	string childName;
+	optional<Student> student;
+	int childClassroomNumber;
+
+	cout << C.brightMagenta("Edit Student") << "\n\n";
+	utils.clear();
+
+	cout << "Enter Students Name and Class:"
+			 << "\n\n";
+
+	cout << "Student's Name: ";
+	childName = getInput.getString();
+
+	cout << "Student's Class: ";
+	childClassroomNumber = getInput.getNumber();
+
+	cout << "\n";
+
+	bool classroomNumberExists = false;
+	bool childExists = false;
+
+	int classroomIndex = -1;
+	int childIndex = -1;
+
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].teacher->classRoom.students[j].name == childName)
+			{
+				childExists = true;
+				student = db.db[i].teacher->classRoom.students[j];
+				classroomIndex = i;
+				childIndex = j;
+				break;
+			}
+		}
+	}
+
+	if (!childExists)
+	{
+		cout << C.red("Student does not exist!") << "\n\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
+	cout << C.brightMagenta("What would you like to edit on ") << student->name << "\n\n";
+
 	return;
 }
-
 
 // void StudentRecord::editStudent()
 // {
