@@ -89,8 +89,8 @@ void makeTestUsers()
 
   // cerate a test class
 
-  Student student1 = {"bill", "bill1", "1/2/3", Gender::Male, 1, 2, 3, 4, 5, 6, "is a very bad boy"};
-  Student student2 = {"bob", "bobiscool", "2/3/4", Gender::Female, 1, 2, 3, 4, 5, 6, "is a very very bad boy"};
+  Student student1 = {"bill", "bill1", "1/2/3", Gender::Male, 1, 2, 3, 4, 5, 6, LearningProgress::Achieved};
+  Student student2 = {"bob", "bobiscool", "2/3/4", Gender::Female, 1, 2, 3, 4, 5, 6, LearningProgress::Need_Help};
 
   vector<Student> _students{student1, student2};
 
@@ -118,7 +118,7 @@ void makeTestUsers()
   vector<string> _childIds{"bill1"};
 
   // class ::Parent parent1 = {"jill", "parentid1", "email", "dob", _childIds};
-  class ::Parent parent1("jill", "parentid1", "email", "10/20/30", "number", Gender::Male, _childIds);
+  class ::Parent parent1("jill", "parentid1", "email", "10/20/30", "number", "emergency number", Gender::Male, _childIds);
 
   User user2(parentlogin1, "parent user1", parent1);
 

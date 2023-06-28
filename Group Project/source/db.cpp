@@ -20,7 +20,7 @@ Admin::Admin(string _name, string _id)
   id = _id;
 }
 
-Student::Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress)
+Student::Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, LearningProgress _learningProgress)
 {
   name = _name;
   id = _id;
@@ -47,7 +47,7 @@ Student::Student(string _name, string _dob, Gender _gender)
   writing = 0;
   reading = 0;
   other = 0;
-  learningProgress = "";
+  learningProgress = LearningProgress::Not_Applicable;
 }
 
 ClassRoom::ClassRoom()
@@ -123,7 +123,7 @@ string User::getName()
   }
 }
 
-Parent::Parent(string _name, string _id, string _email, string _dob, string _contactNumber, Gender _gender, vector<string> _childIds)
+Parent::Parent(string _name, string _id, string _email, string _dob, string _contactNumber, string _emergencyContactNumber, Gender _gender, vector<string> _childIds)
 {
   name = _name;
   id = _id;
@@ -131,6 +131,7 @@ Parent::Parent(string _name, string _id, string _email, string _dob, string _con
   dob = _dob;
   gender = _gender;
   contactNumber = _contactNumber;
+  emergencyContactNumber = _emergencyContactNumber;
   childIds = _childIds;
 }
 
@@ -161,7 +162,7 @@ void DataBase::load()
       }
 
       Login login = {item["username"], item["password"]};
-      class ::Parent parent(item["name"], item["id"], item["email"], item["dob"], item["contactNumber"], Gender(item["gender"]), _childIds);
+      class ::Parent parent(item["name"], item["id"], item["email"], item["dob"], item["contactNumber"], item["emergencyContactNumber"], Gender(item["gender"]), _childIds);
       User user(login, item["id"], parent);
       db.push_back(user);
     }
@@ -172,7 +173,7 @@ void DataBase::load()
 
       for (auto &_student : item["students"])
       {
-        Student _newStudent(_student["name"], _student["id"], _student["dob"], Gender(_student["gender"]), _student["math"], _student["science"], _student["english"], _student["writing"], _student["reading"], _student["other"], _student["learningProgress"]);
+        Student _newStudent(_student["name"], _student["id"], _student["dob"], Gender(_student["gender"]), _student["math"], _student["science"], _student["english"], _student["writing"], _student["reading"], _student["other"], LearningProgress(_student["learningProgress"]));
         _students.push_back(_newStudent);
       }
 
@@ -236,6 +237,7 @@ void DataBase::save()
                                  {"dob", db[i].parent->dob},
                                  {"children", childIds},
                                  {"contactNumber", db[i].parent->contactNumber},
+                                 {"emergencyContactNumber", db[i].parent->emergencyContactNumber},
                                  {"gender", db[i].parent->gender}});
 
       break;

@@ -4,13 +4,13 @@
 
 #include "cliTools.h"
 #include "db.h"
-//#include "color.h"
+// #include "color.h"
 
 class MenuRegister
 {
 
 public:
   int execute();
-  void registerTeacher();
+  void registerTeacher(int _classRoomNumber = -1);
   void registerParent();
 };

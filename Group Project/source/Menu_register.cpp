@@ -75,6 +75,7 @@ void MenuRegister::registerParent()
 	string username;
 	string password;
 	string contactNumber;
+	string emergencyContactNumber;
 
 	Gender genderEnum;
 
@@ -125,6 +126,10 @@ void MenuRegister::registerParent()
 	cout << "\n"
 			 << "Contact Number: ";
 	contactNumber = getInput.getString();
+
+	cout << "\n"
+			 << "Emergency Contact Number : ";
+	emergencyContactNumber = getInput.getString();
 
 	cout << "\n"
 			 << "Username: ";
@@ -286,7 +291,7 @@ void MenuRegister::registerParent()
 	}
 
 	Login login = {username, password};
-	class ::Parent parent(name, name + " " + dob, email, dob, contactNumber, genderEnum, childIds);
+	class ::Parent parent(name, name + " " + dob, email, dob, contactNumber, emergencyContactNumber, genderEnum, childIds);
 	User user(login, parent.id + " user", parent);
 
 	db.db.push_back(user);
@@ -299,7 +304,7 @@ void MenuRegister::registerParent()
 	utils.clear();
 }
 
-void MenuRegister::registerTeacher()
+void MenuRegister::registerTeacher(int _classRoomNumber)
 {
 	string name;
 	string dob;
@@ -361,9 +366,16 @@ void MenuRegister::registerTeacher()
 			 << "Contact Number: ";
 	contactNumber = getInput.getString();
 
-	cout << "\n"
-			 << "Classroom Number: ";
-	classroomNumber = getInput.getNumber();
+	if (_classRoomNumber == -1)
+	{
+		cout << "\n"
+				 << "Classroom Number: ";
+		classroomNumber = getInput.getNumber();
+	}
+	else
+	{
+		classroomNumber = _classRoomNumber;
+	}
 
 	cout << "\n"
 			 << "Teaching Year(eg: year 1): ";

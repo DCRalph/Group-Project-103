@@ -27,6 +27,14 @@ enum Gender
   Female
 };
 
+enum LearningProgress
+{
+  Achieved,
+  Progressing,
+  Need_Help,
+  Not_Applicable
+};
+
 class Login
 {
 public:
@@ -47,21 +55,21 @@ public:
 class Student
 {
 public:
-  Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, string _learningProgress);
+  Student(string _name, string _id, string _dob, Gender _gender, float _math, float _science, float _english, float _writing, float _reading, float _other, LearningProgress _learningProgress);
   Student(string _name, string _dob, Gender _gender);
-  string name;//
-  string id;//
-  string dob;//
-  Gender gender;//
+  string name;   //
+  string id;     //
+  string dob;    //
+  Gender gender; //
 
-  float math; //
+  float math;    //
   float science; //
   float english; //
   float writing; //
   float reading; //
-  float other; //
+  float other;   //
 
-  string learningProgress;//
+  LearningProgress learningProgress; //
 };
 
 class ClassRoom
@@ -78,30 +86,31 @@ class Teacher
 {
 public:
   Teacher(string _name, string _id, string _email, string _dob, string _contactNumber, Gender _gender, ClassRoom _classRoom);
-  string name; // //
-  string id; // //
-  string email;// //
-  string dob;// //
-  string contactNumber;// //
-  Gender gender;// //
+  string name;          // //
+  string id;            // //
+  string email;         // //
+  string dob;           // //
+  string contactNumber; // //
+  Gender gender;        // //
 
   // string teachingYear;
 
-  ClassRoom classRoom;//
+  ClassRoom classRoom; //
 };
 
 class Parent
 {
 public:
-  Parent(string _name, string _id, string _email, string _dob, string _contactNumber, Gender _gender, vector<string> _childIds);
-  string name;// //
-  string id;// //
-  string email;// //
-  string dob;// //
-  string contactNumber;// //
-  Gender gender;// //
+  Parent(string _name, string _id, string _email, string _dob, string _contactNumber, string _emergencyContactNumber, Gender _gender, vector<string> _childIds);
+  string name;          // //
+  string id;            // //
+  string email;         // //
+  string dob;           // //
+  string contactNumber; // //
+  string emergencyContactNumber;
+  Gender gender; // //
 
-  vector<string> childIds;// //
+  vector<string> childIds; // //
 };
 
 class User
