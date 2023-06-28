@@ -195,7 +195,6 @@ void StudentRecord::addStudent()
 	cout << C.green("Student added.") << "\n";
 
 	utils.waitForKeyPress();
-	utils.clear();
 
 	return;
 }
@@ -298,50 +297,191 @@ void StudentRecord::editStudent()
 void StudentRecord::deleteStudent()
 {
 	utils.clear();
-	string deleteStudent;
-	int classroom;
-	cout << "Delete Student Record\n\n";
-	cout << "Enter Students Name and Class:\n\n";
 
-	// TODO Take user's input to check with current data
+	string childName;
+	optional<Student> student;
+	int childClassroomNumber;
+
+	cout << "Delete Student Record"
+			 << "\n\n";
+
+	cout << "Enter Students Name and Class:"
+			 << "\n\n";
 	cout << "Student's Name: ";
+	childName = getInput.getString();
 
-	cout << "\nStudent's Class: ";
+	cout << "Student's Class: ";
+	childClassroomNumber = getInput.getNumber();
 
-	// TODO Add if statement to check if that student exists
+	bool classroomNumberExists = false;
+	bool childExists = false;
 
-	// TODO Else if student does exsist
-	cout << "\nType 'Delete' to confirm! ";
-	deleteStudent = getInput.getString();
-	if (deleteStudent == "delete")
+	for (int i = 0; i < db.db.size(); i++)
 	{
-		// TODO Removes student from the files/database
-		cout << "Student's Record Removed!\n";
+
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].teacher->classRoom.students[j].name == childName)
+			{
+				childExists = true;
+				student = db.db[i].teacher->classRoom.students[j];
+				break;
+			}
+		}
+	}
+
+	if (!childExists)
+	{
+		cout << C.red("Student does not exist!") << "\n\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
+	cout << "\nAre you sure you want to delete " << student->name << "'s record? ";
+
+	cout << "\nType 'Delete' to confirm! ";
+	string deleteStudent = getInput.getString();
+	if (deleteStudent == "Delete")
+	{
+
+		for (int i = 0; i < db.db.size(); i++)
+		{
+
+			if (db.db[i].type != UserType::Teacher)
+				continue;
+
+			if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+				continue;
+
+			for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+			{
+				if (db.db[i].teacher->classRoom.students[j].name == childName)
+				{
+					db.db[i].teacher->classRoom.students.erase(db.db[i].teacher->classRoom.students.begin() + j);
+					break;
+				}
+			}
+		}
+
+		cout << C.green("Student's Record Removed!") << "\n";
 	}
 	else
-	{
-		cout << "Student's Record Not Removed!\n";
-	}
+		cout << C.yellow("Student's Record Not Removed!") << "\n";
+
 	utils.waitForKeyPress();
-	utils.clear();
 }
 
 void StudentRecord::updateStudent()
 {
 	utils.clear();
-	cout << "Update Student Record\n\n";
-	cout << "Enter Students Name and Class:\n\n";
-	// TODO Take user's input to check with current data
+
+	string childName;
+	optional<Student> student;
+	int childClassroomNumber;
+
+	cout << "Update Student Record"
+			 << "\n\n";
+
+	cout << "Enter Students Name and Class:"
+			 << "\n\n";
 	cout << "Student's Name: ";
+	childName = getInput.getString();
 
-	cout << "\nStudent's Class: ";
-	// TODO Add if statement to check if that student exists
+	cout << "Student's Class: ";
+	childClassroomNumber = getInput.getNumber();
 
-	// TODO Else if student does exsist
-	cout << "\nWhat would you like to update the students current progress to?\n";
-	cout << "1) Achieved\n2) Progressing\n3) Needs Help\n";
+	bool classroomNumberExists = false;
+	bool childExists = false;
+
+	int classroomIndex = -1;
+	int childIndex = -1;
+
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			if (db.db[i].teacher->classRoom.students[j].name == childName)
+			{
+				childExists = true;
+				student = db.db[i].teacher->classRoom.students[j];
+				classroomIndex = i;
+				childIndex = j;
+				break;
+			}
+		}
+	}
+
+	if (!childExists)
+	{
+		cout << C.red("Student does not exist!") << "\n\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
+	string learningProgress;
+
+	switch (student->learningProgress)
+	{
+	case LearningProgress::Achieved:
+		learningProgress = "Achieved";
+		break;
+	case LearningProgress::Need_Help:
+		learningProgress = "Needs Help";
+		break;
+	case LearningProgress::Progressing:
+		learningProgress = "Progressing";
+		break;
+	case LearningProgress::Not_Applicable:
+		learningProgress = "Not Applicable";
+		break;
+	}
+
+	cout << student->name << "'s current progress is " << C.blue(learningProgress)
+			 << "\n\n";
+
+	cout << "What would you like to update the students current progress to?\n";
+	cout << "1. Achieved"
+			 << "\n"
+			 << "2. Progressing"
+			 << "\n"
+			 << "3. Needs Help"
+			 << "\n";
+
+	int choice = getInput.getNumber();
+
+	switch (choice)
+	{
+	case 1:
+		db.db[classroomIndex].teacher->classRoom.students[childIndex].learningProgress = LearningProgress::Achieved;
+		break;
+	case 2:
+		db.db[classroomIndex].teacher->classRoom.students[childIndex].learningProgress = LearningProgress::Progressing;
+		break;
+	case 3:
+		db.db[classroomIndex].teacher->classRoom.students[childIndex].learningProgress = LearningProgress::Need_Help;
+		break;
+	default:
+		cout << "Invalid Choice!\n";
+		utils.waitForKeyPress();
+		utils.clear();
+		return;
+	}
+
+	cout << "Student's Record Updated!\n";
 	utils.waitForKeyPress();
-	utils.clear();
 }
 
 void StudentRecord::viewStudent()
@@ -383,6 +523,13 @@ void StudentRecord::viewStudent()
 		}
 	}
 
+	if (!childExists)
+	{
+		cout << C.red("Student does not exist!") << "\n\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
 	string gender;
 	string learningProgress;
 
@@ -419,6 +566,6 @@ void StudentRecord::viewStudent()
 	cout << "\nOthers: " << student->other << "% / 100%\n";
 	cout << "\nLearning Progress: " << learningProgress << "\n";
 	cout << "\n";
+
 	utils.waitForKeyPress();
-	utils.clear();
 }
