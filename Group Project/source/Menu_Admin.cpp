@@ -127,7 +127,26 @@ void MenuAdmin::classRecords()
 		resume = getInput.getString();
 		if (resume == "Yes")
 		{
-			classRecords();
+			for (User u : db.db)
+			{
+				if (u.teacher.has_value())
+				{
+					cout << "Enter the class number: ";
+					classroom = getInput.getNumber();
+					for (Student s : u.teacher->classRoom.students)
+					{
+						cout << "\n\nName: " << s.name << "\n";
+						cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
+						cout << "Date of Birth: " << s.dob << "\n";
+						cout << "Maths: " << s.math << "\n";
+						cout << "Science: " << s.science << "\n";
+						cout << "Writing: " << s.writing << "\n";
+						cout << "Reading: " << s.reading << "\n";
+						cout << "Others: " << s.other << "\n";
+						cout << "Learning Progress: " << s.learningProgress << "\n";
+					}
+				}
+			}
 		}
 		else if (resume == "No")
 		{
@@ -136,26 +155,6 @@ void MenuAdmin::classRecords()
 		else
 		{
 			cout << "\nInvalid Input!\n";
-		}
-	}
-	for (User u : db.db)
-	{
-		if (u.teacher.has_value())
-		{
-			cout << "Enter the class number: ";
-			classroom = getInput.getNumber();
-			for (Student s : u.teacher->classRoom.students)
-			{
-				cout << "\n\nName: " << s.name << "\n";
-				cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
-				cout << "Date of Birth: " << s.dob << "\n";
-				cout << "Maths: " << s.math << "\n";
-				cout << "Science: " << s.science << "\n";
-				cout << "Writing: " << s.writing << "\n";
-				cout << "Reading: " << s.reading << "\n";
-				cout << "Others: " << s.other << "\n";
-				cout << "Learning Progress: " << s.learningProgress << "\n";
-			}
 		}
 	}
 	utils.waitForKeyPress();
