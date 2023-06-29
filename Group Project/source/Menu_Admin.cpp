@@ -51,37 +51,68 @@ void MenuAdmin::parentRecords()
 	optional<class::Parent> parent;
 
 	cout << "Parent Records\n\n";
-	// TODO Take user's input to check with current data
 	cout << "Enter the Parent's Name:\n";
 	parentName = getInput.getString();
 
-	// TODO Add statement to check if that parent exists
 	bool parentExists = false;
 
 	for (int i = 0; i < db.db.size(); i++)
 	{
-
 		if (db.db[i].type != UserType::Parent)
 			continue;
+
 		if (db.db[i].parent->name == parentName)
 		{
-
 			parentExists = true;
 			parent = db.db[i].parent;
 			break;
 		}
 	}
 
-	// TODO Else if parent does exsist
-	cout << "\nThis is 'Parents Name' Record:\n\n";
+	if (!parentExists)
+	{
+		cout << "Parent not found.\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
+	string childsClassRoom;
+	string childsName;
+	bool childExists = false;
+
+	for (int i = 0; i < db.db.size(); i++)
+	{
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
+		{
+			for (const string& childId : parent->childIds)
+			{
+				if (db.db[i].teacher->classRoom.students[j].id == childId)
+				{
+					childExists = true;
+					childsName = db.db[i].teacher->classRoom.students[j].name;
+					childsClassRoom = to_string(db.db[i].teacher->classRoom.classRoomNumber);
+					break;
+				}
+			}
+			if (childExists)
+				break;
+		}
+		if (childExists)
+			break;
+	}
+
+	cout << "\nThis is '" << parent->name << "' Record:\n\n";
 	cout << "Full Name: " << parent->name << "\n";
-	cout << "Gender: " << (parent->gender ? "Male" : "Female") << "\n";
+	cout << "Gender: " << (parent->gender == Gender::Male ? "Male" : "Female") << "\n";
 	cout << "Date of Birth: " << parent->dob << "\n";
 	cout << "Email: " << parent->email << "\n";
 	cout << "Contact Number: " << parent->contactNumber << "\n";
-	cout << "Child(s) Full Name: " <<0 << "\n"; //
-	cout << "Child(s) Classroom Number: " << 0 << "\n"; //
-	cout << "Parent/Caregiver Emergency Contact Number: " << 0 << "\n"; // 
+	cout << "Child(s) Full Name: " << childsName << "\n";
+	cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
+	cout << "Parent/Caregiver Emergency Contact Number: " << parent->emergencyContactNumber << "\n";
 
 	utils.waitForKeyPress();
 }
@@ -154,41 +185,43 @@ void MenuAdmin::classRecords()
 void MenuAdmin::studentReport()
 {
 	utils.clear();
-
-	optional<Student> student;
-
+	int count = 1;
 	cout << "Student Report\n\n";
 	cout << "What Group do you want to view?\n";
 	cout << "1) Needs Help\n2) Progressing State\n\n";
 	int selection = getInput.getNumber();
-	cout << "\nStudents who need help:\n\n";
-	for (int i = 0; db.db.size();) 
-	{
-		for (int i = 0; i < db.db.size(); i++)
-		{
+	if (selection == 1)
+		cout << "Students who need help:\n";
+	if (selection == 2)
+		cout << "Students who are progressing:\n";
 
-			if (db.db[i].type != UserType::Teacher)
-				continue;
-		
-			if (selection == 1)
+	for (const User& user : db.db)
+	{
+		if (user.type != UserType::Teacher)
+			continue;
+
+		const class::Teacher& teacher = user.teacher.value();
+		const ClassRoom& classRoom = teacher.classRoom;
+
+		if (selection == 1)
+		{
+			for (const Student& student : classRoom.students)
 			{
-				/*for (int j = 0; db.db[i].teacher->classRoom();)
-				{
-					if (db.db[i].teacher->classRoom.students->learningProgress[j] == "Need Help") {
-						// TODO Add the real details of the students
-						cout << j << ") " << student->name << "\n";
-					}
-				}*/
+				if (student.learningProgress == LearningProgress::Need_Help)
+					cout << count << ") " << student.name << "\n";
+
 			}
-			else if (selection == 2)
-			{
-				// TODO Add the real details of the students
-				cout << "\nStudents who are progressing:\n\n";
-				cout << "1) Bill Hans: \n";
-				cout << "2) Chris Ball: \n";
-				cout << "3) Lizzy Stemp: \n";
-			}	cout << "...\n";
 		}
+		else if (selection == 2)
+		{
+			for (const Student& student : classRoom.students)
+			{
+				if (student.learningProgress == LearningProgress::Progressing)
+					cout << count << ") " << student.name << "\n";
+			}
+		}
+		count++;
 	}
+
 	utils.waitForKeyPress();
 }
