@@ -120,6 +120,24 @@ void MenuAdmin::parentRecords()
 void MenuAdmin::classRecords()
 {
 	int classroom;
+	string resume;
+	while (resume != "No")
+	{
+		cout << "Do you want to loop again? ";
+		resume = getInput.getString();
+		if (resume == "Yes")
+		{
+			classRecords();
+		}
+		else if (resume == "No")
+		{
+			cout << "\nLeaving now...";
+		}
+		else
+		{
+			cout << "\nInvalid Input!\n";
+		}
+	}
 	for (User u : db.db)
 	{
 		if (u.teacher.has_value())
@@ -138,24 +156,6 @@ void MenuAdmin::classRecords()
 				cout << "Others: " << s.other << "\n";
 				cout << "Learning Progress: " << s.learningProgress << "\n";
 			}
-		}
-	}
-	string resume;
-	while (resume != "No")
-	{
-		cout << "Do you want to loop again? ";
-		resume = getInput.getString();
-		if (resume == "Yes")
-		{
-			classRecords();
-		}
-		else if (resume == "No")
-		{
-			cout << "\nLeaving now...";
-		}
-		else
-		{
-			cout << "\nInvalid Input!\n";
 		}
 	}
 	utils.waitForKeyPress();
