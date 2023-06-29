@@ -140,46 +140,25 @@ void MenuAdmin::classRecords()
 			}
 		}
 	}
+	string resume;
+	while (resume != "No")
+	{
+		cout << "Do you want to loop again? ";
+		resume = getInput.getString();
+		if (resume == "Yes")
+		{
+			classRecords();
+		}
+		else if (resume == "No")
+		{
+			cout << "\nLeaving now...";
+		}
+		else
+		{
+			cout << "\nInvalid Input!\n";
+		}
+	}
 	utils.waitForKeyPress();
-	//utils.clear();
-
-	//optional<Student> student;
-	//int childClassroomNumber;
-
-	//cout << "Class Records\n\n";
-	//// TODO Take user's input to check with current data
-	//cout << "What Class do you want to view?:\n\n";
-	//childClassroomNumber = getInput.getNumber();
-	//// TODO Add if statement to check if class exists
-	//bool classroomNumberExists = false;
-
-	//for (int i = 0; i < db.db.size(); i++)
-	//{
-	//	if (db.db[i].teacher->classRoom.classRoomNumber != childClassroomNumber)
-	//		continue;
-
-	//	for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
-	//	{
-	//		/*if (db.db[i].classRoomNumber == childClassroomNumber)
-	//		{
-	//			student = db.db[i].teacher->classRoom.students[j];
-	//			break;
-	//		}*/
-	//	}
-	//}
-
-	//// TODO Else if class does exsist
-	//// TODO While loop to display all students in that class
-	//cout << "\nRoom 12's Records:\n\n";
-	//cout << "1) William Brown: \n";
-	//cout << "	(William's Student Details)\n";
-	//cout << "2) Steve Gine: \n";
-	//cout << "	(Steve Gine Student Details)\n";
-	//cout << "3) Alex Humbin: \n";
-	//cout << "	(Alex Humbin Student Details)\n";
-	//cout << "...\n";
-
-	//utils.waitForKeyPress();
 }
 
 void MenuAdmin::studentReport()
