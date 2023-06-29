@@ -213,6 +213,46 @@
       ],
       "username": "auto",
       "yearLevel": "year 8"
+    },
+    {
+      "classRoomNumber": 30,
+      "contactNumber": "1",
+      "dob": "1",
+      "email": "1",
+      "gender": 1,
+      "id": "harry 1",
+      "name": "harry",
+      "password": "1234",
+      "students": [
+        {
+          "dob": "1",
+          "english": 1.0,
+          "gender": 0,
+          "id": "john 1",
+          "learningProgress": 2,
+          "math": 1.0,
+          "name": "john",
+          "other": 1.0,
+          "reading": 1.0,
+          "science": 1.0,
+          "writing": 1.0
+        },
+        {
+          "dob": "1",
+          "english": 1.0,
+          "gender": 1,
+          "id": "emma 1",
+          "learningProgress": 0,
+          "math": 1.0,
+          "name": "emma",
+          "other": 1.0,
+          "reading": 1.0,
+          "science": 1.0,
+          "writing": 1.0
+        }
+      ],
+      "username": "l",
+      "yearLevel": "year 99"
     }
   ]
 }
