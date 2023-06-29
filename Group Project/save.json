@@ -134,6 +134,19 @@
           "reading": 35.0,
           "science": 51.0,
           "writing": 63.0
+        },
+        {
+          "dob": "22/07/2017",
+          "english": 74.0,
+          "gender": 0,
+          "id": "Arthur 22/07/2017",
+          "learningProgress": 0,
+          "math": 79.0,
+          "name": "Arthur",
+          "other": 91.0,
+          "reading": 71.0,
+          "science": 68.0,
+          "writing": 81.0
         }
       ],
       "username": "rob",
@@ -223,7 +236,7 @@
           "id": "Mary 13/6/2008",
           "learningProgress": 1,
           "math": 80.0,
-          "name": "Mary 13/6/2008",
+          "name": "Mary",
           "other": 5.0,
           "reading": 12.0,
           "science": 70.0,
@@ -288,7 +301,7 @@
           "english": 34.0,
           "gender": 0,
           "id": "Billy 18/03/2015",
-          "learningProgress": 2,
+          "learningProgress": 1,
           "math": 23.0,
           "name": "Billy",
           "other": 45.0,

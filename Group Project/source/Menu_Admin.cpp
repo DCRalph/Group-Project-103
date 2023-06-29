@@ -112,6 +112,13 @@ void MenuAdmin::parentRecords()
 	cout << "Contact Number: " << parent->contactNumber << "\n";
 	cout << "Child(s) Full Name: " << childsName << "\n";
 	cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
+	if (int i = 1 < parent->childIds.size()) {
+		while (i != parent->childIds.size()) {
+			cout << "Child(s) Full Name: " << childsName << "\n";
+			cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
+			i++;
+		}
+	}
 	cout << "Parent/Caregiver Emergency Contact Number: " << parent->emergencyContactNumber << "\n";
 
 	utils.waitForKeyPress();
@@ -158,7 +165,6 @@ void MenuAdmin::classRecords()
 void MenuAdmin::studentReport()
 {
 	utils.clear();
-	int count = 1;
 	cout << "Student Report\n\n";
 	cout << "What Group do you want to view?\n";
 	cout << "1) Needs Help\n2) Progressing State\n\n";
@@ -181,7 +187,7 @@ void MenuAdmin::studentReport()
 			for (const Student& student : classRoom.students)
 			{
 				if (student.learningProgress == LearningProgress::Need_Help)
-					cout << count << ") " << student.name << "\n";
+					cout << "- " << student.name << "\n";
 			}
 		}
 		else if (selection == 2)
@@ -189,10 +195,9 @@ void MenuAdmin::studentReport()
 			for (const Student& student : classRoom.students)
 			{
 				if (student.learningProgress == LearningProgress::Progressing)
-					cout << count << ") " << student.name << "\n";
+					cout << "- " << student.name << "\n";
 			}
 		}
-		count++;
 	}
 
 	utils.waitForKeyPress();

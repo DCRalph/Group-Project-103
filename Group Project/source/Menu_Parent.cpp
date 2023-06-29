@@ -70,10 +70,28 @@ void MenuParent::childRecord()
 			}
 		}
 	}
-	// TODO Else if student does exsist
+
+	string learningProgress;
+	
+	switch (student->learningProgress)
+	{
+	case LearningProgress::Achieved:
+		learningProgress = "Achieved";
+		break;
+	case LearningProgress::Need_Help:
+		learningProgress = "Needs Help";
+		break;
+	case LearningProgress::Progressing:
+		learningProgress = "Progressing";
+		break;
+	case LearningProgress::Not_Applicable:
+		learningProgress = "Not Applicable";
+		break;
+	}
+
 	cout << "\n\nThis is the Record for 'students name'"<< "\n";
 	cout << "Full Name: " << student->name << "\n";
-	cout << "\nGender: " << (student->gender ? "Male":"Female") << "\n";
+	cout << "\nGender: " << (student->gender ? "Female":"Male") << "\n";
 	cout << "\nMaths: " << student->math << "% / 100%\n";
 	cout << "\nScience: " << student->science << "% / 100%\n";
 	cout << "\nWriting: " << student->writing << "% / 100%\n";
