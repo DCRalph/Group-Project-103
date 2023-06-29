@@ -77,7 +77,7 @@ public:
 
 class ClassRoom
 {
-public:
+public: 
   ClassRoom();
   ClassRoom(int _classRoomNumber, string _yearLevel);
   vector<Student> students;
