@@ -256,9 +256,158 @@ void StudentRecord::editStudent()
 		return;
 	}
 
-	cout << C.brightMagenta("What would you like to edit on ") << student->name << "\n\n";
+	int opt;
 
-	utils.waitForKeyPress();
+	do
+	{
+		utils.clear();
+
+		cout << C.brightMagenta("What would you like to edit on ") << student->name << "\n\n";
+
+		cout << C.cyan("0") << ". Exit"
+				 << "\n";
+		cout << C.cyan("1") << ". Name"
+				 << "\n";
+		cout << C.cyan("2") << ". Date of Birth"
+				 << "\n";
+		cout << C.cyan("3") << ". Gender"
+				 << "\n";
+		cout << C.cyan("4") << ". Maths"
+				 << "\n";
+		cout << C.cyan("5") << ". Science"
+				 << "\n";
+		cout << C.cyan("6") << ". English"
+				 << "\n";
+		cout << C.cyan("7") << ". Writing"
+				 << "\n";
+		cout << C.cyan("8") << ". Reading"
+				 << "\n";
+		cout << C.cyan("9") << ". Other"
+				 << "\n";
+		// cout << C.cyan("10") << ". Learning Progress"
+		//  << "\n";
+
+		cout << "\n";
+
+		cout << "Enter your choice: ";
+		opt = getInput.getNumber();
+
+		switch (opt)
+		{
+		case 0:
+		{
+			cout << C.green("Exiting...") << "\n";
+			return;
+		}
+		break;
+
+		case 1:
+		{
+			cout << "Enter new name: ";
+			string newName = getInput.getString();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].name = newName;
+			cout << C.green("Name changed.") << "\n";
+			break;
+		}
+
+		case 2:
+		{
+			cout << "Enter new date of birth: ";
+			string newDob = getInput.getString();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].dob = newDob;
+			cout << C.green("Date of birth changed.") << "\n";
+			break;
+		}
+
+		case 3:
+		{
+			bool validGender = true;
+			string gender;
+			Gender genderEnum;
+			do
+			{
+				cout << "Enter new Gender: ";
+				gender = getInput.getString();
+
+				for (int i = 0; i < gender.size(); i++)
+					gender[i] = tolower(gender[i]);
+
+				validGender = true;
+
+				if (gender == "male")
+					genderEnum = Gender::Male;
+				else if (gender == "female")
+					genderEnum = Gender::Female;
+				else
+					validGender = false;
+
+				if (!validGender)
+					cout << C.red("Invalid gender. Please try again.") << "\n";
+
+			} while (!validGender);
+
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].dob = genderEnum;
+			cout << C.green("Gender changed.") << "\n";
+			break;
+		}
+
+		case 4:
+		{
+			cout << "Enter new maths score: ";
+			int newMaths = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].math = newMaths;
+			cout << C.green("Maths score changed.") << "\n";
+			break;
+		}
+
+		case 5:
+		{
+			cout << "Enter new science score: ";
+			int newScience = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].science = newScience;
+			cout << C.green("Science score changed.") << "\n";
+			break;
+		}
+
+		case 6:
+		{
+			cout << "Enter new english score: ";
+			int newEnglish = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].english = newEnglish;
+			cout << C.green("English score changed.") << "\n";
+			break;
+		}
+
+		case 7:
+		{
+			cout << "Enter new writing score: ";
+			int newWriting = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].writing = newWriting;
+			cout << C.green("Writing score changed.") << "\n";
+			break;
+		}
+
+		case 8:
+		{
+			cout << "Enter new reading score: ";
+			int newReading = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].reading = newReading;
+			cout << C.green("Reading score changed.") << "\n";
+			break;
+		}
+
+		case 9:
+		{
+			cout << "Enter new other score: ";
+			int newOther = getInput.getNumber();
+			db.db[classroomIndex].teacher->classRoom.students[childIndex].other = newOther;
+			cout << C.green("Other score changed.") << "\n";
+			break;
+		}
+		}
+
+		utils.waitForKeyPress();
+	} while (opt != 0);
 
 	return;
 }
