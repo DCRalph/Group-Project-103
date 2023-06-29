@@ -128,8 +128,8 @@ void MenuAdmin::classRecords()
 			classroom = getInput.getNumber();
 			for (Student s : u.teacher->classRoom.students)
 			{
-				cout << "Name: " << s.name << "\n";
-				cout << "Gender: " << s.gender << "\n";
+				cout << "\n\nName: " << s.name << "\n";
+				cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
 				cout << "Date of Birth: " << s.dob << "\n";
 				cout << "Maths: " << s.math << "\n";
 				cout << "Science: " << s.science << "\n";
@@ -209,7 +209,6 @@ void MenuAdmin::studentReport()
 			{
 				if (student.learningProgress == LearningProgress::Need_Help)
 					cout << count << ") " << student.name << "\n";
-
 			}
 		}
 		else if (selection == 2)
