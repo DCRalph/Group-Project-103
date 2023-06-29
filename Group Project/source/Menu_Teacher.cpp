@@ -6,11 +6,11 @@ int MenuTeacher::execute()
 {
 	StudentRecord StudentRecord;
 
-	utils.clear();
-
 	int selection;
 	do
 	{
+		utils.clear();
+
 		cout << "Welcome " << db.currentUser.getName() << " to Teacher Homescreen\n\n";
 		cout << "1. Student Records\n";
 		cout << "2. Exit\n";

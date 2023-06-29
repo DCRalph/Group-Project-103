@@ -389,6 +389,25 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 			 << "Password: ";
 	password = getInput.getString();
 
+	for (int i = 0; i < db.db.size(); i++)
+	{
+
+		if (db.db[i].type != UserType::Teacher)
+			continue;
+
+		if (db.db[i].teacher->classRoom.classRoomNumber != classroomNumber)
+			continue;
+
+		cout << "\n"
+				 << "Classroom already exists!"
+				 << C.red("Registration cancelled.")
+				 << "\n";
+
+		utils.waitForKeyPress();
+
+		return;
+	}
+
 	Login login(username, password);
 	ClassRoom class1(classroomNumber, teachingYear);
 	class ::Teacher teacher(name, name + " " + dob, email, dob, contactNumber, genderEnum, class1);
@@ -397,6 +416,16 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 	db.db.push_back(user);
 
 	cout << "\n";
-	utils.waitForKeyPress();
+
+	if (_classRoomNumber == -1)
+	{
+		cout << "Teacher registration complete."
+				 << "\n";
+		utils.waitForKeyPress();
+	}
+	else
+		cout << "Teacher added to class."
+				 << "\n";
+
 	// utils.clear();
 }
