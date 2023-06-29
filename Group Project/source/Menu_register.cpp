@@ -83,7 +83,7 @@ void MenuRegister::registerParent()
 			 << "\n"
 			 << "\n";
 	cout << "\n"
-			 << "Full Name: ";
+			 << "Name: ";
 	name = getInput.getString();
 
 	bool validGender = true;
@@ -158,7 +158,7 @@ void MenuRegister::registerParent()
 				 << "\n";
 
 		cout
-				<< "Child Full Name: ";
+				<< "Child's Name: ";
 
 		childName = getInput.getString();
 
@@ -322,7 +322,7 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 			 << "\n"
 			 << "\n";
 	cout << "\n"
-			 << "Full Name: ";
+			 << "Name: ";
 	name = getInput.getString();
 
 	bool validGender = true;

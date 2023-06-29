@@ -90,8 +90,8 @@ void MenuParent::childRecord()
 	}
 	utils.clear();
 	cout << "This is the Record for '"<< student->name << "'";
-	cout << "\n\n--------------------------------------------------------------------\n\n";
-	cout << "Full Name: " << student->name << "\n";
+	cout << "\n\n----------------------------------------------\n\n";
+	cout << "Name: " << student->name << "\n";
 	cout << "\nGender: " << (student->gender ? "Female":"Male") << "\n";
 	cout << "\nMaths: " << student->math << "% / 100%\n";
 	cout << "\nScience: " << student->science << "% / 100%\n";

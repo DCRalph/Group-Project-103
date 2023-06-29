@@ -103,18 +103,18 @@ void MenuAdmin::parentRecords()
 		if (childExists)
 			break;
 	}
-
-	cout << "\nThis is '" << parent->name << "' Record:\n\n";
-	cout << "Full Name: " << parent->name << "\n";
+	utils.clear();
+	cout << "This is '" << parent->name << "s' Record:\n\n";
+	cout << "Name: " << parent->name << "\n";
 	cout << "Gender: " << (parent->gender == Gender::Male ? "Male" : "Female") << "\n";
 	cout << "Date of Birth: " << parent->dob << "\n";
 	cout << "Email: " << parent->email << "\n";
 	cout << "Contact Number: " << parent->contactNumber << "\n";
-	cout << "Child(s) Full Name: " << childsName << "\n";
+	cout << "Child(s) Name: " << childsName << "\n";
 	cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
 	if (int i = 1 < parent->childIds.size()) {
 		while (i != parent->childIds.size()) {
-			cout << "Child(s) Full Name: " << childsName << "\n";
+			cout << "Child(s) Name: " << childsName << "\n";
 			cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
 			i++;
 		}
@@ -126,10 +126,13 @@ void MenuAdmin::parentRecords()
 
 void MenuAdmin::classRecords()
 {
+	utils.clear();
 	string edu[] = { "Achieved", "Progressing", "Needs Help", "NA" };
 	int classroom;
 	cout << "Enter the class number: ";
 	classroom = getInput.getNumber();
+	utils.clear();
+	cout << "Class Room " << classroom << "'s Student Records:";
 	for (User u : db.db)
 	{
 		if (u.teacher.has_value())
@@ -138,7 +141,8 @@ void MenuAdmin::classRecords()
 			{
 				for (Student s : u.teacher->classRoom.students)
 				{
-					cout << "\n\nName: " << s.name << "\n";
+					cout << "\n\n----------------------------------------------\n\n";
+					cout << "Name: " << s.name << "\n";
 					cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
 					cout << "Date of Birth: " << s.dob << "\n";
 					cout << "Maths: " << s.math << "\n";
@@ -161,6 +165,7 @@ void MenuAdmin::studentReport()
 	cout << "What Group do you want to view?\n";
 	cout << "1) Needs Help\n2) Progressing State\n\n";
 	int selection = getInput.getNumber();
+	utils.clear();
 	if (selection == 1)
 		cout << "Students who need help:\n";
 	if (selection == 2)
