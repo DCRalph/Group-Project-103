@@ -120,34 +120,25 @@ void MenuAdmin::parentRecords()
 void MenuAdmin::classRecords()
 {
 	int classroom;
-	string resume;
 	cout << "Enter the class number: ";
 	classroom = getInput.getNumber();
-	while (resume != "no")
+	for (User u : db.db)
 	{
-		cout << "Do you want to loop? ";
-		resume = getInput.getString();
-		if (resume == "yes")
+		if (u.teacher.has_value())
 		{
-			for (User u : db.db)
+			if (classroom == u.teacher->classRoom.classRoomNumber)
 			{
-				if (u.teacher.has_value())
+				for (Student s : u.teacher->classRoom.students)
 				{
-					if (classroom == u.teacher->classRoom.classRoomNumber)
-					{
-						for (Student s : u.teacher->classRoom.students)
-						{
-							cout << "\n\nName: " << s.name << "\n";
-							cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
-							cout << "Date of Birth: " << s.dob << "\n";
-							cout << "Maths: " << s.math << "\n";
-							cout << "Science: " << s.science << "\n";
-							cout << "Writing: " << s.writing << "\n";
-							cout << "Reading: " << s.reading << "\n";
-							cout << "Others: " << s.other << "\n";
-							cout << "Learning Progress: " << s.learningProgress << "\n";
-						}
-					}
+					cout << "\n\nName: " << s.name << "\n";
+					cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
+					cout << "Date of Birth: " << s.dob << "\n";
+					cout << "Maths: " << s.math << "\n";
+					cout << "Science: " << s.science << "\n";
+					cout << "Writing: " << s.writing << "\n";
+					cout << "Reading: " << s.reading << "\n";
+					cout << "Others: " << s.other << "\n";
+					cout << "Learning Progress: " << s.learningProgress << "\n";
 				}
 			}
 		}
