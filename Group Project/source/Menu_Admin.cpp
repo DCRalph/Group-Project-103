@@ -120,10 +120,14 @@ void MenuAdmin::parentRecords()
 void MenuAdmin::classRecords()
 {
 	int classroom;
-	for (User u : db.db)
+	string resume;
+	while (resume != "no")
 	{
-		if (u.teacher.has_value())
+		cout << "Do you want to loop? ";
+		resume = getInput.getString();
+		if (resume == "yes")
 		{
+			User u;
 			cout << "Enter the class number: ";
 			classroom = getInput.getNumber();
 			for (Student s : u.teacher->classRoom.students)
@@ -139,17 +143,7 @@ void MenuAdmin::classRecords()
 				cout << "Learning Progress: " << s.learningProgress << "\n";
 			}
 		}
-	}
-	string resume;
-	while (resume != "No")
-	{
-		cout << "Do you want to loop again? ";
-		resume = getInput.getString();
-		if (resume == "Yes")
-		{
-			classRecords();
-		}
-		else if (resume == "No")
+		else if (resume == "no")
 		{
 			cout << "\nLeaving now...";
 		}
