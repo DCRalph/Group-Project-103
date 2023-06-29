@@ -110,17 +110,17 @@ void MenuParent::schoolNotice()
 	cout << "		| School Notices: |\n";
 	cout << "		-------------------";
 	cout << "\n\n--------------------------------------------------------------------\n\n";
-	cout << "- 7th July 2023\n\n" << 
+	cout << "7th July 2023\n\n" << 
 		"All the students will be pleased to know that our school is organising a five-day tour to The Nelson Provincial Museum\n" <<	
 		"		Classes - 3 to 5\n"
 			 << "	Date of departure - 22nd July 2023\n	Date of return - 27 July 2023\n"
 			 << "Those who are interested may deposit $500/ - per head." 
 		<< "\nThe cost is inclusive of sight seeing, boarding and loding at a 3-star hotel." 
 		<< "\nPlease do so by 12th July"
-		<< "\n- Chris";
+		<< "\n-Chris";
 	cout << "\n\n--------------------------------------------------------------------\n\n";
-	cout << "- 13th July 2023\n\nChildren are informed that our school is having a sale of its old sports equipment like cricket bats, badmintion rackets, footballs, cricket and football equipment etc. in the P.E. Room. Those interesed in purchasing the sports products can ettend the P.E. Room on the announced date during school hours or recess time.";
-	cout << "\n- Sarita\nHead of Department\n\n";
+	cout << "13th July 2023\n\nChildren are informed that our school is having a sale of its old sports equipment like cricket bats, badmintion rackets, footballs, cricket and football equipment etc. in the P.E. Room. Those interesed in purchasing the sports products can ettend the P.E. Room on the announced date during school hours or recess time.";
+	cout << "\n-Sarita\nHead of Department\n\n";
 	utils.waitForKeyPress();
 	utils.clear();
 }
