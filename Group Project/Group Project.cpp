@@ -178,7 +178,7 @@ int main()
   db.load();
   // makeTestUsers();
 
-  db.currentUser = db.db[5]; // auto login to admin
+  //db.currentUser = db.db[5]; // auto login to admin
 
   int choice;
 

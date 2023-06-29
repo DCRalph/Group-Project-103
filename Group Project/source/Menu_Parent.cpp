@@ -88,8 +88,9 @@ void MenuParent::childRecord()
 		learningProgress = "Not Applicable";
 		break;
 	}
-
-	cout << "\n\nThis is the Record for 'students name'"<< "\n";
+	utils.clear();
+	cout << "This is the Record for '"<< student->name << "'";
+	cout << "\n\n--------------------------------------------------------------------\n\n";
 	cout << "Full Name: " << student->name << "\n";
 	cout << "\nGender: " << (student->gender ? "Female":"Male") << "\n";
 	cout << "\nMaths: " << student->math << "% / 100%\n";

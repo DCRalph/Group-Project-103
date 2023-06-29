@@ -126,6 +126,7 @@ void MenuAdmin::parentRecords()
 
 void MenuAdmin::classRecords()
 {
+	string edu[] = { "Achieved", "Progressing", "Needs Help", "NA" };
 	int classroom;
 	cout << "Enter the class number: ";
 	classroom = getInput.getNumber();
@@ -145,7 +146,7 @@ void MenuAdmin::classRecords()
 					cout << "Writing: " << s.writing << "\n";
 					cout << "Reading: " << s.reading << "\n";
 					cout << "Others: " << s.other << "\n";
-					cout << "Learning Progress: " << s.learningProgress << "\n";
+					cout << "Learning Progress: " << edu[s.learningProgress] << "\n";
 				}
 			}
 		}
