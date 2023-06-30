@@ -70,10 +70,7 @@ void StudentRecord::addStudent()
 	cout << "Enter the student's details: "
 			 << "\n";
 
-	cout << "Enter \"myclass\" to add a student to your class."
-			 << "\n";
-
-	cout << "Add student to your class";
+	cout << "Add student to your class ";
 	bool myClass = getInput.getYesNo(true);
 
 	if (myClass)
