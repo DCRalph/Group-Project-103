@@ -12,8 +12,11 @@ int MenuTeacher::execute()
 		utils.clear();
 
 		cout << "Welcome " << db.currentUser.getName() << " to Teacher Homescreen\n\n";
-		cout << "1. Student Records\n";
-		cout << "2. Exit\n";
+		// cout << "1. Student Records\n";
+		// cout << "2. Exit\n";
+
+		cout << C.cyan("1.") << " Student Records\n";
+		cout << C.red("2.") << " Exit\n";
 		cout << "Enter selection: ";
 		selection = getInput.getNumber();
 
@@ -26,7 +29,7 @@ int MenuTeacher::execute()
 			cout << "\nInvalid choice!\n";
 		}
 	} while (selection != 2);
-	cout << "\nGoodbye!";
+	// cout << "\nGoodbye!";
 
 	return 0;
 }

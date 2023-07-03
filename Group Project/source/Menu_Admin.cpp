@@ -12,10 +12,15 @@ int MenuAdmin::execute()
 		utils.clear();
 
 		cout << "\nWelcome " << db.currentUser.getName() << " to Admin Homescreen\n\n";
-		cout << "1. Parent Records\n";
-		cout << "2. Class Records\n";
-		cout << "3. Student Report\n";
-		cout << "4. Exit\n";
+		cout << C.cyan("1.") << " Parent Records\n";
+		cout << C.cyan("2.") << " Class Records\n";
+		cout << C.cyan("3.") << " Student Report\n";
+		cout << C.red("4.") << " Exit\n";
+
+		// cout << "1. Parent Records\n";
+		// cout << "2. Class Records\n";
+		// cout << "3. Student Report\n";
+		// cout << "4. Exit\n";
 		cout << "Enter selection: ";
 
 		selection = getInput.getNumber();
@@ -32,12 +37,11 @@ int MenuAdmin::execute()
 			this->studentReport();
 			break;
 		case 4:
-			cout << "\nGoodbye!";
 			break;
 		default:
 			utils.clear();
 			cout << "\n";
-			cout << ("Invalid input, please try again.") << "\n\n";
+			cout << C.red("Invalid input, please try again.") << "\n\n";
 
 			utils.waitForKeyPress();
 		}
@@ -124,8 +128,8 @@ void MenuAdmin::parentRecords()
 	// 	}
 	// }
 	cout << "Parent/Caregiver Emergency Contact Number: " << parent->emergencyContactNumber << "\n";
-	cout << "\n" <<
-	"Children: ";
+	cout << "\n"
+			 << "Children: ";
 	for (string id : parent->childIds)
 	{
 		for (User u : db.db)

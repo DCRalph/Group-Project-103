@@ -10,12 +10,19 @@ int StudentRecord::execute()
 	{
 		utils.clear();
 		cout << "Student Records\n\n";
-		cout << "1. Add Student\n";
-		cout << "2. Edit student Record\n";
-		cout << "3. Delete Student Record\n";
-		cout << "4. Update Record\n";
-		cout << "5. View the Records\n";
-		cout << "6. Exit\n";
+		cout << C.cyan("1.") << " Add Student\n";
+		cout << C.cyan("2.") << " Edit student Record\n";
+		cout << C.cyan("3.") << " Delete Student Record\n";
+		cout << C.cyan("4.") << " Update Record\n";
+		cout << C.cyan("5.") << " View the Records\n";
+		cout << C.red("6.") << " Exit\n";
+
+		// cout << "1. Add Student\n";
+		// cout << "2. Edit student Record\n";
+		// cout << "3. Delete Student Record\n";
+		// cout << "4. Update Record\n";
+		// cout << "5. View the Records\n";
+		// cout << "6. Exit\n";
 		cout << "Enter a number: ";
 		opt = getInput.getNumber();
 		if (opt == 1)

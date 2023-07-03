@@ -13,14 +13,21 @@ int MenuRegister::execute()
 			 << "\n"
 			 << "\n";
 
+	// cout << "Occupation:"
+	// 		 << "\n"
+	// 		 << "1. Parent"
+	// 		 << "\n"
+	// 		 << "2. Teacher"
+	// 		 << "\n"
+	// 		 << "3. Exit"
+	// 		 << "\n";
+
 	cout << "Occupation:"
-			 << "\n"
-			 << "1. Parent"
-			 << "\n"
-			 << "2. Teacher"
-			 << "\n"
-			 << "3. Exit"
 			 << "\n";
+
+	cout << C.cyan("1.") << " Parent\n";
+	cout << C.cyan("2.") << " Teacher\n";
+	cout << C.red("3.") << " Exit\n";
 
 	cout << "\n"
 			 << "Enter your occupation: ";
@@ -35,7 +42,7 @@ int MenuRegister::execute()
 		return 0;
 
 	else
-		cout << "Invalid input";
+		cout << C.red("Invalid input");
 
 	return 0;
 }
@@ -109,7 +116,7 @@ void MenuRegister::registerParent()
 
 		if (!validGender)
 		{
-			cout << ("Invalid gender. Please try again.") << "\n";
+			cout << C.red("Invalid gender. Please try again.") << "\n";
 			// cout << C.red("Invalid gender. Please try again.") << "\n";
 		}
 

@@ -13,7 +13,7 @@ int MenuLogin::execute()
        //  << "Login"
        << C.brightMagenta("Login")
        << "\n"
-       << "Type \"exit\" to go back to the main menu."
+       << "Type \"" << C.red("exit") << "\" to go back to the main menu."
        << "\n"
        << "\n";
 
@@ -46,7 +46,7 @@ int MenuLogin::execute()
 
     if (db.db[i].login.password != password)
     {
-      cout << ("Invalid password!") << "\n";
+      cout << C.red("Invalid password!") << "\n";
       // cout << C.red("Invalid password!") << "\n";
 
       // db.db[i].attempts++;
@@ -57,7 +57,7 @@ int MenuLogin::execute()
     }
 
     cout << "\n";
-    cout << ("Logged in!") << "\n";
+    cout << C.green("Logged in!") << "\n";
 
     cout << "Welcome, " << db.db[i].getName() << "!"
          << "\n";
@@ -70,7 +70,7 @@ int MenuLogin::execute()
     return 1;
   }
 
-  cout << ("Invalid username or password!") << "\n";
+  cout << C.red("Invalid username or password!") << "\n";
   utils.waitForKeyPress();
 
   return 0;

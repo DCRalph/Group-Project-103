@@ -11,9 +11,9 @@ int MenuParent::execute()
 		utils.clear();
 		cout << "\nWelcome " << db.currentUser.getName() << " to Parent Homescreen\n\n";
 
-		cout << "1) View Child's Record\n";
-		cout << "2) School Notices\n";
-		cout << "3) Exit\n";
+		cout << C.cyan("1.") << " View Child's Record\n";
+		cout << C.cyan("2.") << " School Notices\n";
+		cout << C.red("3.") << " Exit\n";
 
 		cout << "Enter selection: ";
 
@@ -26,10 +26,12 @@ int MenuParent::execute()
 			this->schoolNotice();
 
 		else
-			cout << "\nInvalid choice!\n";
+			cout << "\n"
+					 << C.red("Invalid choice!")
+					 << "\n";
 
 	} while (selection != 3);
-	cout << "\nGoodbye!";
+	// cout << "\nGoodbye!";
 
 	return 0;
 }
@@ -73,7 +75,9 @@ void MenuParent::childRecord()
 
 	if (!childExists)
 	{
-		cout << "\n\nChild does not exist!\n\n";
+		cout << "\n\n"
+				 << C.red("Child does not exist!")
+				 << "\n\n";
 		utils.waitForKeyPress();
 		return;
 	}

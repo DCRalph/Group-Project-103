@@ -85,7 +85,7 @@ void displayMenu(bool logedIn = false)
       break;
     }
 
-    cout << C.cyan("2.") << " Logout"
+    cout << C.cyan("2.") << C.yellow(" Logout")
          << "\n";
   }
   else
@@ -100,7 +100,7 @@ void displayMenu(bool logedIn = false)
       << "\n";
   cout << C.cyan("4.") << " Contact Details"
        << "\n";
-  cout << C.cyan("5.") << " Exit and save"
+  cout << C.red("5.") << " Exit and save"
        << "\n";
 }
 
@@ -178,7 +178,7 @@ int main()
   db.load();
   // makeTestUsers();
 
-  //db.currentUser = db.db[5]; // auto login to admin
+  // db.currentUser = db.db[5]; // auto login to admin
 
   int choice;
 
