@@ -8,6 +8,7 @@ int MenuParent::execute()
 	int selection;
 	do
 	{
+		utils.clear();
 		cout << "\nWelcome " << db.currentUser.getName() << " to Parent Homescreen\n\n";
 
 		cout << "1) View Child's Record\n";
@@ -41,12 +42,11 @@ void MenuParent::childRecord()
 	int childClassroomNumber;
 	cout << "View Child's Record\n\n";
 	cout << "Enter your kid's Name and Class:\n\n";
-	// TODO Take user's input to check with current data
+
 	cout << "Student's Name: ";
 	childName = getInput.getString();
 	cout << "\nStudent's Class: ";
 	childClassroomNumber = getInput.getNumber();
-	// TODO Add if statement to check if that student exists
 
 	bool classroomNumberExists = false;
 	bool childExists = false;
@@ -71,8 +71,15 @@ void MenuParent::childRecord()
 		}
 	}
 
+	if (!childExists)
+	{
+		cout << "\n\nChild does not exist!\n\n";
+		utils.waitForKeyPress();
+		return;
+	}
+
 	string learningProgress;
-	
+
 	switch (student->learningProgress)
 	{
 	case LearningProgress::Achieved:
@@ -89,10 +96,10 @@ void MenuParent::childRecord()
 		break;
 	}
 	utils.clear();
-	cout << "This is the Record for '"<< student->name << "'";
+	cout << "This is the Record for '" << student->name << "'";
 	cout << "\n\n----------------------------------------------\n\n";
 	cout << "Name: " << student->name << "\n";
-	cout << "\nGender: " << (student->gender ? "Female":"Male") << "\n";
+	cout << "\nGender: " << (student->gender ? "Female" : "Male") << "\n";
 	cout << "\nMaths: " << student->math << "% / 100%\n";
 	cout << "\nScience: " << student->science << "% / 100%\n";
 	cout << "\nWriting: " << student->writing << "% / 100%\n";
@@ -102,7 +109,6 @@ void MenuParent::childRecord()
 	cout << "\n";
 
 	utils.waitForKeyPress();
-	utils.clear();
 }
 void MenuParent::schoolNotice()
 {
@@ -111,17 +117,16 @@ void MenuParent::schoolNotice()
 	cout << "		| School Notices: |\n";
 	cout << "		-------------------";
 	cout << "\n\n--------------------------------------------------------------------\n\n";
-	cout << "- 7th July 2023\n\n" << 
-		"All the students will be pleased to know that our school is organising a five-day tour to The Nelson Provincial Museum\n" <<	
-		"		Classes - 3 to 5\n"
+	cout << "- 7th July 2023\n\n"
+			 << "All the students will be pleased to know that our school is organising a five-day tour to The Nelson Provincial Museum\n"
+			 << "		Classes - 3 to 5\n"
 			 << "	Date of departure - 22nd July 2023\n	Date of return - 27 July 2023\n"
-			 << "Those who are interested may deposit $500/ - per head." 
-		<< "\nThe cost is inclusive of sight seeing, boarding and loding at a 3-star hotel." 
-		<< "\nPlease do so by 12th July"
-		<< "\n- Chris";
+			 << "Those who are interested may deposit $500/ - per head."
+			 << "\nThe cost is inclusive of sight seeing, boarding and loding at a 3-star hotel."
+			 << "\nPlease do so by 12th July"
+			 << "\n- Chris";
 	cout << "\n\n--------------------------------------------------------------------\n\n";
 	cout << "- 13th July 2023\n\nChildren are informed that our school is having a sale of its old sports equipment like cricket bats, badmintion rackets, footballs, cricket and football equipment etc. in the P.E. Room. Those interesed in purchasing the sports products can ettend the P.E. Room on the announced date during school hours or recess time.";
 	cout << "\n- Sarita\nHead of Department\n\n";
 	utils.waitForKeyPress();
-	utils.clear();
 }

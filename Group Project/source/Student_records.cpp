@@ -4,42 +4,50 @@ using namespace std;
 
 int StudentRecord::execute()
 {
-	utils.clear();
 	int opt;
-	cout << "Student Records\n\n";
-	cout << "1. Add Student\n";
-	cout << "2. Edit student Record\n";
-	cout << "3. Delete Student Record\n";
-	cout << "4. Update Record\n";
-	cout << "5. View the Records\n";
-	cout << "Enter a number: ";
-	opt = getInput.getNumber();
-	if (opt == 1)
-	{
-		this->addStudent();
-	}
-	else if (opt == 2)
-	{
-		this->editStudent();
-	}
-	else if (opt == 3)
-	{
-		this->deleteStudent();
-	}
-	else if (opt == 4)
-	{
-		this->updateStudent();
-	}
-	else if (opt == 5)
-	{
-		this->viewStudent();
-	}
-	else
-	{
-		cout << "\nInalid Choice!\n";
 
-		StudentRecord();
-	}
+	do
+	{
+		utils.clear();
+		cout << "Student Records\n\n";
+		cout << "1. Add Student\n";
+		cout << "2. Edit student Record\n";
+		cout << "3. Delete Student Record\n";
+		cout << "4. Update Record\n";
+		cout << "5. View the Records\n";
+		cout << "6. Exit\n";
+		cout << "Enter a number: ";
+		opt = getInput.getNumber();
+		if (opt == 1)
+		{
+			this->addStudent();
+		}
+		else if (opt == 2)
+		{
+			this->editStudent();
+		}
+		else if (opt == 3)
+		{
+			this->deleteStudent();
+		}
+		else if (opt == 4)
+		{
+			this->updateStudent();
+		}
+		else if (opt == 5)
+		{
+			this->viewStudent();
+		}
+		else if (opt == 6)
+			;
+		else
+		{
+			cout << "\nInalid Choice!\n";
+
+			StudentRecord();
+		}
+	} while (opt != 6);
+
 	return 0;
 }
 
@@ -532,7 +540,7 @@ void StudentRecord::deleteStudent()
 		cout << C.green("Student's Record Removed!") << "\n";
 	}
 	else
-		cout << C.yellow("Student's Record Not Removed!") << "\n";
+		cout << C.red("Student's Record Not Removed!") << "\n";
 
 	utils.waitForKeyPress();
 }

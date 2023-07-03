@@ -2,6 +2,8 @@
 
 using namespace std;
 
+string edu[] = {"Achieved", "Progressing", "Needs Help", "NA"};
+
 int MenuAdmin::execute()
 {
 	int selection;
@@ -48,7 +50,7 @@ void MenuAdmin::parentRecords()
 {
 	utils.clear();
 	string parentName;
-	optional<class::Parent> parent;
+	optional<class ::Parent> parent;
 
 	cout << "Parent Records\n\n";
 	cout << "Enter the Parent's Name:\n";
@@ -87,7 +89,7 @@ void MenuAdmin::parentRecords()
 
 		for (int j = 0; j < db.db[i].teacher->classRoom.students.size(); j++)
 		{
-			for (const string& childId : parent->childIds)
+			for (const string &childId : parent->childIds)
 			{
 				if (db.db[i].teacher->classRoom.students[j].id == childId)
 				{
@@ -110,16 +112,39 @@ void MenuAdmin::parentRecords()
 	cout << "Date of Birth: " << parent->dob << "\n";
 	cout << "Email: " << parent->email << "\n";
 	cout << "Contact Number: " << parent->contactNumber << "\n";
-	cout << "Child(s) Name: " << childsName << "\n";
-	cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
-	if (int i = 1 < parent->childIds.size()) {
-		while (i != parent->childIds.size()) {
-			cout << "Child(s) Name: " << childsName << "\n";
-			cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
-			i++;
+	// cout << "Child(s) Name: " << childsName << "\n";
+	// cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
+	// if (int i = 1 < parent->childIds.size())
+	// {
+	// 	while (i != parent->childIds.size())
+	// 	{
+	// 		cout << "Child(s) Name: " << childsName << "\n";
+	// 		cout << "Child(s) Classroom Number: " << childsClassRoom << "\n";
+	// 		i++;
+	// 	}
+	// }
+	cout << "Parent/Caregiver Emergency Contact Number: " << parent->emergencyContactNumber << "\n";
+	cout << "\n" <<
+	"Children: ";
+	for (string id : parent->childIds)
+	{
+		for (User u : db.db)
+		{
+			if (u.type == UserType::Teacher)
+			{
+				for (Student s : u.teacher->classRoom.students)
+				{
+					if (s.id == id)
+					{
+						cout << "Child's Name: " << s.name << "\n";
+						cout << "Child's Classroom Number: " << u.teacher->classRoom.classRoomNumber << "\n";
+						cout << "Child's Learning Progress: " << edu[s.learningProgress] << "\n";
+						cout << "\n";
+					}
+				}
+			}
 		}
 	}
-	cout << "Parent/Caregiver Emergency Contact Number: " << parent->emergencyContactNumber << "\n";
 
 	utils.waitForKeyPress();
 }
@@ -127,31 +152,73 @@ void MenuAdmin::parentRecords()
 void MenuAdmin::classRecords()
 {
 	utils.clear();
-	string edu[] = { "Achieved", "Progressing", "Needs Help", "NA" };
+
 	int classroom;
 	cout << "Enter the class number: ";
 	classroom = getInput.getNumber();
 	utils.clear();
-	cout << "Class Room " << classroom << "'s Student Records:";
+	cout << "Class Room " << classroom << "'s Student Records:"
+			 << "\n\n";
+
 	for (User u : db.db)
 	{
 		if (u.teacher.has_value())
 		{
 			if (classroom == u.teacher->classRoom.classRoomNumber)
 			{
+				cout
+						<< "Name"
+						<< "\t"
+						<< "Gender"
+						<< "\t"
+						<< "DOB"
+						<< "\t\t"
+						<< "Maths"
+						<< "\t"
+						<< "Science"
+						<< "\t"
+						<< "Writing"
+						<< "\t"
+						<< "Reading"
+						<< "\t"
+						<< "Others"
+						<< "\t"
+						<< "Learning Progress"
+						<< "\n";
+
 				for (Student s : u.teacher->classRoom.students)
 				{
-					cout << "\n\n----------------------------------------------\n\n";
-					cout << "Name: " << s.name << "\n";
-					cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
-					cout << "Date of Birth: " << s.dob << "\n";
-					cout << "Maths: " << s.math << "\n";
-					cout << "Science: " << s.science << "\n";
-					cout << "Writing: " << s.writing << "\n";
-					cout << "Reading: " << s.reading << "\n";
-					cout << "Others: " << s.other << "\n";
-					cout << "Learning Progress: " << edu[s.learningProgress] << "\n";
+					cout << s.name
+							 << "\t"
+							 << (s.gender == Gender::Male ? "Male" : "Female")
+							 << "\t"
+							 << s.dob
+							 << "\t"
+							 << s.math
+							 << "\t"
+							 << s.science
+							 << "\t"
+							 << s.writing
+							 << "\t"
+							 << s.reading
+							 << "\t"
+							 << s.other
+							 << "\t"
+							 << edu[s.learningProgress]
+							 << "\n";
+
+					// cout << "\n\n----------------------------------------------\n\n";
+					// cout << "Name: " << s.name << "\n";
+					// cout << "Gender: " << (s.gender == Gender::Male ? "Male" : "Female") << "\n";
+					// cout << "Date of Birth: " << s.dob << "\n";
+					// cout << "Maths: " << s.math << "\n";
+					// cout << "Science: " << s.science << "\n";
+					// cout << "Writing: " << s.writing << "\n";
+					// cout << "Reading: " << s.reading << "\n";
+					// cout << "Others: " << s.other << "\n";
+					// cout << "Learning Progress: " << edu[s.learningProgress] << "\n";
 				}
+				break;
 			}
 		}
 	}
@@ -171,17 +238,17 @@ void MenuAdmin::studentReport()
 	if (selection == 2)
 		cout << "Students who are progressing:\n";
 
-	for (const User& user : db.db)
+	for (const User &user : db.db)
 	{
 		if (user.type != UserType::Teacher)
 			continue;
 
-		const class::Teacher& teacher = user.teacher.value();
-		const ClassRoom& classRoom = teacher.classRoom;
+		const class ::Teacher &teacher = user.teacher.value();
+		const ClassRoom &classRoom = teacher.classRoom;
 
 		if (selection == 1)
 		{
-			for (const Student& student : classRoom.students)
+			for (const Student &student : classRoom.students)
 			{
 				if (student.learningProgress == LearningProgress::Need_Help)
 					cout << "- " << student.name << "\n";
@@ -189,7 +256,7 @@ void MenuAdmin::studentReport()
 		}
 		else if (selection == 2)
 		{
-			for (const Student& student : classRoom.students)
+			for (const Student &student : classRoom.students)
 			{
 				if (student.learningProgress == LearningProgress::Progressing)
 					cout << "- " << student.name << "\n";
