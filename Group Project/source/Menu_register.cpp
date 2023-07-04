@@ -77,7 +77,7 @@ void MenuRegister::registerParent()
 
 	string name;
 	string dob;
-	string gender;
+	int gender;
 	string email;
 	string username;
 	string password;
@@ -89,61 +89,49 @@ void MenuRegister::registerParent()
 	cout << "Parent Registration"
 			 << "\n"
 			 << "\n";
-	cout << "\n"
-			 << "Name: ";
+	cout << "Name: ";
 	name = getInput.getString();
 
 	bool validGender = true;
 	do
 	{
-		cout << "\n"
-				 << "Gender: ";
-		gender = getInput.getString();
+		cout << "Gender:"
+				 << "\n"
+				 << C.cyan("1.") << " Male"
+				 << "\n"
+				 << C.cyan("2.") << " Female"
+				 << "\n"
+				 << "Enter your choice: ";
 
-		for (int i = 0; i < gender.size(); i++)
-		{
-			gender[i] = tolower(gender[i]);
-		}
+		gender = getInput.getNumber();
 
-		validGender = true;
+		validGender = gender >= 1 && gender <= 2;
 
-		if (gender == "male")
-			genderEnum = Gender::Male;
-		else if (gender == "female")
-			genderEnum = Gender::Female;
-		else
-			validGender = false;
+		if (validGender)
+			genderEnum = Gender(gender - 1);
 
 		if (!validGender)
-		{
 			cout << C.red("Invalid gender. Please try again.") << "\n";
-			// cout << C.red("Invalid gender. Please try again.") << "\n";
-		}
 
 	} while (!validGender);
 
-	cout << "\n"
-			 << "Date of Birth: ";
+	cout << "Date of Birth: ";
 	dob = getInput.getString();
 
-	cout << "\n"
-			 << "Email: ";
+	cout << "Email: ";
 	email = getInput.getString();
 
-	cout << "\n"
-			 << "Contact Number: ";
+	cout << "Contact Number: ";
 	contactNumber = getInput.getString();
 
-	cout << "\n"
-			 << "Emergency Contact Number : ";
+	cout << "Emergency Contact Number : ";
 	emergencyContactNumber = getInput.getString();
 
 	cout << "\n"
 			 << "Username: ";
 	username = getInput.getString();
 
-	cout << "\n"
-			 << "Password: ";
+	cout << "Password: ";
 	password = getInput.getString();
 
 	cout << "\n"
@@ -164,13 +152,11 @@ void MenuRegister::registerParent()
 				 << "Child " << childCount << ": "
 				 << "\n";
 
-		cout
-				<< "Child's Name: ";
+		cout << "Child's Name: ";
 
 		childName = getInput.getString();
 
-		cout << "\n"
-				 << "Child Classroom Number: ";
+		cout << "Child Classroom Number: ";
 
 		childClassroomNumber = getInput.getNumber();
 
@@ -198,7 +184,7 @@ void MenuRegister::registerParent()
 		if (!classroomNumberExists)
 		{
 			cout << "\n"
-					 << "Classroom number does not exist!"
+					 << C.red("Classroom number does not exist!")
 					 << "\n";
 
 			utils.waitForKeyPress();
@@ -233,7 +219,7 @@ void MenuRegister::registerParent()
 		if (!childExists)
 		{
 			cout << "\n"
-					 << "Child does not exist!"
+					 << C.red("Child does not exist!")
 					 << "\n";
 
 			utils.waitForKeyPress();
@@ -262,7 +248,7 @@ void MenuRegister::registerParent()
 		if (childAlreadyAsigned)
 		{
 			cout << "\n"
-					 << "Child already asigned to another parent!"
+					 << C.red("Child already asigned to another parent!")
 					 << "\n";
 
 			utils.waitForKeyPress();
@@ -289,7 +275,7 @@ void MenuRegister::registerParent()
 	if (childIds.size() == 0)
 	{
 		cout << "\n"
-				 << "No children added. Registration cancelled."
+				 << C.red("No children added. Registration cancelled.")
 				 << "\n";
 
 		utils.waitForKeyPress();
@@ -315,7 +301,7 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 {
 	string name;
 	string dob;
-	string gender;
+	int gender;
 	string email;
 	string username;
 	string password;
@@ -328,55 +314,46 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 	cout << "Teacher Registration"
 			 << "\n"
 			 << "\n";
-	cout << "\n"
-			 << "Name: ";
+	cout << "Name: ";
 	name = getInput.getString();
 
 	bool validGender = true;
 	do
 	{
-		cout << "\n"
-				 << "Gender: ";
-		gender = getInput.getString();
+		cout << "Gender:"
+				 << "\n"
+				 << C.cyan("1.") << " Male"
+				 << "\n"
+				 << C.cyan("2.") << " Female"
+				 << "\n"
+				 << "Enter your choice: ";
 
-		for (int i = 0; i < gender.size(); i++)
-		{
-			gender[i] = tolower(gender[i]);
-		}
+		gender = getInput.getNumber();
 
-		validGender = true;
+		validGender = gender >= 1 && gender <= 2;
 
-		if (gender == "male")
-			genderEnum = Gender::Male;
-		else if (gender == "female")
-			genderEnum = Gender::Female;
-		else
-			validGender = false;
+		if (validGender)
+			genderEnum = Gender(gender - 1);
 
 		if (!validGender)
-		{
-			cout << ("Invalid gender. Please try again.") << "\n";
-			// cout << C.red("Invalid gender. Please try again.") << "\n";
-		}
+			cout << C.red("Invalid gender. Please try again.") << "\n";
 
 	} while (!validGender);
 
-	cout << "\n"
-			 << "Date of Birth: ";
+	cout << "Date of Birth: ";
 	dob = getInput.getString();
 
-	cout << "\n"
-			 << "Email: ";
+	cout
+			<< "Email: ";
 	email = getInput.getString();
 
-	cout << "\n"
-			 << "Contact Number: ";
+	cout
+			<< "Contact Number: ";
 	contactNumber = getInput.getString();
 
 	if (_classRoomNumber == -1)
 	{
-		cout << "\n"
-				 << "Classroom Number: ";
+		cout << "Classroom Number: ";
 		classroomNumber = getInput.getNumber();
 	}
 	else
@@ -384,16 +361,14 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 		classroomNumber = _classRoomNumber;
 	}
 
-	cout << "\n"
-			 << "Teaching Year(eg: year 1): ";
+	cout << "Teaching Year(eg: year 1): ";
 	teachingYear = getInput.getString();
 
 	cout << "\n"
 			 << "Username: ";
 	username = getInput.getString();
 
-	cout << "\n"
-			 << "Password: ";
+	cout << "Password: ";
 	password = getInput.getString();
 
 	for (int i = 0; i < db.db.size(); i++)
@@ -406,8 +381,7 @@ void MenuRegister::registerTeacher(int _classRoomNumber)
 			continue;
 
 		cout << "\n"
-				 << "Classroom already exists!"
-				 << C.red("Registration cancelled.")
+				 << C.red("Classroom already exists! Registration cancelled.")
 				 << "\n";
 
 		utils.waitForKeyPress();

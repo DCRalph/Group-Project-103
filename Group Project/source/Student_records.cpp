@@ -67,7 +67,7 @@ void StudentRecord::addStudent()
 	string name;
 	string id;
 	string dob;
-	string gender;
+	int gender;
 	Gender genderEnum;
 
 	float math;
@@ -77,7 +77,7 @@ void StudentRecord::addStudent()
 	float reading;
 	float other;
 
-	string learningProgress;
+	int learningProgress;
 	LearningProgress learningProgressEnum;
 
 	cout << C.brightMagenta("Add Student") << "\n\n";
@@ -105,21 +105,20 @@ void StudentRecord::addStudent()
 	bool validGender = true;
 	do
 	{
-		cout << "\n"
-				 << "Gender: ";
-		gender = getInput.getString();
+		cout << "Gender:"
+				 << "\n"
+				 << C.cyan("1.") << " Male"
+				 << "\n"
+				 << C.cyan("2.") << " Female"
+				 << "\n"
+				 << "Enter your choice: ";
 
-		for (int i = 0; i < gender.size(); i++)
-			gender[i] = tolower(gender[i]);
+		gender = getInput.getNumber();
 
-		validGender = true;
+		validGender = gender >= 1 && gender <= 2;
 
-		if (gender == "male")
-			genderEnum = Gender::Male;
-		else if (gender == "female")
-			genderEnum = Gender::Female;
-		else
-			validGender = false;
+		if (validGender)
+			genderEnum = Gender(gender - 1);
 
 		if (!validGender)
 			cout << C.red("Invalid gender. Please try again.") << "\n";
@@ -148,25 +147,24 @@ void StudentRecord::addStudent()
 	do
 	{
 		cout << "\n"
-				 << "Learning Progres: ";
-		learningProgress = getInput.getString();
+				 << "Learning Progres: "
+				 << "\n"
+				 << C.cyan("1.") << " Achieved"
+				 << "\n"
+				 << C.cyan("2.") << " Progressing"
+				 << "\n"
+				 << C.cyan("3.") << " Needs Help"
+				 << "\n"
+				 << C.cyan("4.") << " Not Applicable"
+				 << "\n"
+				 << "Enter your choice: ";
 
-		for (int i = 0; i < learningProgress.size(); i++)
-			learningProgress[i] = tolower(learningProgress[i]);
+		learningProgress = getInput.getNumber();
 
-		validLearning = true;
+		validLearning = learningProgress >= 1 && learningProgress <= 4;
 
-		if (learningProgress == "achieved")
-			learningProgressEnum = LearningProgress::Achieved;
-		else if (learningProgress == "progressing")
-			learningProgressEnum = LearningProgress::Progressing;
-		else if (learningProgress == "need help")
-			learningProgressEnum = LearningProgress::Need_Help;
-		else if (learningProgress == "not applicable")
-			learningProgressEnum = LearningProgress::Not_Applicable;
-
-		else
-			validLearning = false;
+		if (validLearning)
+			learningProgressEnum = LearningProgress(learningProgress - 1);
 
 		if (!validLearning)
 			cout << C.red("Invalid Learning Progres. Please try again.") << "\n";
@@ -333,25 +331,25 @@ void StudentRecord::editStudent()
 
 		case 3:
 		{
-			bool validGender = true;
-			string gender;
+			int gender;
 			Gender genderEnum;
+			bool validGender = true;
 			do
 			{
-				cout << "Enter new Gender: ";
-				gender = getInput.getString();
+				cout << "Gender:"
+						 << "\n"
+						 << C.cyan("1.") << " Male"
+						 << "\n"
+						 << C.cyan("2.") << " Female"
+						 << "\n"
+						 << "Enter your choice: ";
 
-				for (int i = 0; i < gender.size(); i++)
-					gender[i] = tolower(gender[i]);
+				gender = getInput.getNumber();
 
-				validGender = true;
+				validGender = gender >= 1 && gender <= 2;
 
-				if (gender == "male")
-					genderEnum = Gender::Male;
-				else if (gender == "female")
-					genderEnum = Gender::Female;
-				else
-					validGender = false;
+				if (validGender)
+					genderEnum = Gender(gender - 1);
 
 				if (!validGender)
 					cout << C.red("Invalid gender. Please try again.") << "\n";
