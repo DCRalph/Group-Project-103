@@ -57,7 +57,7 @@ void MenuAdmin::parentRecords()
 	optional<class ::Parent> parent;
 
 	cout << "Parent Records\n\n";
-	cout << "Enter the Parent's Name:\n";
+	cout << "Enter the Parent's Name: ";
 	parentName = getInput.getString();
 
 	bool parentExists = false;
