@@ -189,7 +189,7 @@ int main()
 
     displayMenu(logedIn);
 
-    cout << "\nEnter a number: ";
+    cout << "\nEnter selection: ";
     choice = getInput.getNumber();
 
     switch (choice)

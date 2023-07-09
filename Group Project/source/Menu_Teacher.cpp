@@ -15,20 +15,26 @@ int MenuTeacher::execute()
 		// cout << "1. Student Records\n";
 		// cout << "2. Exit\n";
 
+		cout << C.red("0.") << " Exit\n";
 		cout << C.cyan("1.") << " Student Records\n";
-		cout << C.red("2.") << " Exit\n";
 		cout << "Enter selection: ";
 		selection = getInput.getNumber();
 
-		if (selection == 1)
+		switch (selection)
 		{
+		case 0:
+			break;
+		case 1:
 			StudentRecord.execute();
+			break;
+		default:
+			utils.clear();
+			cout << "\n";
+			cout << C.red("Invalid input, please try again.") << "\n\n";
+
+			utils.waitForKeyPress();
 		}
-		else
-		{
-			cout << "\nInvalid choice!\n";
-		}
-	} while (selection != 2);
+	} while (selection != 0);
 	// cout << "\nGoodbye!";
 
 	return 0;

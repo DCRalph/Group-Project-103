@@ -12,10 +12,10 @@ int MenuAdmin::execute()
 		utils.clear();
 
 		cout << "\nWelcome " << db.currentUser.getName() << " to Admin Homescreen\n\n";
+		cout << C.red("0.") << " Exit\n";
 		cout << C.cyan("1.") << " Parent Records\n";
 		cout << C.cyan("2.") << " Class Records\n";
 		cout << C.cyan("3.") << " Student Report\n";
-		cout << C.red("4.") << " Exit\n";
 
 		// cout << "1. Parent Records\n";
 		// cout << "2. Class Records\n";
@@ -27,6 +27,8 @@ int MenuAdmin::execute()
 
 		switch (selection)
 		{
+		case 0:
+			break;
 		case 1:
 			this->parentRecords();
 			break;
@@ -36,8 +38,7 @@ int MenuAdmin::execute()
 		case 3:
 			this->studentReport();
 			break;
-		case 4:
-			break;
+
 		default:
 			utils.clear();
 			cout << "\n";
@@ -45,7 +46,7 @@ int MenuAdmin::execute()
 
 			utils.waitForKeyPress();
 		}
-	} while (selection != 4);
+	} while (selection != 0);
 
 	return 0;
 }
@@ -77,7 +78,7 @@ void MenuAdmin::parentRecords()
 
 	if (!parentExists)
 	{
-		cout << "Parent not found.\n";
+		cout << C.red("Parent not found.\n");
 		utils.waitForKeyPress();
 		return;
 	}
@@ -234,7 +235,10 @@ void MenuAdmin::studentReport()
 	utils.clear();
 	cout << "Student Report\n\n";
 	cout << "What Group do you want to view?\n";
-	cout << "1) Needs Help\n2) Progressing State\n\n";
+	cout << "1) Needs Help"
+			 << "\n"
+			 << "2) Progressing State"
+			 << "\n\n";
 	int selection = getInput.getNumber();
 	utils.clear();
 	if (selection == 1)

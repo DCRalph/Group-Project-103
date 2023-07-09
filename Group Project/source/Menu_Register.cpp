@@ -25,24 +25,31 @@ int MenuRegister::execute()
 	cout << "Occupation:"
 			 << "\n";
 
+	cout << C.red("0.") << " Exit\n";
 	cout << C.cyan("1.") << " Parent\n";
 	cout << C.cyan("2.") << " Teacher\n";
-	cout << C.red("3.") << " Exit\n";
 
 	cout << "\n"
 			 << "Enter your occupation: ";
 	userOccupation = getInput.getNumber();
 
-	if (userOccupation == 1)
+	switch (userOccupation)
+	{
+	case 0:
+		break;
+	case 1:
 		this->registerParent();
-
-	else if (userOccupation == 2)
+		break;
+	case 2:
 		this->registerTeacher();
-	else if (userOccupation == 3)
-		return 0;
+		break;
+	default:
+		utils.clear();
+		cout << "\n";
+		cout << C.red("Invalid input, please try again.") << "\n\n";
 
-	else
-		cout << C.red("Invalid input");
+		utils.waitForKeyPress();
+	}
 
 	return 0;
 }

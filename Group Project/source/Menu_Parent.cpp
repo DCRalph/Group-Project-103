@@ -11,26 +11,34 @@ int MenuParent::execute()
 		utils.clear();
 		cout << "\nWelcome " << db.currentUser.getName() << " to Parent Homescreen\n\n";
 
+		cout << C.red("0.") << " Exit\n";
 		cout << C.cyan("1.") << " View Child's Record\n";
 		cout << C.cyan("2.") << " School Notices\n";
-		cout << C.red("3.") << " Exit\n";
 
 		cout << "Enter selection: ";
 
 		selection = getInput.getNumber();
 
-		if (selection == 1)
+		switch (selection)
+		{
+		case 0:
+			break;
+		case 1:
 			this->childRecord();
-
-		else if (selection == 2)
+			break;
+		case 2:
 			this->schoolNotice();
+			break;
 
-		else
-			cout << "\n"
-					 << C.red("Invalid choice!")
-					 << "\n";
+		default:
+			utils.clear();
+			cout << "\n";
+			cout << C.red("Invalid input, please try again.") << "\n\n";
 
-	} while (selection != 3);
+			utils.waitForKeyPress();
+		}
+
+	} while (selection != 0);
 	// cout << "\nGoodbye!";
 
 	return 0;

@@ -10,12 +10,12 @@ int StudentRecord::execute()
 	{
 		utils.clear();
 		cout << "Student Records\n\n";
+		cout << C.red("0.") << " Exit\n";
 		cout << C.cyan("1.") << " Add Student\n";
 		cout << C.cyan("2.") << " Edit student Record\n";
 		cout << C.cyan("3.") << " Delete Student Record\n";
 		cout << C.cyan("4.") << " Update Record\n";
 		cout << C.cyan("5.") << " View the Records\n";
-		cout << C.red("6.") << " Exit\n";
 
 		// cout << "1. Add Student\n";
 		// cout << "2. Edit student Record\n";
@@ -25,34 +25,34 @@ int StudentRecord::execute()
 		// cout << "6. Exit\n";
 		cout << "Enter a number: ";
 		opt = getInput.getNumber();
-		if (opt == 1)
-		{
-			this->addStudent();
-		}
-		else if (opt == 2)
-		{
-			this->editStudent();
-		}
-		else if (opt == 3)
-		{
-			this->deleteStudent();
-		}
-		else if (opt == 4)
-		{
-			this->updateStudent();
-		}
-		else if (opt == 5)
-		{
-			this->viewStudent();
-		}
-		else if (opt == 6)
-			;
-		else
-		{
-			cout << "\nInalid Choice!\n";
 
-			StudentRecord();
+		switch (opt)
+		{
+		case 0:
+			break;
+		case 1:
+			this->addStudent();
+			break;
+		case 2:
+			this->editStudent();
+			break;
+		case 3:
+			this->deleteStudent();
+			break;
+		case 4:
+			this->updateStudent();
+			break;
+		case 5:
+			this->viewStudent();
+			break;
+		default:
+			utils.clear();
+			cout << "\n";
+			cout << C.red("Invalid input, please try again.") << "\n\n";
+
+			utils.waitForKeyPress();
 		}
+
 	} while (opt != 6);
 
 	return 0;
