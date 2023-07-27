@@ -220,8 +220,8 @@ int main()
           long long msLockedOut = lockedOutTime.time_since_epoch().count();
           long long msDiff = msNow - msLockedOut;
           msDiff = msDiff / 1000000;
-          msDiff = 30 - msDiff; // 30 second timer
-          // msDiff = 300 - msDiff; // 5 minute timer
+          // msDiff = 30 - msDiff; // 30 second timer
+          msDiff = 300 - msDiff; // 5 minute timer
 
           int seconds = msDiff % 60;
           int minutes = floor(msDiff / 60);
