@@ -21,7 +21,7 @@
 using namespace std;
 
 int incorrectLoginAttempts = 0;
-std::chrono::system_clock::time_point lockedOutTime;
+chrono::system_clock::time_point lockedOutTime = chrono::system_clock::now();
 
 void displayMenu(bool logedIn = false)
 {
@@ -219,12 +219,17 @@ int main()
           long long msNow = chrono::system_clock::now().time_since_epoch().count();
           long long msLockedOut = lockedOutTime.time_since_epoch().count();
           long long msDiff = msNow - msLockedOut;
-          msDiff = msDiff / 1000000;
+
+          msDiff = msDiff / 1000000000;
+
           // msDiff = 30 - msDiff; // 30 second timer
           msDiff = 300 - msDiff; // 5 minute timer
 
           int seconds = msDiff % 60;
           int minutes = floor(msDiff / 60);
+
+          // cout << msDiff << " " << seconds << " " << minutes << "\n";
+          // utils.waitForKeyPress();
 
           if (msDiff > 0)
           {
@@ -245,15 +250,23 @@ int main()
           msDiff = 0;
         }
 
-        if (menuLogin.execute() > 0)
+        int loginResult = menuLogin.execute();
+        // cout << loginResult << "\n";
+
+        // utils.waitForKeyPress();
+
+        if (loginResult > 0)
         {
           incorrectLoginAttempts = 0;
         }
         else
         {
+          // cout << "login failed" << "\n";
           incorrectLoginAttempts++;
           lockedOutTime = chrono::system_clock::now();
         }
+
+        // utils.waitForKeyPress();
       }
       break;
     case 2:

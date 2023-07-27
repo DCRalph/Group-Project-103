@@ -46,14 +46,13 @@ int MenuLogin::execute()
 
     if (db.db[i].login.password != password)
     {
-      cout << C.red("Invalid password!") << "\n";
       // cout << C.red("Invalid password!") << "\n";
 
       // db.db[i].attempts++;
 
-      utils.waitForKeyPress();
+      // utils.waitForKeyPress();
 
-      continue;
+      break;
     }
 
     cout << "\n";
