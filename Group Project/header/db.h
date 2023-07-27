@@ -125,7 +125,7 @@ public:
   User(Login _login, string _id, class ::Teacher _teacher);
 
   Login login;
-  int type;
+  UserType type;
   string id;
 
   string getName();

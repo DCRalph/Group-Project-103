@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include <cmath>
+#include <chrono>
 
 #include "header/cliTools.h"
 #include "header/db.h"
@@ -20,7 +21,7 @@
 using namespace std;
 
 int incorrectLoginAttempts = 0;
-chrono::system_clock::time_point lockedOutTime;
+std::chrono::system_clock::time_point lockedOutTime;
 
 void displayMenu(bool logedIn = false)
 {
@@ -210,8 +211,7 @@ int main()
           break;
         }
       }
-
-      else
+        else
       {
 
         if (incorrectLoginAttempts >= 3)
@@ -245,7 +245,7 @@ int main()
           msDiff = 0;
         }
 
-        if (menuLogin.execute())
+        if (menuLogin.execute() > 0)
         {
           incorrectLoginAttempts = 0;
         }

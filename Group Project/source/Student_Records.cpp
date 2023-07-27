@@ -53,7 +53,7 @@ int StudentRecord::execute()
 			utils.waitForKeyPress();
 		}
 
-	} while (opt != 6);
+	} while (opt != 0);
 
 	return 0;
 }
