@@ -223,7 +223,7 @@ int main()
           msDiff = msDiff / 1000000000;
 
           // msDiff = 30 - msDiff; // 30 second timer
-          msDiff = 300 - msDiff; // 5 minute timer
+          msDiff = 10 - msDiff; // 5 minute timer
 
           int seconds = msDiff % 60;
           int minutes = floor(msDiff / 60);
@@ -234,10 +234,10 @@ int main()
           if (msDiff > 0)
           {
             cout << "\n";
-            cout << ("You have been locked out for 5 minutes.") << "\n";
+            cout << ("You have been locked out for 10 seconds.") << "\n";
 
             cout << "Please try again in "
-                 << minutes << " minutes and "
+                 //<< minutes << " minutes and "
                  << seconds << " seconds."
                  << "\n";
 
